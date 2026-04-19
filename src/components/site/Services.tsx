@@ -23,7 +23,7 @@ import faroisImg from "@/assets/services/farois.jpg";
 import vidrosImg from "@/assets/services/vidros.jpg";
 import motorImg from "@/assets/services/motor.jpg";
 
-type ServiceIcon = LucideIcon | ((props: { className?: string }) => JSX.Element);
+type ServiceIcon = LucideIcon | ((props: { className?: string }) => React.ReactElement);
 
 type Service = {
   nome: string;
