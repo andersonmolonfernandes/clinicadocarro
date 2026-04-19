@@ -57,7 +57,7 @@ export const Route = createRootRoute({
           "Estética automotiva em Joinville/SC desde 2013. Polimento, vitrificação, higienização e mais. Agende pelo WhatsApp.",
       },
       { name: "author", content: "Clínica do Carro" },
-      { property: "og:title", content: "Clínica do Carro — Studio Detail" },
+      { property: "og:title", content: "Clínica do Carro — Studio Detail | Joinville/SC" },
       {
         property: "og:description",
         content:
@@ -66,6 +66,12 @@ export const Route = createRootRoute({
       { property: "og:type", content: "website" },
       { property: "og:locale", content: "pt_BR" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Clínica do Carro — Studio Detail | Joinville/SC" },
+      { name: "description", content: "Estética automotiva em Joinville desde 2013. Polimento, vitrificação, higienização, faróis, vidros e martelinho de ouro. Agende pelo WhatsApp!" },
+      { property: "og:description", content: "Estética automotiva em Joinville desde 2013. Polimento, vitrificação, higienização, faróis, vidros e martelinho de ouro. Agende pelo WhatsApp!" },
+      { name: "twitter:description", content: "Estética automotiva em Joinville desde 2013. Polimento, vitrificação, higienização, faróis, vidros e martelinho de ouro. Agende pelo WhatsApp!" },
+      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/TdeeJbTXzfQ35wG59qXUqhSclMq1/social-images/social-1776604886669-1000024715.webp" },
+      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/TdeeJbTXzfQ35wG59qXUqhSclMq1/social-images/social-1776604886669-1000024715.webp" },
     ],
     links: [
       { rel: "icon", type: "image/png", href: "/logo.png" },
