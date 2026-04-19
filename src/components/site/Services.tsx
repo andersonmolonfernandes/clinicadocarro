@@ -3,29 +3,42 @@ import {
   ChevronDown,
   Droplets,
   Sparkles,
-  Wind,
   Shield,
-  Lightbulb,
   ScanEye,
-  Settings2,
   Hammer,
   type LucideIcon,
 } from "lucide-react";
 import { useState } from "react";
 import { waLink } from "./constants";
+import {
+  EngineShineIcon,
+  HeadlightShineIcon,
+  SeatShineIcon,
+} from "./icons";
+import lavacaoImg from "@/assets/services/lavacao.jpg";
+import polimentoImg from "@/assets/services/polimento.jpg";
+import higienizacaoImg from "@/assets/services/higienizacao.png";
+import vitrificacaoImg from "@/assets/services/vitrificacao.jpg";
+import faroisImg from "@/assets/services/farois.jpg";
+import vidrosImg from "@/assets/services/vidros.jpg";
+import motorImg from "@/assets/services/motor.jpg";
+
+type ServiceIcon = LucideIcon | ((props: { className?: string }) => React.ReactElement);
 
 type Service = {
   nome: string;
-  Icon: LucideIcon;
+  Icon: ServiceIcon;
   descricao: string;
   lista: string[];
   whatsapp: string;
+  image?: string;
 };
 
 const services: Service[] = [
   {
     nome: "Lavação Premium",
     Icon: Droplets,
+    image: lavacaoImg,
     descricao:
       "Lavagem completa por fora e por dentro. Rodas, pneus, vidros, aspiração, plásticos internos e cera protetora.",
     lista: [
@@ -40,6 +53,7 @@ const services: Service[] = [
   {
     nome: "Polimento Técnico",
     Icon: Sparkles,
+    image: polimentoImg,
     descricao:
       "Correção da pintura em 2 etapas: corte remove riscos e oxidação, refino devolve o brilho espelhado.",
     lista: [
@@ -51,7 +65,8 @@ const services: Service[] = [
   },
   {
     nome: "Higienização Interna",
-    Icon: Wind,
+    Icon: SeatShineIcon,
+    image: higienizacaoImg,
     descricao:
       "Limpeza profunda com extratora. Remove sujeira, ácaros, fungos e odores que você não vê mas respira.",
     lista: [
@@ -65,6 +80,7 @@ const services: Service[] = [
   {
     nome: "Vitrificação VX45",
     Icon: Shield,
+    image: vitrificacaoImg,
     descricao:
       "Camada protetora que repele água, resiste a riscos e bloqueia UV. Dura até 3 anos.",
     lista: [
@@ -76,7 +92,8 @@ const services: Service[] = [
   },
   {
     nome: "Restauração de Faróis",
-    Icon: Lightbulb,
+    Icon: HeadlightShineIcon,
+    image: faroisImg,
     descricao:
       "A restauração devolve a transparência do farol como se fosse novo. Depois o cliente escolhe a proteção.",
     lista: [
@@ -88,6 +105,7 @@ const services: Service[] = [
   {
     nome: "Vidros e Cristalização",
     Icon: ScanEye,
+    image: vidrosImg,
     descricao:
       "Remove chuva ácida e riscos. Cristalização com efeito hidrofóbico — água escorrega sozinha acima de 60km/h.",
     lista: [
@@ -99,7 +117,8 @@ const services: Service[] = [
   },
   {
     nome: "Limpeza de Motor",
-    Icon: Settings2,
+    Icon: EngineShineIcon,
+    image: motorImg,
     descricao:
       "Desengraxamento técnico completo, finalizado com verniz protetor.",
     lista: [
@@ -246,6 +265,26 @@ export function Services() {
                         className="relative px-7 pb-7 pt-1"
                         onClick={(e) => e.stopPropagation()}
                       >
+                        {s.image && (
+                          <motion.div
+                            initial={{ opacity: 0, scale: 0.96 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{ duration: 0.45, ease: "easeOut", delay: 0.05 }}
+                            className="mb-5 overflow-hidden rounded-md"
+                            style={{
+                              border: "1px solid rgba(0,230,118,0.18)",
+                              aspectRatio: "16 / 9",
+                            }}
+                          >
+                            <img
+                              src={s.image}
+                              alt={`${s.nome} — Clínica do Carro Joinville`}
+                              loading="lazy"
+                              decoding="async"
+                              className="w-full h-full object-cover"
+                            />
+                          </motion.div>
+                        )}
                         <p className="font-[var(--font-body)] font-light text-[0.9rem] text-[var(--muted-text)] leading-relaxed">
                           {s.descricao}
                         </p>
