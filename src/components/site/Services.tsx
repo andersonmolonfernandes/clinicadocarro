@@ -265,6 +265,26 @@ export function Services() {
                         className="relative px-7 pb-7 pt-1"
                         onClick={(e) => e.stopPropagation()}
                       >
+                        {s.image && (
+                          <motion.div
+                            initial={{ opacity: 0, scale: 0.96 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{ duration: 0.45, ease: "easeOut", delay: 0.05 }}
+                            className="mb-5 overflow-hidden rounded-md"
+                            style={{
+                              border: "1px solid rgba(0,230,118,0.18)",
+                              aspectRatio: "16 / 9",
+                            }}
+                          >
+                            <img
+                              src={s.image}
+                              alt={`${s.nome} — Clínica do Carro Joinville`}
+                              loading="lazy"
+                              decoding="async"
+                              className="w-full h-full object-cover"
+                            />
+                          </motion.div>
+                        )}
                         <p className="font-[var(--font-body)] font-light text-[0.9rem] text-[var(--muted-text)] leading-relaxed">
                           {s.descricao}
                         </p>
