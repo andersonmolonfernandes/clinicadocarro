@@ -127,6 +127,7 @@ const services: Service[] = [
 
 export function Services() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const [hoverIndex, setHoverIndex] = useState<number | null>(null);
 
   return (
     <section id="servicos" className="py-[110px] px-5 md:px-10">
@@ -134,7 +135,7 @@ export function Services() {
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: false, amount: 0.3 }}
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
@@ -155,19 +156,24 @@ export function Services() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           {services.map((s, idx) => {
             const open = openIndex === idx;
+            const hovered = hoverIndex === idx;
+            // Stagger by row (3 per row on lg, 2 on md, 1 on sm)
+            const rowDelay = (Math.floor(idx / 3) % 2) * 0.1 + (idx % 3) * 0.08;
             return (
               <motion.div
                 key={s.nome}
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: (idx % 3) * 0.08 }}
+                viewport={{ once: false, amount: 0.2 }}
+                transition={{ duration: 0.5, delay: rowDelay }}
                 whileHover={{
                   y: -6,
                   borderColor: "rgba(0,230,118,0.5)",
                   boxShadow: "0 20px 60px rgba(0,230,118,0.12)",
                 }}
-                className="rounded-[10px] cursor-pointer self-start"
+                onHoverStart={() => setHoverIndex(idx)}
+                onHoverEnd={() => setHoverIndex((i) => (i === idx ? null : i))}
+                className="relative rounded-[10px] cursor-pointer self-start overflow-hidden"
                 style={{
                   background: "rgba(255,255,255,0.02)",
                   border: open
@@ -176,11 +182,29 @@ export function Services() {
                 }}
                 onClick={() => setOpenIndex(open ? null : idx)}
               >
+                {/* Border-shine sweep on hover */}
+                <motion.div
+                  aria-hidden
+                  className="pointer-events-none absolute inset-0"
+                  initial={false}
+                  animate={
+                    hovered
+                      ? { backgroundPosition: ["-150% 0", "250% 0"] }
+                      : { backgroundPosition: "-150% 0" }
+                  }
+                  transition={{ duration: 1.2, ease: "easeOut" }}
+                  style={{
+                    background:
+                      "linear-gradient(110deg, transparent 35%, rgba(0,230,118,0.18) 50%, transparent 65%)",
+                    backgroundSize: "200% 100%",
+                    mixBlendMode: "screen",
+                  }}
+                />
                 <div
-                  className="flex items-center gap-4"
+                  className="relative flex items-center gap-4"
                   style={{ padding: "28px 26px" }}
                 >
-                  <div
+                  <motion.div
                     className="flex items-center justify-center rounded-[10px] shrink-0"
                     style={{
                       width: 50,
@@ -188,9 +212,15 @@ export function Services() {
                       background: "rgba(0,230,118,0.08)",
                       border: "1px solid rgba(0,230,118,0.15)",
                     }}
+                    animate={
+                      hovered
+                        ? { rotate: [0, -8, 8, -4, 0], scale: 1.08 }
+                        : { rotate: 0, scale: 1 }
+                    }
+                    transition={{ duration: 0.6, ease: "easeOut" }}
                   >
                     <s.Icon className="w-6 h-6 text-green-brand" />
-                  </div>
+                  </motion.div>
                   <h3 className="flex-1 font-[var(--font-heading)] font-bold uppercase text-white text-[1.1rem] tracking-wide">
                     {s.nome}
                   </h3>
@@ -213,7 +243,7 @@ export function Services() {
                       style={{ overflow: "hidden" }}
                     >
                       <div
-                        className="px-7 pb-7 pt-1"
+                        className="relative px-7 pb-7 pt-1"
                         onClick={(e) => e.stopPropagation()}
                       >
                         <p className="font-[var(--font-body)] font-light text-[0.9rem] text-[var(--muted-text)] leading-relaxed">
@@ -237,6 +267,7 @@ export function Services() {
                           href={waLink(s.whatsapp)}
                           target="_blank"
                           rel="noopener noreferrer"
+                          aria-label={`Falar pelo WhatsApp sobre ${s.nome}`}
                           className="mt-6 block w-full text-center border border-green-brand text-green-brand font-[var(--font-heading)] font-bold uppercase tracking-wider rounded-md py-3 hover:bg-green-brand hover:text-black transition-colors"
                         >
                           Falar pelo WhatsApp

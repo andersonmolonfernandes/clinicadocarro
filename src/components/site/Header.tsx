@@ -34,15 +34,22 @@ export function Header() {
       className="fixed top-0 inset-x-0 z-50 border-b border-transparent"
     >
       <div className="max-w-7xl mx-auto px-5 md:px-10 h-20 flex items-center justify-between">
-        <a href="#top" className="flex items-center">
+        <motion.a
+          href="#top"
+          className="flex items-center"
+          whileHover={{ scale: 1.06, filter: "drop-shadow(0 0 12px rgba(0,230,118,0.55))" }}
+          transition={{ type: "spring", stiffness: 300, damping: 18 }}
+          aria-label="Clínica do Carro - Início"
+        >
           <img
             src="/logo.png"
             alt="Clínica do Carro"
             height={52}
-            loading="lazy"
+            // @ts-expect-error fetchpriority is a valid HTML attribute
+            fetchpriority="high"
             className="h-[52px] w-auto"
           />
-        </a>
+        </motion.a>
 
         <nav className="hidden md:flex items-center gap-10">
           {links.map((l) => (

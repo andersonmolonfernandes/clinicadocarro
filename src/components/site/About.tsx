@@ -19,7 +19,7 @@ export function About() {
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: false, amount: 0.3 }}
           transition={{ duration: 0.6 }}
         >
           <p
@@ -43,7 +43,7 @@ export function About() {
           <motion.ul
             initial="hidden"
             whileInView="show"
-            viewport={{ once: true }}
+            viewport={{ once: false, amount: 0.3 }}
             variants={{
               hidden: {},
               show: { transition: { staggerChildren: 0.08, delayChildren: 0.2 } },
@@ -75,7 +75,7 @@ export function About() {
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: false, amount: 0.3 }}
           transition={{ duration: 0.7, delay: 0.1 }}
           className="relative rounded-[10px] overflow-hidden flex items-center justify-center"
           style={{
@@ -85,25 +85,31 @@ export function About() {
             border: "1px solid rgba(0,230,118,0.15)",
           }}
         >
-          <img
+          <motion.img
             src="/logo.png"
             alt=""
             loading="lazy"
             className="max-w-[250px] w-3/5"
-            style={{ opacity: 0.2 }}
+            animate={{
+              opacity: [0.18, 0.28, 0.18],
+              scale: [1, 1.04, 1],
+              rotate: [0, 1.5, 0, -1.5, 0],
+            }}
+            transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
           />
-          <span
+          <motion.span
             aria-hidden
             className="absolute font-[var(--font-display)] pointer-events-none select-none"
             style={{
               fontSize: "7rem",
-              color: "rgba(0,230,118,0.06)",
               right: 24,
               bottom: -10,
             }}
+            animate={{ color: ["rgba(0,230,118,0.04)", "rgba(0,230,118,0.12)", "rgba(0,230,118,0.04)"] }}
+            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
           >
             2013
-          </span>
+          </motion.span>
         </motion.div>
       </div>
     </section>

@@ -15,10 +15,21 @@ const stats: Stat[] = [
   { value: 8, suffix: "+", label: "Serviços" },
 ];
 
-function Counter({ stat, start }: { stat: Stat; start: boolean }) {
+function Counter({
+  stat,
+  start,
+  onDone,
+}: {
+  stat: Stat;
+  start: boolean;
+  onDone: () => void;
+}) {
   const [n, setN] = useState(0);
   useEffect(() => {
-    if (!start) return;
+    if (!start) {
+      setN(0);
+      return;
+    }
     const duration = 1800;
     const startTime = performance.now();
     let raf = 0;
@@ -27,10 +38,11 @@ function Counter({ stat, start }: { stat: Stat; start: boolean }) {
       const eased = 1 - Math.pow(1 - t, 4);
       setN(Math.round(stat.value * eased));
       if (t < 1) raf = requestAnimationFrame(tick);
+      else onDone();
     };
     raf = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(raf);
-  }, [start, stat.value]);
+  }, [start, stat.value, onDone]);
 
   const formatted = stat.thousands ? n.toLocaleString("pt-BR") : n.toString();
   return (
@@ -43,7 +55,7 @@ function Counter({ stat, start }: { stat: Stat; start: boolean }) {
 
 export function Stats() {
   const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-80px" });
+  const inView = useInView(ref, { amount: 0.3 });
 
   return (
     <section
@@ -53,27 +65,54 @@ export function Stats() {
     >
       <div className="max-w-6xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
         {stats.map((s, i) => (
-          <motion.div
-            key={s.label}
-            initial={{ opacity: 0, y: 30 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: i * 0.08 }}
-          >
-            <div
-              className="font-[var(--font-display)] leading-none"
-              style={{ fontSize: "clamp(2.8rem, 5vw, 4.2rem)" }}
-            >
-              <Counter stat={s} start={inView} />
-            </div>
-            <p
-              className="mt-3 font-[var(--font-body)] text-[var(--muted-text)] uppercase"
-              style={{ fontSize: "0.8rem", letterSpacing: "2px" }}
-            >
-              {s.label}
-            </p>
-          </motion.div>
+          <StatItem key={s.label} stat={s} index={i} inView={inView} />
         ))}
       </div>
     </section>
+  );
+}
+
+function StatItem({
+  stat,
+  index,
+  inView,
+}: {
+  stat: Stat;
+  index: number;
+  inView: boolean;
+}) {
+  const [bounced, setBounced] = useState(false);
+  useEffect(() => {
+    if (!inView) setBounced(false);
+  }, [inView]);
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+      transition={{ duration: 0.6, delay: index * 0.08 }}
+    >
+      <motion.div
+        className="font-[var(--font-display)] leading-none inline-block"
+        style={{ fontSize: "clamp(2.8rem, 5vw, 4.2rem)" }}
+        animate={bounced ? { scale: [1, 1.12, 1] } : { scale: 1 }}
+        transition={{ duration: 0.45, ease: "easeOut" }}
+      >
+        <Counter stat={stat} start={inView} onDone={() => setBounced(true)} />
+      </motion.div>
+      <motion.div
+        className="mx-auto mt-2 h-[2px] bg-green-brand origin-center"
+        initial={{ scaleX: 0 }}
+        animate={inView ? { scaleX: 1 } : { scaleX: 0 }}
+        transition={{ duration: 0.7, delay: 0.4 + index * 0.08, ease: "easeOut" }}
+        style={{ width: 40, opacity: 0.6 }}
+      />
+      <p
+        className="mt-3 font-[var(--font-body)] text-[var(--muted-text)] uppercase"
+        style={{ fontSize: "0.8rem", letterSpacing: "2px" }}
+      >
+        {stat.label}
+      </p>
+    </motion.div>
   );
 }
