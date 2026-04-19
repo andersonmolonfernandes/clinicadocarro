@@ -36,7 +36,7 @@ export function Footer() {
               href={l.href}
               target={l.ext ? "_blank" : undefined}
               rel={l.ext ? "noopener noreferrer" : undefined}
-              className="font-[var(--font-heading)] uppercase text-sm tracking-wider text-[var(--muted-text)] hover:text-green-brand transition-colors"
+              className="story-link font-[var(--font-heading)] uppercase text-sm tracking-wider text-[var(--muted-text)] hover:text-green-brand transition-colors"
             >
               {l.label}
             </a>
