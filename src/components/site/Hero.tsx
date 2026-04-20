@@ -16,13 +16,13 @@ export function Hero() {
 
   const particles = useMemo(
     () =>
-      Array.from({ length: 12 }).map((_, i) => ({
+      Array.from({ length: 6 }).map((_, i) => ({
         id: i,
         size: 3 + Math.random() * 2,
         left: Math.random() * 100,
         top: Math.random() * 100,
         opacity: 0.3 + Math.random() * 0.3,
-        duration: 3 + Math.random() * 4,
+        duration: 4 + Math.random() * 4,
         delay: Math.random() * 2,
         yRange: 20 + Math.random() * 20,
       })),
@@ -92,16 +92,29 @@ export function Hero() {
           JOINVILLE/SC — DESDE 2013
         </motion.p>
 
+        <motion.img
+          src="/logo.png"
+          alt="Clínica do Carro — Studio Detail"
+          initial={{ opacity: 0, scale: 0.7, y: -20 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          transition={{ duration: 0.9, delay: 0.15, ease: [0.2, 0.8, 0.2, 1] }}
+          className="mx-auto mt-6 mb-2 object-contain"
+          style={{
+            width: "clamp(160px, 22vw, 280px)",
+            filter: "drop-shadow(0 0 24px rgba(0,230,118,0.35))",
+          }}
+        />
+
         <motion.h1
           initial="hidden"
           animate="show"
           variants={{
             hidden: {},
-            show: { transition: { staggerChildren: 0.08, delayChildren: 0.25 } },
+            show: { transition: { staggerChildren: 0.08, delayChildren: 0.45 } },
           }}
-          className="font-[var(--font-display)] text-white mt-6 flex flex-wrap items-baseline justify-center gap-x-[0.3em] gap-y-2"
+          className="font-[var(--font-display)] text-white mt-4 flex flex-wrap items-baseline justify-center gap-x-[0.3em] gap-y-2"
           style={{
-            fontSize: "clamp(4rem, 10vw, 8rem)",
+            fontSize: "clamp(2.8rem, 7vw, 5.5rem)",
             lineHeight: 0.9,
             letterSpacing: "0.02em",
           }}
