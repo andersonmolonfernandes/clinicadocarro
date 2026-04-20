@@ -78,7 +78,7 @@ const services: Service[] = [
     whatsapp: "Olá! Gostaria de saber mais sobre a Higienização Interna.",
   },
   {
-    nome: "Vitrificação VX45",
+    nome: "Vitrificação",
     Icon: Shield,
     image: vitrificacaoImg,
     descricao:
@@ -88,7 +88,7 @@ const services: Service[] = [
       "Carro usado: descontaminação + polimento + vitrificação",
       "Durabilidade de até 3 anos",
     ],
-    whatsapp: "Olá! Gostaria de saber mais sobre a Vitrificação VX45.",
+    whatsapp: "Olá! Gostaria de saber mais sobre a Vitrificação.",
   },
   {
     nome: "Restauração de Faróis",
@@ -154,7 +154,7 @@ export function Services() {
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false, amount: 0.3 }}
+          viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
@@ -183,7 +183,7 @@ export function Services() {
                 key={s.nome}
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: false, amount: 0.2 }}
+                viewport={{ once: true, amount: 0.2 }}
                 transition={{ duration: 0.5, delay: rowDelay }}
                 whileHover={{
                   y: -6,

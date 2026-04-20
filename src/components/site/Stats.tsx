@@ -55,7 +55,7 @@ function Counter({
 
 export function Stats() {
   const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { amount: 0.3 });
+  const inView = useInView(ref, { amount: 0.3, once: true });
 
   return (
     <section
