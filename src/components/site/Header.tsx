@@ -44,10 +44,10 @@ export function Header() {
           <img
             src="/logo.png"
             alt="Clínica do Carro"
-            height={52}
+            height={60}
             // @ts-expect-error fetchpriority is a valid HTML attribute
             fetchpriority="high"
-            className="h-[52px] w-auto"
+            className="h-[60px] w-auto"
           />
         </motion.a>
 

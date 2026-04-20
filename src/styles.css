@@ -39,9 +39,9 @@
   --color-muted-text: var(--muted-text);
   --color-footer-bg: var(--footer-bg);
 
-  --font-display: "Bebas Neue", sans-serif;
-  --font-heading: "Rajdhani", sans-serif;
-  --font-body: "Barlow", sans-serif;
+  --font-display: "Poppins", "Inter", sans-serif;
+  --font-heading: "Rajdhani", "Inter", sans-serif;
+  --font-body: "Inter", "Lexend", sans-serif;
   --font-mono-tech: "Orbitron", sans-serif;
 }
 
@@ -94,13 +94,19 @@
     color: #fff;
     font-family: var(--font-body);
     -webkit-font-smoothing: antialiased;
-    background-image: repeating-linear-gradient(
-      -45deg,
-      rgba(0, 230, 118, 0.018),
-      rgba(0, 230, 118, 0.018) 1px,
-      transparent 1px,
-      transparent 44px
-    );
+    text-rendering: optimizeLegibility;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    body {
+      background-image: repeating-linear-gradient(
+        -45deg,
+        rgba(0, 230, 118, 0.018),
+        rgba(0, 230, 118, 0.018) 1px,
+        transparent 1px,
+        transparent 44px
+      );
+    }
   }
 
   ::-webkit-scrollbar {
@@ -130,6 +136,12 @@
   }
   .glow-green {
     text-shadow: 0 0 30px rgba(0, 230, 118, 0.35);
+  }
+  .glow-white {
+    text-shadow:
+      0 0 12px rgba(255, 255, 255, 0.55),
+      0 0 28px rgba(255, 255, 255, 0.25),
+      0 0 60px rgba(0, 230, 118, 0.18);
   }
   .shadow-green-glow {
     box-shadow: 0 0 40px rgba(0, 230, 118, 0.4);

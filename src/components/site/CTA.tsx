@@ -4,18 +4,15 @@ import { WHATSAPP_DEFAULT } from "./constants";
 
 export function CTA() {
   return (
-    <motion.section
+    <section
       className="relative overflow-hidden text-center px-5"
       style={{
         padding: "100px 20px",
         background:
-          "linear-gradient(135deg, #001409, #002710, #001409, #002710, #001409)",
-        backgroundSize: "300% 300%",
+          "linear-gradient(135deg, #001409, #002710 60%, #001409)",
         borderTop: "2px solid #00e676",
         borderBottom: "2px solid #00e676",
       }}
-      animate={{ backgroundPosition: ["0% 0%", "100% 100%", "0% 0%"] }}
-      transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
     >
       <div
         className="absolute inset-0 pointer-events-none"
@@ -79,6 +76,6 @@ export function CTA() {
           <span className="relative">Falar pelo WhatsApp</span>
         </motion.a>
       </motion.div>
-    </motion.section>
+    </section>
   );
 }
