@@ -27,7 +27,7 @@ export function CTA() {
       <motion.h2
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: false, amount: 0.3 }}
+        viewport={{ once: true, amount: 0.3 }}
         transition={{ duration: 0.6 }}
         className="relative font-[var(--font-display)] text-white"
         style={{ fontSize: "clamp(2.5rem, 6vw, 5rem)", lineHeight: 0.95 }}
@@ -37,7 +37,7 @@ export function CTA() {
       <motion.p
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: false, amount: 0.3 }}
+        viewport={{ once: true, amount: 0.3 }}
         transition={{ duration: 0.6, delay: 0.15 }}
         className="relative mt-5 font-[var(--font-body)] font-light text-[var(--muted-text)] text-lg"
       >
@@ -46,7 +46,7 @@ export function CTA() {
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: false, amount: 0.3 }}
+        viewport={{ once: true, amount: 0.3 }}
         transition={{ duration: 0.6, delay: 0.3 }}
         className="relative mt-10 flex justify-center"
       >

@@ -8,7 +8,7 @@ export function Location() {
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: false, amount: 0.3 }}
+        viewport={{ once: true, amount: 0.3 }}
         transition={{ duration: 0.6 }}
         className="max-w-[640px] mx-auto text-center rounded-[10px]"
         style={{
@@ -28,7 +28,7 @@ export function Location() {
           }}
           initial={{ y: 0 }}
           whileInView={{ y: [0, -10, 0, -6, 0] }}
-          viewport={{ once: false, amount: 0.5 }}
+          viewport={{ once: true, amount: 0.5 }}
           transition={{ duration: 1.2, ease: "easeOut" }}
         >
           <MapPin className="w-7 h-7 text-green-brand" />

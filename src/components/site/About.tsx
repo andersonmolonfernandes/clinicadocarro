@@ -19,7 +19,7 @@ export function About() {
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false, amount: 0.3 }}
+          viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.6 }}
         >
           <p
@@ -43,7 +43,7 @@ export function About() {
           <motion.ul
             initial="hidden"
             whileInView="show"
-            viewport={{ once: false, amount: 0.3 }}
+            viewport={{ once: true, amount: 0.3 }}
             variants={{
               hidden: {},
               show: { transition: { staggerChildren: 0.08, delayChildren: 0.2 } },
@@ -75,7 +75,7 @@ export function About() {
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false, amount: 0.3 }}
+          viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.7, delay: 0.1 }}
           className="relative rounded-[10px] overflow-hidden flex items-center justify-center"
           style={{

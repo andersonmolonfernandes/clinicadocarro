@@ -68,21 +68,6 @@ export function FloatingWhats() {
           animate={{ scale: [1, 1.6], opacity: [0.6, 0] }}
           transition={{ repeat: Infinity, duration: 2, ease: "easeOut" }}
         />
-        <motion.span
-          aria-hidden
-          className="absolute rounded-full pointer-events-none"
-          style={{
-            inset: -6,
-            border: "2px solid rgba(37,211,102,0.4)",
-          }}
-          animate={{ scale: [1, 1.6], opacity: [0.6, 0] }}
-          transition={{
-            repeat: Infinity,
-            duration: 2,
-            ease: "easeOut",
-            delay: 1,
-          }}
-        />
       </motion.a>
     </div>
   );
