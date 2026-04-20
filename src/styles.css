@@ -94,13 +94,19 @@
     color: #fff;
     font-family: var(--font-body);
     -webkit-font-smoothing: antialiased;
-    background-image: repeating-linear-gradient(
-      -45deg,
-      rgba(0, 230, 118, 0.018),
-      rgba(0, 230, 118, 0.018) 1px,
-      transparent 1px,
-      transparent 44px
-    );
+    text-rendering: optimizeLegibility;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    body {
+      background-image: repeating-linear-gradient(
+        -45deg,
+        rgba(0, 230, 118, 0.018),
+        rgba(0, 230, 118, 0.018) 1px,
+        transparent 1px,
+        transparent 44px
+      );
+    }
   }
 
   ::-webkit-scrollbar {
