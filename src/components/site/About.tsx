@@ -89,27 +89,24 @@ export function About() {
             src="/logo.png"
             alt=""
             loading="lazy"
-            className="max-w-[250px] w-3/5"
-            animate={{
-              opacity: [0.18, 0.28, 0.18],
-              scale: [1, 1.04, 1],
-              rotate: [0, 1.5, 0, -1.5, 0],
-            }}
-            transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+            decoding="async"
+            className="max-w-[250px] w-3/5 opacity-25"
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 0.25, scale: 1 }}
+            viewport={{ once: true, amount: 0.4 }}
+            transition={{ duration: 0.9, ease: "easeOut" }}
           />
-          <motion.span
+          <span
             aria-hidden
-            className="absolute font-[var(--font-display)] pointer-events-none select-none"
+            className="absolute font-[var(--font-display)] pointer-events-none select-none text-green-brand/10"
             style={{
               fontSize: "7rem",
               right: 24,
               bottom: -10,
             }}
-            animate={{ color: ["rgba(0,230,118,0.04)", "rgba(0,230,118,0.12)", "rgba(0,230,118,0.04)"] }}
-            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
           >
             2013
-          </motion.span>
+          </span>
         </motion.div>
       </div>
     </section>
