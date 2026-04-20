@@ -39,9 +39,9 @@
   --color-muted-text: var(--muted-text);
   --color-footer-bg: var(--footer-bg);
 
-  --font-display: "Bebas Neue", sans-serif;
-  --font-heading: "Rajdhani", sans-serif;
-  --font-body: "Barlow", sans-serif;
+  --font-display: "Poppins", "Inter", sans-serif;
+  --font-heading: "Rajdhani", "Inter", sans-serif;
+  --font-body: "Inter", "Lexend", sans-serif;
   --font-mono-tech: "Orbitron", sans-serif;
 }
 
