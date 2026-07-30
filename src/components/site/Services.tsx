@@ -6,15 +6,13 @@ import {
   Shield,
   ScanEye,
   Hammer,
+  MessageCircle,
   type LucideIcon,
 } from "lucide-react";
 import { useState } from "react";
 import { waLink } from "./constants";
-import {
-  EngineShineIcon,
-  HeadlightShineIcon,
-  SeatShineIcon,
-} from "./icons";
+import { EngineShineIcon, HeadlightShineIcon, SeatShineIcon } from "./icons";
+import { SectionHeading, EASE } from "./Section";
 import lavacaoImg from "@/assets/services/lavacao.jpg";
 import polimentoImg from "@/assets/services/polimento.jpg";
 import higienizacaoImg from "@/assets/services/higienizacao.png";
@@ -23,7 +21,9 @@ import faroisImg from "@/assets/services/farois.jpg";
 import vidrosImg from "@/assets/services/vidros.jpg";
 import motorImg from "@/assets/services/motor.jpg";
 
-type ServiceIcon = LucideIcon | ((props: { className?: string }) => React.ReactElement);
+type ServiceIcon =
+  | LucideIcon
+  | ((props: { className?: string }) => React.ReactElement);
 
 type Service = {
   nome: string;
@@ -32,55 +32,29 @@ type Service = {
   lista: string[];
   whatsapp: string;
   image?: string;
+  destaque?: boolean;
 };
 
 const services: Service[] = [
   {
-    nome: "Lavação Premium",
-    Icon: Droplets,
-    image: lavacaoImg,
-    descricao:
-      "Lavagem completa por fora e por dentro. Rodas, pneus, vidros, aspiração, plásticos internos e cera protetora.",
-    lista: [
-      "Lavagem externa completa",
-      "Rodas e pneus",
-      "Aspiração e limpeza interna",
-      "Proteção dos plásticos internos",
-      "Cera protetora na pintura",
-    ],
-    whatsapp: "Olá! Gostaria de saber mais sobre a Lavação Premium.",
-  },
-  {
     nome: "Polimento Técnico",
     Icon: Sparkles,
     image: polimentoImg,
+    destaque: true,
     descricao:
       "Correção da pintura em 2 etapas: corte remove riscos e oxidação, refino devolve o brilho espelhado.",
     lista: [
-      "Etapa 1 — Corte: remove riscos e oxidação",
-      "Etapa 2 — Refino: brilho espelhado",
+      "Etapa 1 — corte: remove riscos e oxidação",
+      "Etapa 2 — refino: brilho espelhado",
       "Proteção com cera, selante ou vitrificação",
     ],
     whatsapp: "Olá! Gostaria de saber mais sobre o Polimento Técnico.",
   },
   {
-    nome: "Higienização Interna",
-    Icon: SeatShineIcon,
-    image: higienizacaoImg,
-    descricao:
-      "Limpeza profunda com extratora. Remove sujeira, ácaros, fungos e odores que você não vê mas respira.",
-    lista: [
-      "Bancos de tecido e couro com extratora",
-      "Tapetes e carpetes",
-      "Painel e plásticos internos",
-      "Porta-malas",
-    ],
-    whatsapp: "Olá! Gostaria de saber mais sobre a Higienização Interna.",
-  },
-  {
     nome: "Vitrificação",
     Icon: Shield,
     image: vitrificacaoImg,
+    destaque: true,
     descricao:
       "Camada protetora que repele água, resiste a riscos e bloqueia UV. Dura até 3 anos.",
     lista: [
@@ -91,13 +65,42 @@ const services: Service[] = [
     whatsapp: "Olá! Gostaria de saber mais sobre a Vitrificação.",
   },
   {
+    nome: "Higienização Interna",
+    Icon: SeatShineIcon,
+    image: higienizacaoImg,
+    destaque: true,
+    descricao:
+      "Limpeza profunda de bancos, tapetes, teto e forros com extratora. Remove manchas, odores e ácaros.",
+    lista: [
+      "Extração de bancos e tapetes",
+      "Teto, forros e plásticos",
+      "Remoção de manchas e odores",
+      "Finalização com proteção UV",
+    ],
+    whatsapp: "Olá! Gostaria de saber mais sobre a Higienização Interna.",
+  },
+  {
+    nome: "Lavação Premium",
+    Icon: Droplets,
+    image: lavacaoImg,
+    descricao:
+      "Lavagem completa por fora e por dentro. Rodas, pneus, vidros, aspiração, plásticos internos e cera protetora.",
+    lista: [
+      "Lavagem externa completa",
+      "Rodas e pneus",
+      "Aspiração e limpeza interna",
+      "Cera protetora na pintura",
+    ],
+    whatsapp: "Olá! Gostaria de saber mais sobre a Lavação Premium.",
+  },
+  {
     nome: "Restauração de Faróis",
     Icon: HeadlightShineIcon,
     image: faroisImg,
     descricao:
-      "A restauração devolve a transparência do farol como se fosse novo. Depois o cliente escolhe a proteção.",
+      "Devolve a transparência do farol como se fosse novo, com proteção à sua escolha.",
     lista: [
-      "Vapor de polímero: camada resistente, até 3 anos",
+      "Vapor de polímero: até 3 anos de resistência",
       "Vitrificação: acabamento cristalino, 1 a 2 anos",
     ],
     whatsapp: "Olá! Gostaria de saber mais sobre a Restauração de Faróis.",
@@ -107,7 +110,7 @@ const services: Service[] = [
     Icon: ScanEye,
     image: vidrosImg,
     descricao:
-      "Remove chuva ácida e riscos. Cristalização com efeito hidrofóbico — água escorrega sozinha acima de 60km/h.",
+      "Remove chuva ácida e riscos. Cristalização hidrofóbica — a água escorre sozinha acima de 60 km/h.",
     lista: [
       "Remoção de chuva ácida",
       "Remoção de riscos leves e médios",
@@ -119,8 +122,7 @@ const services: Service[] = [
     nome: "Limpeza de Motor",
     Icon: EngineShineIcon,
     image: motorImg,
-    descricao:
-      "Desengraxamento técnico completo, finalizado com verniz protetor.",
+    descricao: "Desengraxamento técnico completo, finalizado com verniz protetor.",
     lista: [
       "Desengraxamento por partes",
       "Secagem a ar comprimido",
@@ -133,123 +135,81 @@ const services: Service[] = [
     nome: "Martelinho de Ouro",
     Icon: Hammer,
     descricao:
-      "Reparo de amassados e granizo sem pintura. Pintura original preservada.",
+      "Reparo de amassados e granizo sem repintura. Pintura original 100% preservada.",
     lista: [
       "Amassados pequenos e médios",
       "Danos por granizo",
       "Sem repintura",
-      "Pintura de fábrica preservada 100%",
+      "Pintura de fábrica preservada",
     ],
     whatsapp: "Olá! Gostaria de saber mais sobre o Martelinho de Ouro.",
   },
 ];
 
 export function Services() {
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
-  const [hoverIndex, setHoverIndex] = useState<number | null>(null);
+  const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section id="servicos" className="py-[110px] px-5 md:px-10">
-      <div className="max-w-6xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <p
-            className="font-[var(--font-mono-tech)] text-gold-brand text-[0.68rem] mb-4"
-            style={{ letterSpacing: "5px" }}
-          >
-            O QUE FAZEMOS
-          </p>
-          <h2
-            className="font-[var(--font-display)] text-white"
-            style={{ fontSize: "clamp(2.5rem, 6vw, 4.5rem)", lineHeight: 0.95 }}
-          >
-            Serviços que fazemos
-          </h2>
-        </motion.div>
+    <section id="servicos" className="section-y">
+      <div className="shell">
+        <SectionHeading
+          eyebrow="O que fazemos"
+          title="Serviços"
+          highlight="especializados"
+          description="Toque em um serviço para ver os detalhes e falar direto com a gente no WhatsApp."
+        />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="mt-12 grid grid-cols-1 gap-4 md:mt-16 md:grid-cols-2 lg:grid-cols-3">
           {services.map((s, idx) => {
             const open = openIndex === idx;
-            const hovered = hoverIndex === idx;
-            // Stagger by row (3 per row on lg, 2 on md, 1 on sm)
-            const rowDelay = (Math.floor(idx / 3) % 2) * 0.1 + (idx % 3) * 0.08;
             return (
-              <motion.div
+              <motion.article
                 key={s.nome}
-                initial={{ opacity: 0, y: 40 }}
+                initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.5, delay: rowDelay }}
-                whileHover={{
-                  y: -6,
-                  borderColor: "rgba(0,230,118,0.5)",
-                  boxShadow: "0 20px 60px rgba(0,230,118,0.12)",
-                }}
-                onHoverStart={() => setHoverIndex(idx)}
-                onHoverEnd={() => setHoverIndex((i) => (i === idx ? null : i))}
-                className="relative rounded-[10px] cursor-pointer self-start overflow-hidden"
+                viewport={{ once: true, amount: 0.15 }}
+                transition={{ duration: 0.5, delay: (idx % 3) * 0.06, ease: EASE }}
+                className="surface-card group relative self-start overflow-hidden transition-colors duration-300"
                 style={{
-                  background: "rgba(255,255,255,0.02)",
-                  border: open
-                    ? "1px solid rgba(0,230,118,0.4)"
-                    : "1px solid rgba(0,230,118,0.15)",
+                  borderColor: open ? "rgba(0,230,118,0.35)" : undefined,
                 }}
-                onClick={() => setOpenIndex(open ? null : idx)}
               >
-                {/* Border-shine sweep on hover */}
-                <motion.div
-                  aria-hidden
-                  className="pointer-events-none absolute inset-0"
-                  initial={false}
-                  animate={
-                    hovered
-                      ? { backgroundPosition: ["-150% 0", "250% 0"] }
-                      : { backgroundPosition: "-150% 0" }
-                  }
-                  transition={{ duration: 1.2, ease: "easeOut" }}
-                  style={{
-                    background:
-                      "linear-gradient(110deg, transparent 35%, rgba(0,230,118,0.18) 50%, transparent 65%)",
-                    backgroundSize: "200% 100%",
-                    mixBlendMode: "screen",
-                  }}
-                />
-                <div
-                  className="relative flex items-center gap-4"
-                  style={{ padding: "28px 26px" }}
+                <button
+                  type="button"
+                  aria-expanded={open}
+                  onClick={() => setOpenIndex(open ? null : idx)}
+                  className="flex w-full items-center gap-4 px-5 py-5 text-left md:px-6"
                 >
-                  <motion.div
-                    className="flex items-center justify-center rounded-[10px] shrink-0"
+                  <span
+                    className="grid h-11 w-11 shrink-0 place-items-center rounded-xl border transition-colors duration-300"
                     style={{
-                      width: 50,
-                      height: 50,
-                      background: "rgba(0,230,118,0.08)",
-                      border: "1px solid rgba(0,230,118,0.15)",
+                      background: open ? "rgba(0,230,118,0.12)" : "rgba(255,255,255,0.04)",
+                      borderColor: open ? "rgba(0,230,118,0.3)" : "rgba(255,255,255,0.08)",
                     }}
-                    animate={
-                      hovered
-                        ? { rotate: [0, -8, 8, -4, 0], scale: 1.08 }
-                        : { rotate: 0, scale: 1 }
-                    }
-                    transition={{ duration: 0.6, ease: "easeOut" }}
                   >
-                    <s.Icon className="w-6 h-6 text-green-brand" />
-                  </motion.div>
-                  <h3 className="flex-1 font-[var(--font-heading)] font-bold uppercase text-white text-[1.1rem] tracking-wide">
-                    {s.nome}
-                  </h3>
-                  <motion.div
+                    <s.Icon className="h-5 w-5 text-neon" />
+                  </span>
+                  <span className="min-w-0 flex-1">
+                    <span
+                      className="block truncate text-[1.02rem] font-semibold text-white"
+                      style={{ fontFamily: "var(--font-display)" }}
+                    >
+                      {s.nome}
+                    </span>
+                    {s.destaque && (
+                      <span className="mt-1 inline-block text-[0.66rem] font-semibold uppercase tracking-[0.18em] text-neon/80">
+                        Mais procurado
+                      </span>
+                    )}
+                  </span>
+                  <motion.span
                     animate={{ rotate: open ? 180 : 0 }}
-                    transition={{ duration: 0.3 }}
+                    transition={{ duration: 0.25 }}
+                    className="shrink-0 text-white/50 group-hover:text-neon"
                   >
-                    <ChevronDown className="w-5 h-5 text-green-brand" />
-                  </motion.div>
-                </div>
+                    <ChevronDown className="h-5 w-5" />
+                  </motion.span>
+                </button>
 
                 <AnimatePresence initial={false}>
                   {open && (
@@ -258,46 +218,34 @@ export function Services() {
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: "auto", opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.35, ease: [0.4, 0, 0.2, 1] }}
-                      style={{ overflow: "hidden" }}
+                      transition={{ duration: 0.32, ease: EASE }}
+                      className="overflow-hidden"
                     >
-                      <div
-                        className="relative px-7 pb-7 pt-1"
-                        onClick={(e) => e.stopPropagation()}
-                      >
+                      <div className="px-5 pb-6 md:px-6">
                         {s.image && (
-                          <motion.div
-                            initial={{ opacity: 0, scale: 0.96 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            transition={{ duration: 0.45, ease: "easeOut", delay: 0.05 }}
-                            className="mb-5 overflow-hidden rounded-md"
-                            style={{
-                              border: "1px solid rgba(0,230,118,0.18)",
-                              aspectRatio: "16 / 9",
-                            }}
+                          <div
+                            className="mb-5 overflow-hidden rounded-xl border border-white/[0.08]"
+                            style={{ aspectRatio: "16 / 9" }}
                           >
                             <img
                               src={s.image}
                               alt={`${s.nome} — Clínica do Carro Joinville`}
                               loading="lazy"
                               decoding="async"
-                              className="w-full h-full object-cover"
+                              className="h-full w-full object-cover"
                             />
-                          </motion.div>
+                          </div>
                         )}
-                        <p className="font-[var(--font-body)] font-light text-[0.9rem] text-[var(--muted-text)] leading-relaxed">
+                        <p className="text-[0.9rem] leading-relaxed text-white/60">
                           {s.descricao}
                         </p>
-                        <ul className="mt-5 space-y-2.5">
+                        <ul className="mt-4 space-y-2">
                           {s.lista.map((item) => (
                             <li
                               key={item}
-                              className="flex items-start gap-3 font-[var(--font-body)] text-[0.88rem] text-white/85"
+                              className="flex items-start gap-2.5 text-[0.86rem] text-white/80"
                             >
-                              <span
-                                className="mt-2 rounded-full bg-green-brand shrink-0"
-                                style={{ width: 5, height: 5 }}
-                              />
+                              <span className="mt-[0.5rem] h-1 w-1 shrink-0 rounded-full bg-neon" />
                               {item}
                             </li>
                           ))}
@@ -307,15 +255,16 @@ export function Services() {
                           target="_blank"
                           rel="noopener noreferrer"
                           aria-label={`Falar pelo WhatsApp sobre ${s.nome}`}
-                          className="mt-6 block w-full text-center border border-green-brand text-green-brand font-[var(--font-heading)] font-bold uppercase tracking-wider rounded-md py-3 hover:bg-green-brand hover:text-black transition-colors"
+                          className="btn-base btn-primary mt-6 w-full"
                         >
-                          Falar pelo WhatsApp
+                          <MessageCircle className="h-4 w-4" />
+                          Orçamento no WhatsApp
                         </a>
                       </div>
                     </motion.div>
                   )}
                 </AnimatePresence>
-              </motion.div>
+              </motion.article>
             );
           })}
         </div>
