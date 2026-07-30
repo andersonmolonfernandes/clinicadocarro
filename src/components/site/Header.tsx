@@ -44,7 +44,7 @@ export function Header() {
             className="flex shrink-0 items-center transition-opacity hover:opacity-80"
           >
             <img
-              src="/logo.png"
+              src="/logo-mark.png"
               alt="Clínica do Carro Studio Detail"
               fetchPriority="high"
               decoding="async"
@@ -95,7 +95,7 @@ export function Header() {
             style={{ background: "rgba(8,8,8,0.97)", backdropFilter: "blur(18px)" }}
           >
             <div className="flex h-[72px] items-center justify-between px-5">
-              <img src="/logo.png" alt="" className="h-11 w-auto" />
+              <img src="/logo-mark.png" alt="" className="h-11 w-auto" />
               <button
                 aria-label="Fechar menu"
                 className="p-2 text-white"

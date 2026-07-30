@@ -46,7 +46,7 @@ export function Hero() {
           className="flex justify-center"
         >
           <img
-            src="/logo.png"
+            src="/logo-mark.png"
             alt="Clínica do Carro — Studio Detail"
             fetchPriority="high"
             decoding="async"

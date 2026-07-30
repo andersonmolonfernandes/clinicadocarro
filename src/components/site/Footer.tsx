@@ -17,7 +17,7 @@ export function Footer() {
         <div className="grid grid-cols-1 gap-10 md:grid-cols-[1fr_auto] md:items-start">
           <div>
             <img
-              src="/logo.png"
+              src="/logo-mark.png"
               alt="Clínica do Carro Studio Detail"
               loading="lazy"
               decoding="async"

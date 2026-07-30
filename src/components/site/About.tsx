@@ -43,7 +43,7 @@ export function About() {
             }}
           >
             <img
-              src="/logo.png"
+              src="/logo-mark.png"
               alt=""
               loading="lazy"
               decoding="async"
