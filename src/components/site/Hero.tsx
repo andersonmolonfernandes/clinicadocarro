@@ -48,8 +48,7 @@ export function Hero() {
           <img
             src="/logo.png"
             alt="Clínica do Carro — Studio Detail"
-            // @ts-expect-error fetchpriority is a valid HTML attribute
-            fetchpriority="high"
+            fetchPriority="high"
             decoding="async"
             className="w-[min(78vw,340px)] object-contain"
             style={{ filter: "drop-shadow(0 0 32px rgba(0,230,118,0.28))" }}

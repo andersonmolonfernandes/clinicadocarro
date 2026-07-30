@@ -46,8 +46,7 @@ export function Header() {
             <img
               src="/logo.png"
               alt="Clínica do Carro Studio Detail"
-              // @ts-expect-error fetchpriority is a valid HTML attribute
-              fetchpriority="high"
+              fetchPriority="high"
               decoding="async"
               className="h-11 w-auto md:h-14"
             />
