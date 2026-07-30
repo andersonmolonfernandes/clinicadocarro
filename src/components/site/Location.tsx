@@ -1,89 +1,54 @@
-import { motion } from "framer-motion";
-import { MapPin, Navigation, Smartphone } from "lucide-react";
-import { ADDRESS, MAPS_LINK, WHATSAPP_BASE } from "./constants";
+import { MapPin, Navigation, MessageCircle, Clock } from "lucide-react";
+import { ADDRESS, MAPS_LINK, WHATSAPP_DEFAULT } from "./constants";
+import { Reveal, SectionHeading } from "./Section";
 
 export function Location() {
   return (
-    <section id="localizacao" className="py-[110px] px-5">
-      <motion.div
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.3 }}
-        transition={{ duration: 0.6 }}
-        className="max-w-[640px] mx-auto text-center rounded-[10px]"
-        style={{
-          background: "rgba(255,255,255,0.02)",
-          backdropFilter: "blur(12px)",
-          border: "1px solid rgba(0,230,118,0.15)",
-          padding: "60px 44px",
-        }}
-      >
-        <motion.div
-          className="mx-auto flex items-center justify-center rounded-md"
-          style={{
-            width: 60,
-            height: 60,
-            border: "1px solid rgba(0,230,118,0.3)",
-            background: "rgba(0,230,118,0.06)",
-          }}
-          initial={{ y: 0 }}
-          whileInView={{ y: [0, -10, 0, -6, 0] }}
-          viewport={{ once: true, amount: 0.5 }}
-          transition={{ duration: 1.2, ease: "easeOut" }}
-        >
-          <MapPin className="w-7 h-7 text-green-brand" />
-        </motion.div>
-        <h3
-          className="mt-6 font-[var(--font-display)] text-white"
-          style={{ fontSize: "2rem", lineHeight: 1 }}
-        >
-          Clínica do Carro
-        </h3>
-        <p className="mt-3 font-[var(--font-heading)] text-[var(--muted-text)] text-base">
-          {ADDRESS}
-        </p>
+    <section id="localizacao" className="section-y">
+      <div className="shell">
+        <SectionHeading
+          eyebrow="Onde estamos"
+          title="Venha nos"
+          highlight="visitar"
+        />
 
-        <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3">
-          <motion.a
-            whileHover="hover"
-            initial="rest"
-            href={MAPS_LINK}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Ver no Google Maps"
-            className="group inline-flex items-center gap-2 border border-green-brand text-green-brand font-[var(--font-heading)] font-bold uppercase tracking-wider rounded-md hover:bg-green-brand hover:text-black transition-colors"
-            style={{ padding: "14px 28px" }}
-          >
-            <motion.span
-              variants={{ rest: { x: 0 }, hover: { x: -3 } }}
-              transition={{ type: "spring", stiffness: 400, damping: 15 }}
-              className="inline-flex"
-            >
-              <Navigation className="w-5 h-5" />
-            </motion.span>
-            Ver no Google Maps
-          </motion.a>
-          <motion.a
-            whileHover="hover"
-            initial="rest"
-            href={WHATSAPP_BASE}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Abrir WhatsApp"
-            className="group inline-flex items-center gap-2 bg-green-brand text-black font-[var(--font-heading)] font-bold uppercase tracking-wider rounded-md hover:shadow-green-glow transition-shadow"
-            style={{ padding: "14px 28px" }}
-          >
-            <motion.span
-              variants={{ rest: { x: 0 }, hover: { x: -3 } }}
-              transition={{ type: "spring", stiffness: 400, damping: 15 }}
-              className="inline-flex"
-            >
-              <Smartphone className="w-5 h-5" />
-            </motion.span>
-            WhatsApp
-          </motion.a>
-        </div>
-      </motion.div>
+        <Reveal delay={0.1} className="mt-12">
+          <div className="surface-card mx-auto max-w-2xl px-6 py-10 text-center md:px-12">
+            <span className="mx-auto grid h-14 w-14 place-items-center rounded-xl border border-neon/25 bg-neon/[0.08]">
+              <MapPin className="h-6 w-6 text-neon" />
+            </span>
+            <h3 className="mt-6 text-2xl text-white">Clínica do Carro — Studio Detail</h3>
+            <p className="mx-auto mt-3 max-w-sm text-[0.95rem] leading-relaxed text-white/60">
+              {ADDRESS}
+            </p>
+            <p className="mt-4 inline-flex items-center gap-2 text-[0.85rem] text-white/45">
+              <Clock className="h-4 w-4" />
+              Seg a Sáb — atendimento com agendamento
+            </p>
+
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center">
+              <a
+                href={WHATSAPP_DEFAULT}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-base btn-primary"
+              >
+                <MessageCircle className="h-5 w-5" />
+                Agendar horário
+              </a>
+              <a
+                href={MAPS_LINK}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-base btn-outline"
+              >
+                <Navigation className="h-5 w-5" />
+                Ver no Google Maps
+              </a>
+            </div>
+          </div>
+        </Reveal>
+      </div>
     </section>
   );
 }

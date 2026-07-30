@@ -30,120 +30,200 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
 
-  --color-bg: var(--bg);
-  --color-bg-alt: var(--bg-alt);
-  --color-bg-card: var(--bg-card);
-  --color-green: var(--green);
-  --color-green-dark: var(--green-dark);
-  --color-gold: var(--gold);
-  --color-muted-text: var(--muted-text);
-  --color-footer-bg: var(--footer-bg);
+  --color-ink: var(--ink);
+  --color-ink-alt: var(--ink-alt);
+  --color-neon: var(--neon);
+  --color-neon-soft: var(--neon-soft);
+  --color-dim: var(--dim);
 
   --font-display: "Poppins", "Inter", sans-serif;
-  --font-heading: "Rajdhani", "Inter", sans-serif;
-  --font-body: "Inter", "Lexend", sans-serif;
-  --font-mono-tech: "Orbitron", sans-serif;
+  --font-body: "Inter", sans-serif;
 }
 
 :root {
-  --radius: 0.625rem;
+  --radius: 0.875rem;
 
-  /* Brand */
-  --bg: oklch(0.145 0 0);
-  --bg-alt: oklch(0.165 0 0);
-  --bg-card: oklch(1 0 0 / 2%);
-  --green: oklch(0.82 0.22 145);
-  --green-dark: oklch(0.74 0.22 145);
-  --gold: oklch(0.74 0.11 85);
-  --muted-text: oklch(0.6 0 0);
-  --footer-bg: oklch(0.115 0 0);
+  /* Brand — deep black, neon green, white */
+  --ink: #0a0a0a;
+  --ink-alt: #0d0d0d;
+  --neon: #00e676;
+  --neon-soft: rgba(0, 230, 118, 0.14);
+  --dim: rgba(255, 255, 255, 0.6);
+
+  --line: rgba(255, 255, 255, 0.08);
+  --line-neon: rgba(0, 230, 118, 0.22);
+  --surface: rgba(255, 255, 255, 0.03);
 
   /* shadcn semantic mapped to brand */
-  --background: var(--bg);
-  --foreground: oklch(1 0 0);
-  --card: var(--bg-alt);
-  --card-foreground: oklch(1 0 0);
-  --popover: var(--bg-alt);
-  --popover-foreground: oklch(1 0 0);
-  --primary: var(--green);
-  --primary-foreground: oklch(0.12 0 0);
-  --secondary: oklch(0.22 0 0);
-  --secondary-foreground: oklch(1 0 0);
-  --muted: oklch(0.22 0 0);
-  --muted-foreground: var(--muted-text);
-  --accent: oklch(0.22 0 0);
-  --accent-foreground: oklch(1 0 0);
+  --background: var(--ink);
+  --foreground: #ffffff;
+  --card: var(--ink-alt);
+  --card-foreground: #ffffff;
+  --popover: var(--ink-alt);
+  --popover-foreground: #ffffff;
+  --primary: var(--neon);
+  --primary-foreground: #0a0a0a;
+  --secondary: #171717;
+  --secondary-foreground: #ffffff;
+  --muted: #171717;
+  --muted-foreground: var(--dim);
+  --accent: #171717;
+  --accent-foreground: #ffffff;
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(1 0 0 / 8%);
-  --input: oklch(1 0 0 / 10%);
-  --ring: var(--green);
+  --border: var(--line);
+  --input: rgba(255, 255, 255, 0.1);
+  --ring: var(--neon);
 }
 
 @layer base {
   html {
     scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
   }
 
   * {
-    border-color: var(--color-border);
+    border-color: var(--line);
   }
 
   body {
-    background-color: var(--bg);
+    background-color: var(--ink);
     color: #fff;
     font-family: var(--font-body);
+    font-weight: 400;
+    letter-spacing: -0.01em;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
+    overflow-x: hidden;
   }
 
-  @media (prefers-reduced-motion: no-preference) {
-    body {
-      background-image: repeating-linear-gradient(
-        -45deg,
-        rgba(0, 230, 118, 0.018),
-        rgba(0, 230, 118, 0.018) 1px,
-        transparent 1px,
-        transparent 44px
-      );
-    }
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+
+  /* offsets fixed header on anchor navigation */
+  section[id] {
+    scroll-margin-top: 88px;
+  }
+
+  img {
+    -webkit-user-drag: none;
+  }
+
+  ::selection {
+    background: var(--neon);
+    color: #0a0a0a;
   }
 
   ::-webkit-scrollbar {
-    width: 4px;
+    width: 6px;
   }
   ::-webkit-scrollbar-track {
     background: #0a0a0a;
   }
   ::-webkit-scrollbar-thumb {
-    background: #00e676;
-    border-radius: 2px;
+    background: rgba(0, 230, 118, 0.5);
+    border-radius: 999px;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--neon);
+    outline-offset: 3px;
   }
 }
 
-@layer utilities {
-  .text-green-brand {
-    color: #00e676;
+@utility shell {
+  width: 100%;
+  max-width: 1160px;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+  @media (min-width: 768px) {
+    padding-inline: 2.5rem;
   }
-  .bg-green-brand {
-    background-color: #00e676;
+}
+
+@utility section-y {
+  padding-block: 5rem;
+  @media (min-width: 768px) {
+    padding-block: 7rem;
   }
-  .border-green-brand {
-    border-color: #00e676;
+}
+
+@utility eyebrow {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--neon);
+}
+
+@utility surface-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+@utility btn-base {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  border-radius: 0.75rem;
+  padding: 0.95rem 1.6rem;
+  line-height: 1;
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    transform 0.2s ease;
+  will-change: transform;
+  &:active {
+    transform: scale(0.98);
   }
-  .text-gold-brand {
-    color: #c9a84c;
+}
+
+@utility btn-primary {
+  background: var(--neon);
+  color: #06120b;
+  box-shadow: 0 8px 30px rgba(0, 230, 118, 0.22);
+  &:hover {
+    box-shadow: 0 10px 40px rgba(0, 230, 118, 0.4);
   }
-  .glow-green {
-    text-shadow: 0 0 30px rgba(0, 230, 118, 0.35);
+}
+
+@utility btn-outline {
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.02);
+  &:hover {
+    border-color: var(--neon);
+    color: var(--neon);
   }
-  .glow-white {
-    text-shadow:
-      0 0 12px rgba(255, 255, 255, 0.55),
-      0 0 28px rgba(255, 255, 255, 0.25),
-      0 0 60px rgba(0, 230, 118, 0.18);
-  }
-  .shadow-green-glow {
-    box-shadow: 0 0 40px rgba(0, 230, 118, 0.4);
-  }
+}
+
+@utility text-neon {
+  color: var(--neon);
+}
+
+@utility glow-white {
+  text-shadow:
+    0 0 14px rgba(255, 255, 255, 0.4),
+    0 0 40px rgba(255, 255, 255, 0.14);
+}
+
+@utility glow-neon {
+  text-shadow: 0 0 28px rgba(0, 230, 118, 0.4);
 }

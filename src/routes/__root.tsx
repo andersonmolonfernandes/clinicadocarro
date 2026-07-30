@@ -67,8 +67,6 @@ export const Route = createRootRoute({
       { property: "og:locale", content: "pt_BR" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "Clínica do Carro — Studio Detail | Joinville/SC" },
-      { name: "description", content: "Estética automotiva em Joinville desde 2013. Polimento, vitrificação, higienização, faróis, vidros e martelinho de ouro. Agende pelo WhatsApp!" },
-      { property: "og:description", content: "Estética automotiva em Joinville desde 2013. Polimento, vitrificação, higienização, faróis, vidros e martelinho de ouro. Agende pelo WhatsApp!" },
       { name: "twitter:description", content: "Estética automotiva em Joinville desde 2013. Polimento, vitrificação, higienização, faróis, vidros e martelinho de ouro. Agende pelo WhatsApp!" },
       { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/TdeeJbTXzfQ35wG59qXUqhSclMq1/social-images/social-1776604886669-1000024715.webp" },
       { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/TdeeJbTXzfQ35wG59qXUqhSclMq1/social-images/social-1776604886669-1000024715.webp" },
@@ -80,8 +78,9 @@ export const Route = createRootRoute({
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@500;600;700&family=Inter:wght@300;400;500;600;700&family=Poppins:wght@600;700;800;900&family=Orbitron:wght@500;700&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap",
       },
+
       {
         rel: "stylesheet",
         href: appCss,
