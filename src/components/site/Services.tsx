@@ -347,7 +347,13 @@ function VideoCard({ url, nome }: { url: string; nome: string }) {
           </span>
         </span>
       </div>
-      <span className="btn-base btn-primary mt-4 w-full">
+      <span
+        className="btn-base mt-4 w-full text-neon"
+        style={{
+          background: "rgba(0,230,118,0.12)",
+          border: "1px solid rgba(0,230,118,0.45)",
+        }}
+      >
         <Play className="h-4 w-4" />
         Ver vídeo no Instagram
       </span>
@@ -507,7 +513,7 @@ export function Services() {
                           target="_blank"
                           rel="noopener noreferrer"
                           aria-label={`Falar pelo WhatsApp sobre ${s.nome}`}
-                          className="btn-base btn-outline mt-3 w-full"
+                          className="btn-base btn-primary mt-4 w-full"
                         >
                           <MessageCircle className="h-4 w-4" />
                           Orçamento no WhatsApp
