@@ -242,3 +242,7 @@
 @utility glow-neon {
   text-shadow: 0 0 28px rgba(0, 230, 118, 0.4);
 }
+
+#lovable-badge {
+  display: none !important;
+}
