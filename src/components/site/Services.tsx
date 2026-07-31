@@ -555,10 +555,39 @@ const ServiceCard = memo(function ServiceCard({
                   )}
                 </AnimatePresence>
               </motion.article>
-            );
-          })}
+  );
+});
+
+export function Services() {
+  const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const toggle = useCallback(
+    (idx: number) => setOpenIndex((cur) => (cur === idx ? null : idx)),
+    []
+  );
+
+  return (
+    <section id="servicos" className="section-y">
+      <div className="shell">
+        <SectionHeading
+          eyebrow="O que fazemos"
+          title="Serviços"
+          highlight="especializados"
+          description="Toque em um serviço para ver benefícios, processo, vídeo real e falar direto com a gente no WhatsApp."
+        />
+
+        <div className="mt-12 grid grid-cols-1 gap-4 md:mt-16 md:grid-cols-2 lg:grid-cols-3">
+          {services.map((s, idx) => (
+            <ServiceCard
+              key={s.nome}
+              s={s}
+              idx={idx}
+              open={openIndex === idx}
+              onToggle={toggle}
+            />
+          ))}
         </div>
       </div>
     </section>
   );
 }
+
