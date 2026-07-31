@@ -395,25 +395,19 @@ function VideoCard({ url, nome }: { url: string; nome: string }) {
   );
 }
 
-export function Services() {
-  const [openIndex, setOpenIndex] = useState<number | null>(0);
-
+const ServiceCard = memo(function ServiceCard({
+  s,
+  idx,
+  open,
+  onToggle,
+}: {
+  s: Service;
+  idx: number;
+  open: boolean;
+  onToggle: (idx: number) => void;
+}) {
   return (
-    <section id="servicos" className="section-y">
-      <div className="shell">
-        <SectionHeading
-          eyebrow="O que fazemos"
-          title="Serviços"
-          highlight="especializados"
-          description="Toque em um serviço para ver benefícios, processo, vídeo real e falar direto com a gente no WhatsApp."
-        />
-
-        <div className="mt-12 grid grid-cols-1 gap-4 md:mt-16 md:grid-cols-2 lg:grid-cols-3">
-          {services.map((s, idx) => {
-            const open = openIndex === idx;
-            return (
               <motion.article
-                key={s.nome}
                 initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.15 }}
@@ -426,9 +420,10 @@ export function Services() {
                 <button
                   type="button"
                   aria-expanded={open}
-                  onClick={() => setOpenIndex(open ? null : idx)}
+                  onClick={() => onToggle(idx)}
                   className="flex w-full items-center gap-4 px-5 py-5 text-left md:px-6"
                 >
+
                   <span
                     className="grid h-11 w-11 shrink-0 place-items-center rounded-xl border transition-colors duration-300"
                     style={{
