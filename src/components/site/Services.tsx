@@ -19,13 +19,15 @@ import { EngineShineIcon, HeadlightShineIcon, SeatShineIcon } from "./icons";
 import { SectionHeading, EASE } from "./Section";
 import lavacaoImg from "@/assets/services/lavacao.jpg";
 import polimentoImg from "@/assets/services/polimento.jpg";
-import higienizacaoImg from "@/assets/services/higienizacao.png";
+import higienizacaoImg from "@/assets/services/higienizacao.jpg";
 import vitrificacaoImg from "@/assets/services/vitrificacao.jpg";
 import faroisImg from "@/assets/services/farois.jpg";
-import vidrosImg from "@/assets/services/vidros.jpg";
+import cristalizacaoImg from "@/assets/services/vidros.jpg";
 import motorImg from "@/assets/services/motor.jpg";
 import martelinhoAntes from "@/assets/services/martelinho-antes.jpg";
 import martelinhoDepois from "@/assets/services/martelinho-depois.jpg";
+import vidrosAntes from "@/assets/services/vidros-antes.jpg";
+import vidrosDepois from "@/assets/services/vidros-depois.jpg";
 
 type ServiceIcon =
   | LucideIcon
@@ -41,9 +43,10 @@ type Service = {
   video?: string;
   whatsapp: string;
   image?: string;
-  beforeAfter?: { antes: string; depois: string };
+  beforeAfter?: { antes: string; depois: string; badge: string; BadgeIcon: LucideIcon };
   destaque?: boolean;
 };
+
 
 const services: Service[] = [
   {
