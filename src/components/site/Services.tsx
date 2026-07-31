@@ -13,7 +13,7 @@ import {
   Clock,
   type LucideIcon,
 } from "lucide-react";
-import { useState } from "react";
+import { memo, useCallback, useState } from "react";
 import { waLink } from "./constants";
 import { EngineShineIcon, HeadlightShineIcon, SeatShineIcon } from "./icons";
 import { SectionHeading, EASE } from "./Section";
