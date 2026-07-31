@@ -248,7 +248,19 @@ const services: Service[] = [
   },
 ];
 
-function BeforeAfter({ antes, depois }: { antes: string; depois: string }) {
+function BeforeAfter({
+  antes,
+  depois,
+  badge,
+  BadgeIcon,
+  nome,
+}: {
+  antes: string;
+  depois: string;
+  badge: string;
+  BadgeIcon: LucideIcon;
+  nome: string;
+}) {
   return (
     <div
       className="relative mb-5 grid grid-cols-2 overflow-hidden rounded-xl border"
@@ -265,7 +277,7 @@ function BeforeAfter({ antes, depois }: { antes: string; depois: string }) {
         <div key={p.label} className="relative" style={{ aspectRatio: "3 / 4" }}>
           <img
             src={p.src}
-            alt={`Martelinho de ouro ${p.label.toLowerCase()} — Clínica do Carro Joinville`}
+            alt={`${nome} ${p.label.toLowerCase()} — Clínica do Carro Joinville`}
             loading="lazy"
             decoding="async"
             width={720}
@@ -273,6 +285,7 @@ function BeforeAfter({ antes, depois }: { antes: string; depois: string }) {
             className="h-full w-full object-cover"
             style={{ filter: i === 0 ? "saturate(0.85) brightness(0.92)" : undefined }}
           />
+
           <div
             aria-hidden
             className="pointer-events-none absolute inset-0"
