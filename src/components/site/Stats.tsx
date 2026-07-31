@@ -7,7 +7,7 @@ const stats: Stat[] = [
   { value: 13, suffix: "+", label: "Anos de experiência" },
   { value: 5000, suffix: "+", label: "Carros atendidos", thousands: true },
   { value: 100, suffix: "%", label: "Satisfação" },
-  { value: 8, suffix: "", label: "Serviços especializados" },
+  { value: 9, suffix: "", label: "Serviços especializados" },
 ];
 
 function Counter({ stat, start }: { stat: Stat; start: boolean }) {

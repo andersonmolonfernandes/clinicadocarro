@@ -5,8 +5,12 @@ import {
   Sparkles,
   Shield,
   ScanEye,
+  GlassWater,
   Hammer,
   MessageCircle,
+  Instagram,
+  Play,
+  Clock,
   type LucideIcon,
 } from "lucide-react";
 import { useState } from "react";
@@ -20,6 +24,8 @@ import vitrificacaoImg from "@/assets/services/vitrificacao.jpg";
 import faroisImg from "@/assets/services/farois.jpg";
 import vidrosImg from "@/assets/services/vidros.jpg";
 import motorImg from "@/assets/services/motor.jpg";
+import martelinhoAntes from "@/assets/services/martelinho-antes.jpg";
+import martelinhoDepois from "@/assets/services/martelinho-depois.jpg";
 
 type ServiceIcon =
   | LucideIcon
@@ -30,8 +36,12 @@ type Service = {
   Icon: ServiceIcon;
   descricao: string;
   lista: string[];
+  processo: string[];
+  durabilidade?: string;
+  video?: string;
   whatsapp: string;
   image?: string;
+  beforeAfter?: { antes: string; depois: string };
   destaque?: boolean;
 };
 
@@ -44,10 +54,18 @@ const services: Service[] = [
     descricao:
       "Correção da pintura em 2 etapas: corte remove riscos e oxidação, refino devolve o brilho espelhado.",
     lista: [
-      "Etapa 1 — corte: remove riscos e oxidação",
+      "Remove riscos, oxidação e marcas de lavagem",
+      "Brilho espelhado profundo e uniforme",
+      "Valoriza o carro na revenda",
+    ],
+    processo: [
+      "Lavagem técnica e descontaminação",
+      "Etapa 1 — corte: remoção de riscos e oxidação",
       "Etapa 2 — refino: brilho espelhado",
       "Proteção com cera, selante ou vitrificação",
     ],
+    durabilidade: "6 a 12 meses (com proteção aplicada)",
+    video: "https://www.instagram.com/reel/DVMh1Wnjxsw/?igsh=anM0OHp0bm1qcXNx",
     whatsapp: "Olá! Gostaria de saber mais sobre o Polimento Técnico.",
   },
   {
@@ -58,10 +76,17 @@ const services: Service[] = [
     descricao:
       "Camada protetora que repele água, resiste a riscos e bloqueia UV. Dura até 3 anos.",
     lista: [
-      "Carro novo: aplicação direta",
-      "Carro usado: descontaminação + polimento + vitrificação",
-      "Durabilidade de até 3 anos",
+      "Efeito hidrofóbico — a água escorre sozinha",
+      "Proteção contra UV, chuva ácida e resíduos",
+      "Brilho profundo e lavagem muito mais fácil",
     ],
+    processo: [
+      "Carro novo: descontaminação + aplicação direta",
+      "Carro usado: descontaminação + polimento + vitrificação",
+      "Cura controlada da camada cerâmica",
+    ],
+    durabilidade: "Até 3 anos",
+    video: "https://www.instagram.com/reel/DWpOqxYD6Ta/?igsh=MWZlaDlxaWJpZ3JvYw==",
     whatsapp: "Olá! Gostaria de saber mais sobre a Vitrificação.",
   },
   {
@@ -72,26 +97,19 @@ const services: Service[] = [
     descricao:
       "Limpeza profunda de bancos, tapetes, teto e forros com extratora. Remove manchas, odores e ácaros.",
     lista: [
+      "Elimina manchas, odores, ácaros e bactérias",
+      "Interior com aspecto e cheiro de novo",
+      "Mais conforto para quem tem alergia",
+    ],
+    processo: [
+      "Aspiração completa e pré-tratamento",
       "Extração de bancos e tapetes",
       "Teto, forros e plásticos",
-      "Remoção de manchas e odores",
       "Finalização com proteção UV",
     ],
+    durabilidade: "Recomendado a cada 6 a 12 meses",
+    video: "https://www.instagram.com/reel/DbMNNBhAsb9/?igsh=MTZ5Nmo2YXgwdWIxeg==",
     whatsapp: "Olá! Gostaria de saber mais sobre a Higienização Interna.",
-  },
-  {
-    nome: "Lavação Premium",
-    Icon: Droplets,
-    image: lavacaoImg,
-    descricao:
-      "Lavagem completa por fora e por dentro. Rodas, pneus, vidros, aspiração, plásticos internos e cera protetora.",
-    lista: [
-      "Lavagem externa completa",
-      "Rodas e pneus",
-      "Aspiração e limpeza interna",
-      "Cera protetora na pintura",
-    ],
-    whatsapp: "Olá! Gostaria de saber mais sobre a Lavação Premium.",
   },
   {
     nome: "Restauração de Faróis",
@@ -100,23 +118,75 @@ const services: Service[] = [
     descricao:
       "Devolve a transparência do farol como se fosse novo, com proteção à sua escolha.",
     lista: [
-      "Vapor de polímero: até 3 anos de resistência",
-      "Vitrificação: acabamento cristalino, 1 a 2 anos",
+      "Mais segurança à noite com farol transparente",
+      "Aparência de farol novo sem trocar a peça",
+      "Proteção contra amarelamento",
     ],
+    processo: [
+      "Lixamento progressivo do policarbonato",
+      "Polimento até a transparência total",
+      "Vapor de polímero: até 3 anos de resistência",
+      "Ou vitrificação: acabamento cristalino, 1 a 2 anos",
+    ],
+    durabilidade: "1 a 3 anos, conforme a proteção",
+    video: "https://www.instagram.com/reel/DYIubqlANtF/?igsh=MTZqc3FrNHp2b3IzZw==",
     whatsapp: "Olá! Gostaria de saber mais sobre a Restauração de Faróis.",
   },
   {
-    nome: "Vidros e Cristalização",
+    nome: "Polimento de Vidros",
     Icon: ScanEye,
     image: vidrosImg,
     descricao:
-      "Remove chuva ácida e riscos. Cristalização hidrofóbica — a água escorre sozinha acima de 60 km/h.",
+      "Remove marcas de palhetas, riscos leves e chuva ácida, devolvendo transparência.",
     lista: [
-      "Remoção de chuva ácida",
-      "Remoção de riscos leves e médios",
-      "Cristalização repelente de água",
+      "Remove marcas de palhetas e chuva ácida",
+      "Elimina riscos leves e médios",
+      "Visibilidade muito mais nítida",
     ],
-    whatsapp: "Olá! Gostaria de saber mais sobre Vidros e Cristalização.",
+    processo: [
+      "Análise dos riscos e demarcação",
+      "Polimento técnico com composto específico",
+      "Limpeza e inspeção final na contraluz",
+    ],
+    video: "https://www.instagram.com/reel/DWcLd4HD4nA/?igsh=MWVsYXZ6emM3aWcwYw==",
+    whatsapp: "Olá! Gostaria de saber mais sobre o Polimento de Vidros.",
+  },
+  {
+    nome: "Revitalização de Vidros",
+    Icon: GlassWater,
+    descricao: "Restaura o brilho e melhora a aparência dos vidros.",
+    lista: [
+      "Vidros com brilho e aspecto renovado",
+      "Superfície lisa ao toque",
+      "Melhora o acabamento geral do carro",
+    ],
+    processo: [
+      "Limpeza profunda e descontaminação",
+      "Revitalização da superfície do vidro",
+      "Finalização com repelente de água",
+    ],
+    durabilidade: "Até 12 meses",
+    video: "https://www.instagram.com/reel/DYVkYAhAyIP/?igsh=YTE1ZmY0N3luOTJ1",
+    whatsapp: "Olá! Gostaria de saber mais sobre a Revitalização de Vidros.",
+  },
+  {
+    nome: "Lavação Premium",
+    Icon: Droplets,
+    image: lavacaoImg,
+    descricao:
+      "Lavagem completa por fora e por dentro. Rodas, pneus, vidros, aspiração, plásticos internos e cera protetora.",
+    lista: [
+      "Carro impecável por dentro e por fora",
+      "Sem riscos: técnica dos dois baldes",
+      "Cera protetora inclusa",
+    ],
+    processo: [
+      "Rodas, pneus e caixas de roda",
+      "Lavagem externa completa",
+      "Aspiração e limpeza interna",
+      "Cera protetora na pintura",
+    ],
+    whatsapp: "Olá! Gostaria de saber mais sobre a Lavação Premium.",
   },
   {
     nome: "Limpeza de Motor",
@@ -124,9 +194,14 @@ const services: Service[] = [
     image: motorImg,
     descricao: "Desengraxamento técnico completo, finalizado com verniz protetor.",
     lista: [
+      "Motor limpo facilita manutenção e revisão",
+      "Evita acúmulo de graxa e sujeira",
+      "Valoriza o carro na venda",
+    ],
+    processo: [
+      "Proteção de borrachas, plásticos e componentes",
       "Desengraxamento por partes",
       "Secagem a ar comprimido",
-      "Proteção de borrachas e plásticos",
       "Verniz protetor final",
     ],
     whatsapp: "Olá! Gostaria de saber mais sobre a Limpeza de Motor.",
@@ -134,17 +209,157 @@ const services: Service[] = [
   {
     nome: "Martelinho de Ouro",
     Icon: Hammer,
+    beforeAfter: { antes: martelinhoAntes, depois: martelinhoDepois },
     descricao:
-      "Reparo de amassados e granizo sem repintura. Pintura original 100% preservada.",
+      "Recuperação da lataria sem pintura. Amassados e granizo removidos com a pintura original 100% preservada.",
     lista: [
-      "Amassados pequenos e médios",
-      "Danos por granizo",
-      "Sem repintura",
+      "Sem repintura e sem massa",
       "Pintura de fábrica preservada",
+      "Mais rápido e mais barato que funilaria",
     ],
+    processo: [
+      "Mapeamento dos amassados com iluminação técnica",
+      "Acesso interno à chapa",
+      "Repuxo e nivelamento gradual",
+      "Conferência do reflexo na contraluz",
+    ],
+    durabilidade: "Reparo permanente",
     whatsapp: "Olá! Gostaria de saber mais sobre o Martelinho de Ouro.",
   },
 ];
+
+function BeforeAfter({ antes, depois }: { antes: string; depois: string }) {
+  return (
+    <div
+      className="relative mb-5 grid grid-cols-2 overflow-hidden rounded-xl border"
+      style={{
+        borderColor: "rgba(0,230,118,0.28)",
+        background: "#000",
+        boxShadow: "0 0 40px rgba(0,230,118,0.08) inset",
+      }}
+    >
+      {[
+        { src: antes, label: "Antes" },
+        { src: depois, label: "Depois" },
+      ].map((p, i) => (
+        <div key={p.label} className="relative" style={{ aspectRatio: "3 / 4" }}>
+          <img
+            src={p.src}
+            alt={`Martelinho de ouro ${p.label.toLowerCase()} — Clínica do Carro Joinville`}
+            loading="lazy"
+            decoding="async"
+            width={720}
+            height={1024}
+            className="h-full w-full object-cover"
+            style={{ filter: i === 0 ? "saturate(0.85) brightness(0.92)" : undefined }}
+          />
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-0"
+            style={{
+              background:
+                i === 0
+                  ? "linear-gradient(180deg, rgba(0,0,0,0.15), rgba(0,0,0,0.65))"
+                  : "linear-gradient(180deg, rgba(0,230,118,0.06), rgba(0,0,0,0.6))",
+            }}
+          />
+          <span
+            className="absolute bottom-3 left-3 rounded-md px-2.5 py-1 text-[0.66rem] font-semibold uppercase tracking-[0.18em]"
+            style={
+              i === 0
+                ? {
+                    background: "rgba(255,255,255,0.08)",
+                    color: "rgba(255,255,255,0.7)",
+                    border: "1px solid rgba(255,255,255,0.12)",
+                  }
+                : {
+                    background: "rgba(0,230,118,0.14)",
+                    color: "#00e676",
+                    border: "1px solid rgba(0,230,118,0.35)",
+                  }
+            }
+          >
+            {p.label}
+          </span>
+        </div>
+      ))}
+      <span
+        aria-hidden
+        className="pointer-events-none absolute inset-y-0 left-1/2 w-px -translate-x-1/2"
+        style={{
+          background:
+            "linear-gradient(180deg, transparent, rgba(0,230,118,0.9), transparent)",
+          boxShadow: "0 0 14px rgba(0,230,118,0.6)",
+        }}
+      />
+      <span
+        aria-hidden
+        className="pointer-events-none absolute left-1/2 top-1/2 grid h-8 w-8 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full"
+        style={{
+          background: "rgba(10,10,10,0.9)",
+          border: "1px solid rgba(0,230,118,0.5)",
+          boxShadow: "0 0 18px rgba(0,230,118,0.35)",
+        }}
+      >
+        <Hammer className="h-4 w-4 text-neon" />
+      </span>
+      <span className="absolute right-3 top-3 rounded-md border border-white/10 bg-black/60 px-2.5 py-1 text-[0.62rem] font-semibold uppercase tracking-[0.16em] text-white/70">
+        Sem pintura
+      </span>
+    </div>
+  );
+}
+
+function VideoCard({ url, nome }: { url: string; nome: string }) {
+  return (
+    <a
+      href={url}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={`Assista ao serviço de ${nome} em ação no Instagram`}
+      className="mt-6 block rounded-xl border p-4 transition-colors duration-300"
+      style={{
+        borderColor: "rgba(0,230,118,0.22)",
+        background:
+          "linear-gradient(135deg, rgba(0,230,118,0.07), rgba(255,255,255,0.02))",
+      }}
+    >
+      <div className="flex items-center gap-3">
+        <span
+          className="grid h-10 w-10 shrink-0 place-items-center rounded-lg border"
+          style={{
+            borderColor: "rgba(0,230,118,0.3)",
+            background: "rgba(0,230,118,0.1)",
+          }}
+        >
+          <Instagram className="h-5 w-5 text-neon" />
+        </span>
+        <span className="min-w-0 flex-1">
+          <span
+            className="flex items-center gap-1.5 text-[0.92rem] font-semibold text-white"
+            style={{ fontFamily: "var(--font-display)" }}
+          >
+            <Play className="h-3.5 w-3.5 text-neon" />
+            Assista ao serviço em ação
+          </span>
+          <span className="mt-0.5 block text-[0.76rem] text-white/50">
+            Vídeo real no nosso Instagram
+          </span>
+        </span>
+      </div>
+      <span
+        className="btn-base mt-4 w-full text-neon"
+        style={{
+          background: "rgba(0,230,118,0.12)",
+          border: "1px solid rgba(0,230,118,0.45)",
+        }}
+      >
+        <Play className="h-4 w-4" />
+        Ver vídeo no Instagram
+      </span>
+    </a>
+  );
+}
 
 export function Services() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
@@ -156,7 +371,7 @@ export function Services() {
           eyebrow="O que fazemos"
           title="Serviços"
           highlight="especializados"
-          description="Toque em um serviço para ver os detalhes e falar direto com a gente no WhatsApp."
+          description="Toque em um serviço para ver benefícios, processo, vídeo real e falar direto com a gente no WhatsApp."
         />
 
         <div className="mt-12 grid grid-cols-1 gap-4 md:mt-16 md:grid-cols-2 lg:grid-cols-3">
@@ -222,7 +437,9 @@ export function Services() {
                       className="overflow-hidden"
                     >
                       <div className="px-5 pb-6 md:px-6">
-                        {s.image && (
+                        {s.beforeAfter ? (
+                          <BeforeAfter {...s.beforeAfter} />
+                        ) : s.image ? (
                           <div
                             className="mb-5 overflow-hidden rounded-xl border border-white/[0.08]"
                             style={{ aspectRatio: "16 / 9" }}
@@ -235,11 +452,16 @@ export function Services() {
                               className="h-full w-full object-cover"
                             />
                           </div>
-                        )}
+                        ) : null}
+
                         <p className="text-[0.9rem] leading-relaxed text-white/60">
                           {s.descricao}
                         </p>
-                        <ul className="mt-4 space-y-2">
+
+                        <p className="mt-5 text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-white/40">
+                          Benefícios
+                        </p>
+                        <ul className="mt-3 space-y-2">
                           {s.lista.map((item) => (
                             <li
                               key={item}
@@ -250,12 +472,48 @@ export function Services() {
                             </li>
                           ))}
                         </ul>
+
+                        <p className="mt-5 text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-white/40">
+                          Como fazemos
+                        </p>
+                        <ol className="mt-3 space-y-2">
+                          {s.processo.map((step, i) => (
+                            <li
+                              key={step}
+                              className="flex items-start gap-2.5 text-[0.86rem] text-white/70"
+                            >
+                              <span
+                                className="mt-[0.1rem] grid h-5 w-5 shrink-0 place-items-center rounded-md text-[0.64rem] font-semibold text-neon"
+                                style={{
+                                  background: "rgba(0,230,118,0.1)",
+                                  border: "1px solid rgba(0,230,118,0.22)",
+                                }}
+                              >
+                                {i + 1}
+                              </span>
+                              {step}
+                            </li>
+                          ))}
+                        </ol>
+
+                        {s.durabilidade && (
+                          <p className="mt-5 inline-flex items-center gap-2 rounded-lg border border-white/[0.08] bg-white/[0.03] px-3 py-2 text-[0.8rem] text-white/70">
+                            <Clock className="h-4 w-4 shrink-0 text-neon" />
+                            <span>
+                              <span className="text-white/45">Durabilidade: </span>
+                              {s.durabilidade}
+                            </span>
+                          </p>
+                        )}
+
+                        {s.video && <VideoCard url={s.video} nome={s.nome} />}
+
                         <a
                           href={waLink(s.whatsapp)}
                           target="_blank"
                           rel="noopener noreferrer"
                           aria-label={`Falar pelo WhatsApp sobre ${s.nome}`}
-                          className="btn-base btn-primary mt-6 w-full"
+                          className="btn-base btn-primary mt-4 w-full"
                         >
                           <MessageCircle className="h-4 w-4" />
                           Orçamento no WhatsApp
