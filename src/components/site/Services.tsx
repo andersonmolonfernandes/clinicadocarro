@@ -334,11 +334,12 @@ function BeforeAfter({
           boxShadow: "0 0 18px rgba(0,230,118,0.35)",
         }}
       >
-        <Hammer className="h-4 w-4 text-neon" />
+        <BadgeIcon className="h-4 w-4 text-neon" />
       </span>
       <span className="absolute right-3 top-3 rounded-md border border-white/10 bg-black/60 px-2.5 py-1 text-[0.62rem] font-semibold uppercase tracking-[0.16em] text-white/70">
-        Sem pintura
+        {badge}
       </span>
+
     </div>
   );
 }
