@@ -13,19 +13,21 @@ import {
   Clock,
   type LucideIcon,
 } from "lucide-react";
-import { useState } from "react";
+import { memo, useCallback, useState } from "react";
 import { waLink } from "./constants";
 import { EngineShineIcon, HeadlightShineIcon, SeatShineIcon } from "./icons";
 import { SectionHeading, EASE } from "./Section";
 import lavacaoImg from "@/assets/services/lavacao.jpg";
 import polimentoImg from "@/assets/services/polimento.jpg";
-import higienizacaoImg from "@/assets/services/higienizacao.png";
+import higienizacaoImg from "@/assets/services/higienizacao.jpg";
 import vitrificacaoImg from "@/assets/services/vitrificacao.jpg";
 import faroisImg from "@/assets/services/farois.jpg";
-import vidrosImg from "@/assets/services/vidros.jpg";
+import cristalizacaoImg from "@/assets/services/vidros.jpg";
 import motorImg from "@/assets/services/motor.jpg";
 import martelinhoAntes from "@/assets/services/martelinho-antes.jpg";
 import martelinhoDepois from "@/assets/services/martelinho-depois.jpg";
+import vidrosAntes from "@/assets/services/vidros-antes.jpg";
+import vidrosDepois from "@/assets/services/vidros-depois.jpg";
 
 type ServiceIcon =
   | LucideIcon
@@ -41,9 +43,10 @@ type Service = {
   video?: string;
   whatsapp: string;
   image?: string;
-  beforeAfter?: { antes: string; depois: string };
+  beforeAfter?: { antes: string; depois: string; badge: string; BadgeIcon: LucideIcon };
   destaque?: boolean;
 };
+
 
 const services: Service[] = [
   {
@@ -135,61 +138,71 @@ const services: Service[] = [
   {
     nome: "Polimento de Vidros",
     Icon: ScanEye,
-    image: vidrosImg,
+    beforeAfter: {
+      antes: vidrosAntes,
+      depois: vidrosDepois,
+      badge: "Sem trocar o vidro",
+      BadgeIcon: ScanEye,
+    },
     descricao:
-      "Remove marcas de palhetas, riscos leves e chuva ácida, devolvendo transparência.",
+      "Remove riscos leves, marcas de palhetas e micro riscos do vidro, devolvendo transparência total e visibilidade nítida.",
     lista: [
-      "Remove marcas de palhetas e chuva ácida",
-      "Elimina riscos leves e médios",
-      "Visibilidade muito mais nítida",
+      "Remove marcas de palhetas e riscos leves",
+      "Elimina o aspecto embaçado do vidro",
+      "Visibilidade muito mais nítida e segura",
     ],
     processo: [
-      "Análise dos riscos e demarcação",
-      "Polimento técnico com composto específico",
+      "Análise dos riscos na contraluz e demarcação",
+      "Polimento técnico com composto específico para vidro",
+      "Refino da superfície até a transparência",
       "Limpeza e inspeção final na contraluz",
     ],
     video: "https://www.instagram.com/reel/DWcLd4HD4nA/?igsh=MWVsYXZ6emM3aWcwYw==",
     whatsapp: "Olá! Gostaria de saber mais sobre o Polimento de Vidros.",
   },
   {
-    nome: "Revitalização de Vidros",
+    nome: "Cristalização de Vidros",
     Icon: GlassWater,
-    descricao: "Restaura o brilho e melhora a aparência dos vidros.",
+    image: cristalizacaoImg,
+    descricao:
+      "Cria uma película hidrofóbica sobre o vidro: a água forma esferas e escorre sozinha, melhorando muito a visibilidade na chuva, facilitando a limpeza e aumentando a segurança ao dirigir.",
     lista: [
-      "Vidros com brilho e aspecto renovado",
-      "Superfície lisa ao toque",
-      "Melhora o acabamento geral do carro",
+      "Efeito hidrofóbico — gotas escorrem sozinhas",
+      "Visibilidade superior em dias de chuva",
+      "Limpeza mais fácil e mais segurança ao volante",
     ],
     processo: [
-      "Limpeza profunda e descontaminação",
-      "Revitalização da superfície do vidro",
-      "Finalização com repelente de água",
+      "Limpeza profunda e descontaminação do vidro",
+      "Aplicação da película hidrofóbica",
+      "Cura controlada e inspeção do efeito",
     ],
     durabilidade: "Até 12 meses",
     video: "https://www.instagram.com/reel/DYVkYAhAyIP/?igsh=YTE1ZmY0N3luOTJ1",
-    whatsapp: "Olá! Gostaria de saber mais sobre a Revitalização de Vidros.",
+    whatsapp: "Olá! Gostaria de saber mais sobre a Cristalização de Vidros.",
   },
   {
-    nome: "Lavação Premium",
+    nome: "Lavação Completa Premium + Cera",
     Icon: Droplets,
     image: lavacaoImg,
     descricao:
-      "Lavagem completa por fora e por dentro. Rodas, pneus, vidros, aspiração, plásticos internos e cera protetora.",
+      "Lavagem completa por fora e por dentro, finalizada com cera premium que dá brilho intenso e protege a pintura por cerca de 3 a 5 meses.",
     lista: [
       "Carro impecável por dentro e por fora",
       "Sem riscos: técnica dos dois baldes",
-      "Cera protetora inclusa",
+      "Cera premium: brilho intenso e proteção da pintura",
     ],
     processo: [
       "Rodas, pneus e caixas de roda",
       "Lavagem externa completa",
       "Aspiração e limpeza interna",
-      "Cera protetora na pintura",
+      "Aplicação da cera premium na pintura",
     ],
-    whatsapp: "Olá! Gostaria de saber mais sobre a Lavação Premium.",
+    durabilidade: "Cera premium: 3 a 5 meses",
+    video: "https://www.instagram.com/reel/DVeiGUXjwAV/?igsh=YjByZWdzMGptZWtj",
+    whatsapp: "Olá! Gostaria de saber mais sobre a Lavação Completa Premium + Cera.",
   },
   {
-    nome: "Limpeza de Motor",
+    nome: "Limpeza Técnica do Motor",
     Icon: EngineShineIcon,
     image: motorImg,
     descricao: "Desengraxamento técnico completo, finalizado com verniz protetor.",
@@ -204,12 +217,19 @@ const services: Service[] = [
       "Secagem a ar comprimido",
       "Verniz protetor final",
     ],
-    whatsapp: "Olá! Gostaria de saber mais sobre a Limpeza de Motor.",
+    video: "https://www.instagram.com/reel/DYkyhh_A_Ll/?igsh=MnB0cmdnM3p3Zncx",
+    whatsapp: "Olá! Gostaria de saber mais sobre a Limpeza Técnica do Motor.",
   },
   {
     nome: "Martelinho de Ouro",
     Icon: Hammer,
-    beforeAfter: { antes: martelinhoAntes, depois: martelinhoDepois },
+    beforeAfter: {
+      antes: martelinhoAntes,
+      depois: martelinhoDepois,
+      badge: "Sem pintura",
+      BadgeIcon: Hammer,
+    },
+
     descricao:
       "Recuperação da lataria sem pintura. Amassados e granizo removidos com a pintura original 100% preservada.",
     lista: [
@@ -228,7 +248,19 @@ const services: Service[] = [
   },
 ];
 
-function BeforeAfter({ antes, depois }: { antes: string; depois: string }) {
+function BeforeAfter({
+  antes,
+  depois,
+  badge,
+  BadgeIcon,
+  nome,
+}: {
+  antes: string;
+  depois: string;
+  badge: string;
+  BadgeIcon: LucideIcon;
+  nome: string;
+}) {
   return (
     <div
       className="relative mb-5 grid grid-cols-2 overflow-hidden rounded-xl border"
@@ -245,7 +277,7 @@ function BeforeAfter({ antes, depois }: { antes: string; depois: string }) {
         <div key={p.label} className="relative" style={{ aspectRatio: "3 / 4" }}>
           <img
             src={p.src}
-            alt={`Martelinho de ouro ${p.label.toLowerCase()} — Clínica do Carro Joinville`}
+            alt={`${nome} ${p.label.toLowerCase()} — Clínica do Carro Joinville`}
             loading="lazy"
             decoding="async"
             width={720}
@@ -253,6 +285,7 @@ function BeforeAfter({ antes, depois }: { antes: string; depois: string }) {
             className="h-full w-full object-cover"
             style={{ filter: i === 0 ? "saturate(0.85) brightness(0.92)" : undefined }}
           />
+
           <div
             aria-hidden
             className="pointer-events-none absolute inset-0"
@@ -301,11 +334,12 @@ function BeforeAfter({ antes, depois }: { antes: string; depois: string }) {
           boxShadow: "0 0 18px rgba(0,230,118,0.35)",
         }}
       >
-        <Hammer className="h-4 w-4 text-neon" />
+        <BadgeIcon className="h-4 w-4 text-neon" />
       </span>
       <span className="absolute right-3 top-3 rounded-md border border-white/10 bg-black/60 px-2.5 py-1 text-[0.62rem] font-semibold uppercase tracking-[0.16em] text-white/70">
-        Sem pintura
+        {badge}
       </span>
+
     </div>
   );
 }
@@ -361,25 +395,19 @@ function VideoCard({ url, nome }: { url: string; nome: string }) {
   );
 }
 
-export function Services() {
-  const [openIndex, setOpenIndex] = useState<number | null>(0);
-
+const ServiceCard = memo(function ServiceCard({
+  s,
+  idx,
+  open,
+  onToggle,
+}: {
+  s: Service;
+  idx: number;
+  open: boolean;
+  onToggle: (idx: number) => void;
+}) {
   return (
-    <section id="servicos" className="section-y">
-      <div className="shell">
-        <SectionHeading
-          eyebrow="O que fazemos"
-          title="Serviços"
-          highlight="especializados"
-          description="Toque em um serviço para ver benefícios, processo, vídeo real e falar direto com a gente no WhatsApp."
-        />
-
-        <div className="mt-12 grid grid-cols-1 gap-4 md:mt-16 md:grid-cols-2 lg:grid-cols-3">
-          {services.map((s, idx) => {
-            const open = openIndex === idx;
-            return (
               <motion.article
-                key={s.nome}
                 initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.15 }}
@@ -392,9 +420,10 @@ export function Services() {
                 <button
                   type="button"
                   aria-expanded={open}
-                  onClick={() => setOpenIndex(open ? null : idx)}
+                  onClick={() => onToggle(idx)}
                   className="flex w-full items-center gap-4 px-5 py-5 text-left md:px-6"
                 >
+
                   <span
                     className="grid h-11 w-11 shrink-0 place-items-center rounded-xl border transition-colors duration-300"
                     style={{
@@ -438,7 +467,7 @@ export function Services() {
                     >
                       <div className="px-5 pb-6 md:px-6">
                         {s.beforeAfter ? (
-                          <BeforeAfter {...s.beforeAfter} />
+                          <BeforeAfter {...s.beforeAfter} nome={s.nome} />
                         ) : s.image ? (
                           <div
                             className="mb-5 overflow-hidden rounded-xl border border-white/[0.08]"
@@ -449,8 +478,11 @@ export function Services() {
                               alt={`${s.nome} — Clínica do Carro Joinville`}
                               loading="lazy"
                               decoding="async"
+                              width={1280}
+                              height={720}
                               className="h-full w-full object-cover"
                             />
+
                           </div>
                         ) : null}
 
@@ -523,10 +555,39 @@ export function Services() {
                   )}
                 </AnimatePresence>
               </motion.article>
-            );
-          })}
+  );
+});
+
+export function Services() {
+  const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const toggle = useCallback(
+    (idx: number) => setOpenIndex((cur) => (cur === idx ? null : idx)),
+    []
+  );
+
+  return (
+    <section id="servicos" className="section-y">
+      <div className="shell">
+        <SectionHeading
+          eyebrow="O que fazemos"
+          title="Serviços"
+          highlight="especializados"
+          description="Toque em um serviço para ver benefícios, processo, vídeo real e falar direto com a gente no WhatsApp."
+        />
+
+        <div className="mt-12 grid grid-cols-1 gap-4 md:mt-16 md:grid-cols-2 lg:grid-cols-3">
+          {services.map((s, idx) => (
+            <ServiceCard
+              key={s.nome}
+              s={s}
+              idx={idx}
+              open={openIndex === idx}
+              onToggle={toggle}
+            />
+          ))}
         </div>
       </div>
     </section>
   );
 }
+

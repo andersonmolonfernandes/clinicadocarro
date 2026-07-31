@@ -114,7 +114,22 @@
 
   img {
     -webkit-user-drag: none;
+    content-visibility: auto;
   }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
 
   ::selection {
     background: var(--neon);
@@ -189,11 +204,11 @@
     border-color 0.25s ease,
     box-shadow 0.25s ease,
     transform 0.2s ease;
-  will-change: transform;
   &:active {
     transform: scale(0.98);
   }
 }
+
 
 @utility btn-primary {
   background: var(--neon);
