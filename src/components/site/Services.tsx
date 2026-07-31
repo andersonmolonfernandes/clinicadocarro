@@ -472,7 +472,7 @@ export function Services() {
                     >
                       <div className="px-5 pb-6 md:px-6">
                         {s.beforeAfter ? (
-                          <BeforeAfter {...s.beforeAfter} />
+                          <BeforeAfter {...s.beforeAfter} nome={s.nome} />
                         ) : s.image ? (
                           <div
                             className="mb-5 overflow-hidden rounded-xl border border-white/[0.08]"
@@ -483,8 +483,11 @@ export function Services() {
                               alt={`${s.nome} — Clínica do Carro Joinville`}
                               loading="lazy"
                               decoding="async"
+                              width={1280}
+                              height={720}
                               className="h-full w-full object-cover"
                             />
+
                           </div>
                         ) : null}
 
