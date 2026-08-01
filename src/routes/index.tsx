@@ -8,36 +8,91 @@ import { CTA } from "@/components/site/CTA";
 import { Location } from "@/components/site/Location";
 import { Footer } from "@/components/site/Footer";
 import { FloatingWhats } from "@/components/site/FloatingWhats";
+import { HomeFaq, homeFaqs } from "@/components/site/HomeFaq";
+import { services, SITE_URL } from "@/components/site/services-data";
+
+const TITLE = "Estética Automotiva em Joinville | Clínica do Carro Studio Detail";
+const DESCRIPTION =
+  "Estética automotiva em Joinville/SC desde 2013: polimento, vitrificação, higienização, faróis, vidros e martelinho de ouro. Orçamento pelo WhatsApp.";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      {
-        title:
-          "Clínica do Carro — Studio Detail | Estética Automotiva em Joinville/SC",
-      },
-      {
-        name: "description",
-        content:
-          "Polimento, vitrificação, higienização e mais. Estética automotiva em Joinville/SC desde 2013. Agende pelo WhatsApp.",
-      },
-      {
-        property: "og:title",
-        content: "Clínica do Carro — Studio Detail | Joinville/SC",
-      },
-      {
-        property: "og:description",
-        content:
-          "Polimento, vitrificação, higienização e mais. Agende pelo WhatsApp.",
-      },
+      { title: TITLE },
+      { name: "description", content: DESCRIPTION },
+      { property: "og:title", content: TITLE },
+      { property: "og:description", content: DESCRIPTION },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "https://clinicadocarro.vercel.app/" },
-      { property: "og:image", content: "https://clinicadocarro.vercel.app/logo.png" },
+      { property: "og:url", content: `${SITE_URL}/` },
+      { property: "og:image", content: `${SITE_URL}/logo.png` },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:image", content: "https://clinicadocarro.vercel.app/logo.png" },
+      { name: "twitter:image", content: `${SITE_URL}/logo.png` },
       { name: "robots", content: "index, follow" },
+      { name: "geo.region", content: "BR-SC" },
+      { name: "geo.placename", content: "Joinville" },
     ],
-    links: [{ rel: "canonical", href: "https://clinicadocarro.vercel.app/" }],
+    links: [{ rel: "canonical", href: `${SITE_URL}/` }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": ["LocalBusiness", "AutoBodyShop"],
+              "@id": `${SITE_URL}#localbusiness`,
+              name: "Clínica do Carro — Studio Detail",
+              description: DESCRIPTION,
+              url: SITE_URL,
+              image: `${SITE_URL}/logo.png`,
+              logo: `${SITE_URL}/logo.png`,
+              telephone: "+5547999940973",
+              priceRange: "$$",
+              foundingDate: "2013",
+              currenciesAccepted: "BRL",
+              address: {
+                "@type": "PostalAddress",
+                streetAddress: "Rua Alois Finder, 1401",
+                addressLocality: "Joinville",
+                addressRegion: "SC",
+                addressCountry: "BR",
+              },
+              areaServed: { "@type": "City", name: "Joinville" },
+              sameAs: ["https://wa.me/5547999940973"],
+              hasOfferCatalog: {
+                "@type": "OfferCatalog",
+                name: "Serviços de estética automotiva em Joinville",
+                itemListElement: services.map((s) => ({
+                  "@type": "Offer",
+                  itemOffered: {
+                    "@type": "Service",
+                    name: `${s.nome} em Joinville`,
+                    url: `${SITE_URL}/servicos/${s.slug}`,
+                  },
+                })),
+              },
+            },
+            {
+              "@type": "WebSite",
+              "@id": `${SITE_URL}#website`,
+              url: SITE_URL,
+              name: "Clínica do Carro — Studio Detail",
+              inLanguage: "pt-BR",
+              publisher: { "@id": `${SITE_URL}#localbusiness` },
+            },
+            {
+              "@type": "FAQPage",
+              "@id": `${SITE_URL}#faq`,
+              mainEntity: homeFaqs.map((f) => ({
+                "@type": "Question",
+                name: f.pergunta,
+                acceptedAnswer: { "@type": "Answer", text: f.resposta },
+              })),
+            },
+          ],
+        }),
+      },
+    ],
   }),
   component: Index,
 });
@@ -51,6 +106,7 @@ function Index() {
         <Stats />
         <Services />
         <About />
+        <HomeFaq />
         <CTA />
         <Location />
       </main>
