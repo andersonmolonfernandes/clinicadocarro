@@ -4,10 +4,11 @@ import { MessageCircle, Menu, X } from "lucide-react";
 import { WHATSAPP_DEFAULT } from "./constants";
 
 const links = [
-  { label: "Serviços", href: "#servicos" },
-  { label: "Sobre", href: "#sobre" },
-  { label: "Localização", href: "#localizacao" },
+  { label: "Serviços", href: "/servicos" },
+  { label: "Sobre", href: "/#sobre" },
+  { label: "Localização", href: "/#localizacao" },
 ];
+
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
