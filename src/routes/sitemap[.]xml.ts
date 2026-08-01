@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import type {} from "@tanstack/react-start";
+import { services } from "@/components/site/services-data";
 
 const BASE_URL = "https://clinicadocarro.vercel.app";
 
@@ -15,6 +16,12 @@ export const Route = createFileRoute("/sitemap.xml")({
       GET: async () => {
         const entries: SitemapEntry[] = [
           { path: "/", changefreq: "weekly", priority: "1.0" },
+          { path: "/servicos", changefreq: "monthly", priority: "0.9" },
+          ...services.map((s) => ({
+            path: `/servicos/${s.slug}`,
+            changefreq: "monthly" as const,
+            priority: "0.8",
+          })),
         ];
 
         const urls = entries.map((e) =>

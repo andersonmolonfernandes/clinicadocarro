@@ -4,10 +4,11 @@ import { MessageCircle, Menu, X } from "lucide-react";
 import { WHATSAPP_DEFAULT } from "./constants";
 
 const links = [
-  { label: "Serviços", href: "#servicos" },
-  { label: "Sobre", href: "#sobre" },
-  { label: "Localização", href: "#localizacao" },
+  { label: "Serviços", href: "/servicos" },
+  { label: "Sobre", href: "/#sobre" },
+  { label: "Localização", href: "/#localizacao" },
 ];
+
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -39,7 +40,7 @@ export function Header() {
       >
         <div className="shell flex h-[72px] items-center justify-between md:h-[80px]">
           <a
-            href="#top"
+            href="/"
             aria-label="Clínica do Carro — início"
             className="flex shrink-0 items-center transition-opacity hover:opacity-80"
           >

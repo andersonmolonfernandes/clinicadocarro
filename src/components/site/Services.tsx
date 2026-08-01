@@ -1,265 +1,33 @@
 import { motion, AnimatePresence } from "framer-motion";
 import {
   ChevronDown,
-  Droplets,
-  Sparkles,
-  Shield,
-  ScanEye,
-  GlassWater,
-  Hammer,
   MessageCircle,
   Instagram,
   Play,
   Clock,
+  ArrowRight,
   type LucideIcon,
 } from "lucide-react";
+import { Link } from "@tanstack/react-router";
 import { memo, useCallback, useState } from "react";
 import { waLink } from "./constants";
-import { EngineShineIcon, HeadlightShineIcon, SeatShineIcon } from "./icons";
 import { SectionHeading, EASE } from "./Section";
-import lavacaoImg from "@/assets/services/lavacao.jpg";
-import polimentoImg from "@/assets/services/polimento.jpg";
-import higienizacaoImg from "@/assets/services/higienizacao.jpg";
-import vitrificacaoImg from "@/assets/services/vitrificacao.jpg";
-import faroisImg from "@/assets/services/farois.jpg";
-import cristalizacaoImg from "@/assets/services/vidros.jpg";
-import motorImg from "@/assets/services/motor.jpg";
-import martelinhoAntes from "@/assets/services/martelinho-antes.jpg";
-import martelinhoDepois from "@/assets/services/martelinho-depois.jpg";
-import vidrosAntes from "@/assets/services/vidros-antes.jpg";
-import vidrosDepois from "@/assets/services/vidros-depois.jpg";
+import { services, type Service } from "./services-data";
 
-type ServiceIcon =
-  | LucideIcon
-  | ((props: { className?: string }) => React.ReactElement);
-
-type Service = {
-  nome: string;
-  Icon: ServiceIcon;
-  descricao: string;
-  lista: string[];
-  processo: string[];
-  durabilidade?: string;
-  video?: string;
-  whatsapp: string;
-  image?: string;
-  beforeAfter?: { antes: string; depois: string; badge: string; BadgeIcon: LucideIcon };
-  destaque?: boolean;
-};
-
-
-const services: Service[] = [
-  {
-    nome: "Polimento Técnico",
-    Icon: Sparkles,
-    image: polimentoImg,
-    destaque: true,
-    descricao:
-      "Correção da pintura em 2 etapas: corte remove riscos e oxidação, refino devolve o brilho espelhado.",
-    lista: [
-      "Remove riscos, oxidação e marcas de lavagem",
-      "Brilho espelhado profundo e uniforme",
-      "Valoriza o carro na revenda",
-    ],
-    processo: [
-      "Lavagem técnica e descontaminação",
-      "Etapa 1 — corte: remoção de riscos e oxidação",
-      "Etapa 2 — refino: brilho espelhado",
-      "Proteção com cera, selante ou vitrificação",
-    ],
-    durabilidade: "6 a 12 meses (com proteção aplicada)",
-    video: "https://www.instagram.com/reel/DVMh1Wnjxsw/?igsh=anM0OHp0bm1qcXNx",
-    whatsapp: "Olá! Gostaria de saber mais sobre o Polimento Técnico.",
-  },
-  {
-    nome: "Vitrificação",
-    Icon: Shield,
-    image: vitrificacaoImg,
-    destaque: true,
-    descricao:
-      "Camada protetora que repele água, resiste a riscos e bloqueia UV. Dura até 3 anos.",
-    lista: [
-      "Efeito hidrofóbico — a água escorre sozinha",
-      "Proteção contra UV, chuva ácida e resíduos",
-      "Brilho profundo e lavagem muito mais fácil",
-    ],
-    processo: [
-      "Carro novo: descontaminação + aplicação direta",
-      "Carro usado: descontaminação + polimento + vitrificação",
-      "Cura controlada da camada cerâmica",
-    ],
-    durabilidade: "Até 3 anos",
-    video: "https://www.instagram.com/reel/DWpOqxYD6Ta/?igsh=MWZlaDlxaWJpZ3JvYw==",
-    whatsapp: "Olá! Gostaria de saber mais sobre a Vitrificação.",
-  },
-  {
-    nome: "Higienização Interna",
-    Icon: SeatShineIcon,
-    image: higienizacaoImg,
-    destaque: true,
-    descricao:
-      "Limpeza profunda de bancos, tapetes, teto e forros com extratora. Remove manchas, odores e ácaros.",
-    lista: [
-      "Elimina manchas, odores, ácaros e bactérias",
-      "Interior com aspecto e cheiro de novo",
-      "Mais conforto para quem tem alergia",
-    ],
-    processo: [
-      "Aspiração completa e pré-tratamento",
-      "Extração de bancos e tapetes",
-      "Teto, forros e plásticos",
-      "Finalização com proteção UV",
-    ],
-    durabilidade: "Recomendado a cada 6 a 12 meses",
-    video: "https://www.instagram.com/reel/DbMNNBhAsb9/?igsh=MTZ5Nmo2YXgwdWIxeg==",
-    whatsapp: "Olá! Gostaria de saber mais sobre a Higienização Interna.",
-  },
-  {
-    nome: "Restauração de Faróis",
-    Icon: HeadlightShineIcon,
-    image: faroisImg,
-    descricao:
-      "Devolve a transparência do farol como se fosse novo, com proteção à sua escolha.",
-    lista: [
-      "Mais segurança à noite com farol transparente",
-      "Aparência de farol novo sem trocar a peça",
-      "Proteção contra amarelamento",
-    ],
-    processo: [
-      "Lixamento progressivo do policarbonato",
-      "Polimento até a transparência total",
-      "Vapor de polímero: até 3 anos de resistência",
-      "Ou vitrificação: acabamento cristalino, 1 a 2 anos",
-    ],
-    durabilidade: "1 a 3 anos, conforme a proteção",
-    video: "https://www.instagram.com/reel/DYIubqlANtF/?igsh=MTZqc3FrNHp2b3IzZw==",
-    whatsapp: "Olá! Gostaria de saber mais sobre a Restauração de Faróis.",
-  },
-  {
-    nome: "Polimento de Vidros",
-    Icon: ScanEye,
-    beforeAfter: {
-      antes: vidrosAntes,
-      depois: vidrosDepois,
-      badge: "Sem trocar o vidro",
-      BadgeIcon: ScanEye,
-    },
-    descricao:
-      "Remove riscos leves, marcas de palhetas e micro riscos do vidro, devolvendo transparência total e visibilidade nítida.",
-    lista: [
-      "Remove marcas de palhetas e riscos leves",
-      "Elimina o aspecto embaçado do vidro",
-      "Visibilidade muito mais nítida e segura",
-    ],
-    processo: [
-      "Análise dos riscos na contraluz e demarcação",
-      "Polimento técnico com composto específico para vidro",
-      "Refino da superfície até a transparência",
-      "Limpeza e inspeção final na contraluz",
-    ],
-    video: "https://www.instagram.com/reel/DWcLd4HD4nA/?igsh=MWVsYXZ6emM3aWcwYw==",
-    whatsapp: "Olá! Gostaria de saber mais sobre o Polimento de Vidros.",
-  },
-  {
-    nome: "Cristalização de Vidros",
-    Icon: GlassWater,
-    image: cristalizacaoImg,
-    descricao:
-      "Cria uma película hidrofóbica sobre o vidro: a água forma esferas e escorre sozinha, melhorando muito a visibilidade na chuva, facilitando a limpeza e aumentando a segurança ao dirigir.",
-    lista: [
-      "Efeito hidrofóbico — gotas escorrem sozinhas",
-      "Visibilidade superior em dias de chuva",
-      "Limpeza mais fácil e mais segurança ao volante",
-    ],
-    processo: [
-      "Limpeza profunda e descontaminação do vidro",
-      "Aplicação da película hidrofóbica",
-      "Cura controlada e inspeção do efeito",
-    ],
-    durabilidade: "Até 12 meses",
-    video: "https://www.instagram.com/reel/DYVkYAhAyIP/?igsh=YTE1ZmY0N3luOTJ1",
-    whatsapp: "Olá! Gostaria de saber mais sobre a Cristalização de Vidros.",
-  },
-  {
-    nome: "Lavação Completa Premium + Cera",
-    Icon: Droplets,
-    image: lavacaoImg,
-    descricao:
-      "Lavagem completa por fora e por dentro, finalizada com cera premium que dá brilho intenso e protege a pintura por cerca de 3 a 5 meses.",
-    lista: [
-      "Carro impecável por dentro e por fora",
-      "Sem riscos: técnica dos dois baldes",
-      "Cera premium: brilho intenso e proteção da pintura",
-    ],
-    processo: [
-      "Rodas, pneus e caixas de roda",
-      "Lavagem externa completa",
-      "Aspiração e limpeza interna",
-      "Aplicação da cera premium na pintura",
-    ],
-    durabilidade: "Cera premium: 3 a 5 meses",
-    video: "https://www.instagram.com/reel/DVeiGUXjwAV/?igsh=YjByZWdzMGptZWtj",
-    whatsapp: "Olá! Gostaria de saber mais sobre a Lavação Completa Premium + Cera.",
-  },
-  {
-    nome: "Limpeza Técnica do Motor",
-    Icon: EngineShineIcon,
-    image: motorImg,
-    descricao: "Desengraxamento técnico completo, finalizado com verniz protetor.",
-    lista: [
-      "Motor limpo facilita manutenção e revisão",
-      "Evita acúmulo de graxa e sujeira",
-      "Valoriza o carro na venda",
-    ],
-    processo: [
-      "Proteção de borrachas, plásticos e componentes",
-      "Desengraxamento por partes",
-      "Secagem a ar comprimido",
-      "Verniz protetor final",
-    ],
-    video: "https://www.instagram.com/reel/DYkyhh_A_Ll/?igsh=MnB0cmdnM3p3Zncx",
-    whatsapp: "Olá! Gostaria de saber mais sobre a Limpeza Técnica do Motor.",
-  },
-  {
-    nome: "Martelinho de Ouro",
-    Icon: Hammer,
-    beforeAfter: {
-      antes: martelinhoAntes,
-      depois: martelinhoDepois,
-      badge: "Sem pintura",
-      BadgeIcon: Hammer,
-    },
-
-    descricao:
-      "Recuperação da lataria sem pintura. Amassados e granizo removidos com a pintura original 100% preservada.",
-    lista: [
-      "Sem repintura e sem massa",
-      "Pintura de fábrica preservada",
-      "Mais rápido e mais barato que funilaria",
-    ],
-    processo: [
-      "Mapeamento dos amassados com iluminação técnica",
-      "Acesso interno à chapa",
-      "Repuxo e nivelamento gradual",
-      "Conferência do reflexo na contraluz",
-    ],
-    durabilidade: "Reparo permanente",
-    whatsapp: "Olá! Gostaria de saber mais sobre o Martelinho de Ouro.",
-  },
-];
-
-function BeforeAfter({
+export function BeforeAfter({
   antes,
   depois,
+  altAntes,
+  altDepois,
   badge,
   BadgeIcon,
-  nome,
 }: {
   antes: string;
   depois: string;
+  altAntes: string;
+  altDepois: string;
   badge: string;
   BadgeIcon: LucideIcon;
-  nome: string;
 }) {
   return (
     <div
@@ -271,13 +39,13 @@ function BeforeAfter({
       }}
     >
       {[
-        { src: antes, label: "Antes" },
-        { src: depois, label: "Depois" },
+        { src: antes, label: "Antes", alt: altAntes },
+        { src: depois, label: "Depois", alt: altDepois },
       ].map((p, i) => (
         <div key={p.label} className="relative" style={{ aspectRatio: "3 / 4" }}>
           <img
             src={p.src}
-            alt={`${nome} ${p.label.toLowerCase()} — Clínica do Carro Joinville`}
+            alt={p.alt}
             loading="lazy"
             decoding="async"
             width={720}
@@ -339,12 +107,11 @@ function BeforeAfter({
       <span className="absolute right-3 top-3 rounded-md border border-white/10 bg-black/60 px-2.5 py-1 text-[0.62rem] font-semibold uppercase tracking-[0.16em] text-white/70">
         {badge}
       </span>
-
     </div>
   );
 }
 
-function VideoCard({ url, nome }: { url: string; nome: string }) {
+export function VideoCard({ url, nome }: { url: string; nome: string }) {
   return (
     <a
       href={url}
@@ -407,154 +174,159 @@ const ServiceCard = memo(function ServiceCard({
   onToggle: (idx: number) => void;
 }) {
   return (
-              <motion.article
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.15 }}
-                transition={{ duration: 0.5, delay: (idx % 3) * 0.06, ease: EASE }}
-                className="surface-card group relative self-start overflow-hidden transition-colors duration-300"
-                style={{
-                  borderColor: open ? "rgba(0,230,118,0.35)" : undefined,
-                }}
-              >
-                <button
-                  type="button"
-                  aria-expanded={open}
-                  onClick={() => onToggle(idx)}
-                  className="flex w-full items-center gap-4 px-5 py-5 text-left md:px-6"
+    <motion.article
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.15 }}
+      transition={{ duration: 0.5, delay: (idx % 3) * 0.06, ease: EASE }}
+      className="surface-card group relative self-start overflow-hidden transition-colors duration-300"
+      style={{
+        borderColor: open ? "rgba(0,230,118,0.35)" : undefined,
+      }}
+    >
+      <button
+        type="button"
+        aria-expanded={open}
+        onClick={() => onToggle(idx)}
+        className="flex w-full items-center gap-4 px-5 py-5 text-left md:px-6"
+      >
+        <span
+          className="grid h-11 w-11 shrink-0 place-items-center rounded-xl border transition-colors duration-300"
+          style={{
+            background: open ? "rgba(0,230,118,0.12)" : "rgba(255,255,255,0.04)",
+            borderColor: open ? "rgba(0,230,118,0.3)" : "rgba(255,255,255,0.08)",
+          }}
+        >
+          <s.Icon className="h-5 w-5 text-neon" />
+        </span>
+        <span className="min-w-0 flex-1">
+          <span
+            className="block truncate text-[1.02rem] font-semibold text-white"
+            style={{ fontFamily: "var(--font-display)" }}
+          >
+            {s.nome}
+          </span>
+          {s.destaque && (
+            <span className="mt-1 inline-block text-[0.66rem] font-semibold uppercase tracking-[0.18em] text-neon/80">
+              Mais procurado
+            </span>
+          )}
+        </span>
+        <motion.span
+          animate={{ rotate: open ? 180 : 0 }}
+          transition={{ duration: 0.25 }}
+          className="shrink-0 text-white/50 group-hover:text-neon"
+        >
+          <ChevronDown className="h-5 w-5" />
+        </motion.span>
+      </button>
+
+      <AnimatePresence initial={false}>
+        {open && (
+          <motion.div
+            key="body"
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.32, ease: EASE }}
+            className="overflow-hidden"
+          >
+            <div className="px-5 pb-6 md:px-6">
+              {s.beforeAfter ? (
+                <BeforeAfter {...s.beforeAfter} />
+              ) : s.image ? (
+                <div
+                  className="mb-5 overflow-hidden rounded-xl border border-white/[0.08]"
+                  style={{ aspectRatio: "16 / 9" }}
                 >
+                  <img
+                    src={s.image}
+                    alt={s.alt ?? `${s.nome} — Clínica do Carro Joinville`}
+                    loading="lazy"
+                    decoding="async"
+                    width={1280}
+                    height={720}
+                    className="h-full w-full object-cover"
+                  />
+                </div>
+              ) : null}
 
-                  <span
-                    className="grid h-11 w-11 shrink-0 place-items-center rounded-xl border transition-colors duration-300"
-                    style={{
-                      background: open ? "rgba(0,230,118,0.12)" : "rgba(255,255,255,0.04)",
-                      borderColor: open ? "rgba(0,230,118,0.3)" : "rgba(255,255,255,0.08)",
-                    }}
+              <p className="text-[0.9rem] leading-relaxed text-white/60">{s.descricao}</p>
+
+              <p className="mt-5 text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-white/40">
+                Benefícios
+              </p>
+              <ul className="mt-3 space-y-2">
+                {s.lista.map((item) => (
+                  <li
+                    key={item}
+                    className="flex items-start gap-2.5 text-[0.86rem] text-white/80"
                   >
-                    <s.Icon className="h-5 w-5 text-neon" />
-                  </span>
-                  <span className="min-w-0 flex-1">
+                    <span className="mt-[0.5rem] h-1 w-1 shrink-0 rounded-full bg-neon" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+
+              <p className="mt-5 text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-white/40">
+                Como fazemos
+              </p>
+              <ol className="mt-3 space-y-2">
+                {s.processo.map((step, i) => (
+                  <li
+                    key={step}
+                    className="flex items-start gap-2.5 text-[0.86rem] text-white/70"
+                  >
                     <span
-                      className="block truncate text-[1.02rem] font-semibold text-white"
-                      style={{ fontFamily: "var(--font-display)" }}
+                      className="mt-[0.1rem] grid h-5 w-5 shrink-0 place-items-center rounded-md text-[0.64rem] font-semibold text-neon"
+                      style={{
+                        background: "rgba(0,230,118,0.1)",
+                        border: "1px solid rgba(0,230,118,0.22)",
+                      }}
                     >
-                      {s.nome}
+                      {i + 1}
                     </span>
-                    {s.destaque && (
-                      <span className="mt-1 inline-block text-[0.66rem] font-semibold uppercase tracking-[0.18em] text-neon/80">
-                        Mais procurado
-                      </span>
-                    )}
+                    {step}
+                  </li>
+                ))}
+              </ol>
+
+              {s.durabilidade && (
+                <p className="mt-5 inline-flex items-center gap-2 rounded-lg border border-white/[0.08] bg-white/[0.03] px-3 py-2 text-[0.8rem] text-white/70">
+                  <Clock className="h-4 w-4 shrink-0 text-neon" />
+                  <span>
+                    <span className="text-white/45">Durabilidade: </span>
+                    {s.durabilidade}
                   </span>
-                  <motion.span
-                    animate={{ rotate: open ? 180 : 0 }}
-                    transition={{ duration: 0.25 }}
-                    className="shrink-0 text-white/50 group-hover:text-neon"
-                  >
-                    <ChevronDown className="h-5 w-5" />
-                  </motion.span>
-                </button>
+                </p>
+              )}
 
-                <AnimatePresence initial={false}>
-                  {open && (
-                    <motion.div
-                      key="body"
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.32, ease: EASE }}
-                      className="overflow-hidden"
-                    >
-                      <div className="px-5 pb-6 md:px-6">
-                        {s.beforeAfter ? (
-                          <BeforeAfter {...s.beforeAfter} nome={s.nome} />
-                        ) : s.image ? (
-                          <div
-                            className="mb-5 overflow-hidden rounded-xl border border-white/[0.08]"
-                            style={{ aspectRatio: "16 / 9" }}
-                          >
-                            <img
-                              src={s.image}
-                              alt={`${s.nome} — Clínica do Carro Joinville`}
-                              loading="lazy"
-                              decoding="async"
-                              width={1280}
-                              height={720}
-                              className="h-full w-full object-cover"
-                            />
+              {s.video && <VideoCard url={s.video} nome={s.nome} />}
 
-                          </div>
-                        ) : null}
+              <a
+                href={waLink(s.whatsapp)}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Falar pelo WhatsApp sobre ${s.nome}`}
+                className="btn-base btn-primary mt-4 w-full"
+              >
+                <MessageCircle className="h-4 w-4" />
+                Orçamento no WhatsApp
+              </a>
 
-                        <p className="text-[0.9rem] leading-relaxed text-white/60">
-                          {s.descricao}
-                        </p>
-
-                        <p className="mt-5 text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-white/40">
-                          Benefícios
-                        </p>
-                        <ul className="mt-3 space-y-2">
-                          {s.lista.map((item) => (
-                            <li
-                              key={item}
-                              className="flex items-start gap-2.5 text-[0.86rem] text-white/80"
-                            >
-                              <span className="mt-[0.5rem] h-1 w-1 shrink-0 rounded-full bg-neon" />
-                              {item}
-                            </li>
-                          ))}
-                        </ul>
-
-                        <p className="mt-5 text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-white/40">
-                          Como fazemos
-                        </p>
-                        <ol className="mt-3 space-y-2">
-                          {s.processo.map((step, i) => (
-                            <li
-                              key={step}
-                              className="flex items-start gap-2.5 text-[0.86rem] text-white/70"
-                            >
-                              <span
-                                className="mt-[0.1rem] grid h-5 w-5 shrink-0 place-items-center rounded-md text-[0.64rem] font-semibold text-neon"
-                                style={{
-                                  background: "rgba(0,230,118,0.1)",
-                                  border: "1px solid rgba(0,230,118,0.22)",
-                                }}
-                              >
-                                {i + 1}
-                              </span>
-                              {step}
-                            </li>
-                          ))}
-                        </ol>
-
-                        {s.durabilidade && (
-                          <p className="mt-5 inline-flex items-center gap-2 rounded-lg border border-white/[0.08] bg-white/[0.03] px-3 py-2 text-[0.8rem] text-white/70">
-                            <Clock className="h-4 w-4 shrink-0 text-neon" />
-                            <span>
-                              <span className="text-white/45">Durabilidade: </span>
-                              {s.durabilidade}
-                            </span>
-                          </p>
-                        )}
-
-                        {s.video && <VideoCard url={s.video} nome={s.nome} />}
-
-                        <a
-                          href={waLink(s.whatsapp)}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          aria-label={`Falar pelo WhatsApp sobre ${s.nome}`}
-                          className="btn-base btn-primary mt-4 w-full"
-                        >
-                          <MessageCircle className="h-4 w-4" />
-                          Orçamento no WhatsApp
-                        </a>
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </motion.article>
+              <Link
+                to="/servicos/$slug"
+                params={{ slug: s.slug }}
+                className="mt-3 flex w-full items-center justify-center gap-1.5 rounded-lg border border-white/[0.1] bg-white/[0.03] px-4 py-2.5 text-[0.82rem] font-medium text-white/75 transition-colors hover:border-neon/40 hover:text-neon"
+              >
+                Ver página completa de {s.nome}
+                <ArrowRight className="h-3.5 w-3.5" />
+              </Link>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.article>
   );
 });
 
@@ -590,4 +362,3 @@ export function Services() {
     </section>
   );
 }
-
