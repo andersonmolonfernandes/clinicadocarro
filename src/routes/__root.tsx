@@ -28,9 +28,9 @@ const localBusinessJsonLd = {
   "@context": "https://schema.org",
   "@type": "AutoBodyShop",
   name: "Clínica do Carro — Studio Detail",
-  image: "/logo.png",
-  "@id": "https://clinicadocarro.com.br",
-  url: "https://clinicadocarro.com.br",
+  image: "https://clinicadocarro.vercel.app/logo.png",
+  "@id": "https://clinicadocarro.vercel.app",
+  url: "https://clinicadocarro.vercel.app",
   telephone: "+5547999940973",
   priceRange: "$$",
   address: {

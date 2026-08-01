@@ -744,7 +744,7 @@
 
 This project was built with [Lovable](https://lovable.dev).
 
-**Live app**: https://clinicadocarro.lovable.app
+**Live app**: https://clinicadocarro.vercel.app
 
 ## Build with Lovable
 
