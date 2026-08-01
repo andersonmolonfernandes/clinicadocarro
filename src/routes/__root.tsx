@@ -24,26 +24,6 @@ function NotFoundComponent() {
   );
 }
 
-const localBusinessJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "AutoBodyShop",
-  name: "Clínica do Carro — Studio Detail",
-  image: "https://clinicadocarro.vercel.app/logo.png",
-  "@id": "https://clinicadocarro.vercel.app",
-  url: "https://clinicadocarro.vercel.app",
-  telephone: "+5547999940973",
-  priceRange: "$$",
-  address: {
-    "@type": "PostalAddress",
-    streetAddress: "Rua Alois Finder, 1401",
-    addressLocality: "Joinville",
-    addressRegion: "SC",
-    addressCountry: "BR",
-  },
-  sameAs: ["https://wa.me/5547999940973"],
-  foundingDate: "2013",
-};
-
 export const Route = createRootRoute({
   head: () => ({
     meta: [
@@ -68,8 +48,6 @@ export const Route = createRootRoute({
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "Clínica do Carro — Studio Detail | Joinville/SC" },
       { name: "twitter:description", content: "Estética automotiva em Joinville desde 2013. Polimento, vitrificação, higienização, faróis, vidros e martelinho de ouro. Agende pelo WhatsApp!" },
-      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/TdeeJbTXzfQ35wG59qXUqhSclMq1/social-images/social-1776604886669-1000024715.webp" },
-      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/TdeeJbTXzfQ35wG59qXUqhSclMq1/social-images/social-1776604886669-1000024715.webp" },
     ],
     links: [
       { rel: "icon", type: "image/png", href: "/logo.png" },
@@ -84,12 +62,6 @@ export const Route = createRootRoute({
       {
         rel: "stylesheet",
         href: appCss,
-      },
-    ],
-    scripts: [
-      {
-        type: "application/ld+json",
-        children: JSON.stringify(localBusinessJsonLd),
       },
     ],
   }),

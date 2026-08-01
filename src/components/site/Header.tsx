@@ -40,7 +40,7 @@ export function Header() {
       >
         <div className="shell flex h-[72px] items-center justify-between md:h-[80px]">
           <a
-            href="#top"
+            href="/"
             aria-label="Clínica do Carro — início"
             className="flex shrink-0 items-center transition-opacity hover:opacity-80"
           >
