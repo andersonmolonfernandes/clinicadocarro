@@ -21,6 +21,10 @@ import martelinhoAntes from "@/assets/services/martelinho-de-ouro-antes-joinvill
 import martelinhoDepois from "@/assets/services/martelinho-de-ouro-depois-joinville.jpg";
 import vidrosAntes from "@/assets/services/polimento-vidros-antes-joinville.jpg";
 import vidrosDepois from "@/assets/services/polimento-vidros-depois-joinville.jpg";
+import couroAntes from "@/assets/services/vitrificacao-de-couro-antes-joinville.jpg";
+import couroDepois from "@/assets/services/vitrificacao-de-couro-depois-joinville.jpg";
+import plasticosAntes from "@/assets/services/revitalizacao-de-plasticos-antes-joinville.jpg";
+import plasticosDepois from "@/assets/services/revitalizacao-de-plasticos-depois-joinville.jpg";
 
 export const SITE_URL = "https://clinicadocarro.vercel.app";
 
