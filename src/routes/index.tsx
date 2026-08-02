@@ -67,7 +67,7 @@ export const Route = createFileRoute("/")({
                   itemOffered: {
                     "@type": "Service",
                     name: `${s.nome} em Joinville`,
-                    url: `${SITE_URL}/servicos/${s.slug}`,
+                    url: `${SITE_URL}/${s.slug}`,
                   },
                 })),
               },

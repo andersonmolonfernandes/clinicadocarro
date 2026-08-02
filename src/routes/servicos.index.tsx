@@ -46,7 +46,7 @@ export const Route = createFileRoute("/servicos/")({
                 "@type": "ListItem",
                 position: i + 1,
                 name: s.nome,
-                url: `${SITE_URL}/servicos/${s.slug}`,
+                url: `${SITE_URL}/${s.slug}`,
               })),
             },
           ],
@@ -107,7 +107,7 @@ function ServicosIndex() {
               {services.map((s) => (
                 <li key={s.slug}>
                   <Link
-                    to="/servicos/$slug"
+                    to="/$slug"
                     params={{ slug: s.slug }}
                     className="surface-card flex h-full flex-col gap-3 p-5 transition-colors hover:border-neon/35"
                   >

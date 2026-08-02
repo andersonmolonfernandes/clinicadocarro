@@ -315,7 +315,7 @@ const ServiceCard = memo(function ServiceCard({
               </a>
 
               <Link
-                to="/servicos/$slug"
+                to="/$slug"
                 params={{ slug: s.slug }}
                 className="mt-3 flex w-full items-center justify-center gap-1.5 rounded-lg border border-white/[0.1] bg-white/[0.03] px-4 py-2.5 text-[0.82rem] font-medium text-white/75 transition-colors hover:border-neon/40 hover:text-neon"
               >
