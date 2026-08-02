@@ -538,6 +538,124 @@ export const services: Service[] = [
       },
     ],
   },
+  {
+    slug: "vitrificacao-de-couro",
+    nome: "Vitrificação de Couro",
+    Icon: SeatShineIcon,
+    beforeAfter: {
+      antes: couroAntes,
+      depois: couroDepois,
+      altAntes: "Couro do banco ressecado e sem brilho antes da vitrificação de couro em Joinville",
+      altDepois: "Couro do banco hidratado e protegido após vitrificação de couro em Joinville",
+      badge: "Couro protegido",
+      BadgeIcon: Shield,
+    },
+    descricao:
+      "Hidratação e selagem cerâmica do couro: protege contra manchas, suor e raios UV, mantendo o toque original.",
+    lista: [
+      "Barreira contra manchas de jeans, suor e líquidos",
+      "Proteção UV: evita ressecamento e trincas",
+      "Toque original preservado, sem aspecto oleoso",
+    ],
+    processo: [
+      "Limpeza profunda do couro com produto pH neutro",
+      "Hidratação e nutrição das fibras",
+      "Aplicação da camada cerâmica protetora",
+      "Cura e acabamento acetinado uniforme",
+    ],
+    durabilidade: "12 a 24 meses",
+    whatsapp: "Olá! Gostaria de saber mais sobre a Vitrificação de Couro.",
+    seoTitle: "Vitrificação de Couro em Joinville | Clínica do Carro",
+    seoDescription:
+      "Vitrificação de couro em Joinville: limpeza profunda, hidratação e selagem cerâmica que protege bancos e volante contra manchas e raios UV.",
+    h1: "Vitrificação de Couro em Joinville",
+    intro: [
+      "A vitrificação de couro é a proteção definitiva para bancos, volante e apoios do seu carro. Na Clínica do Carro — Studio Detail, em Joinville/SC, começamos com uma limpeza profunda com produtos de pH neutro, que remove suor, oleosidade e sujeira acumulada nos poros do couro sem agredir o material.",
+      "Em seguida vem a hidratação, que devolve flexibilidade às fibras, e a aplicação da camada cerâmica: uma película invisível que cria uma barreira contra manchas de tinta de jeans, líquidos, suor e principalmente contra os raios UV, que são os grandes responsáveis pelo ressecamento e pelas trincas.",
+      "O acabamento é acetinado e natural — o couro continua com o toque original, mas passa a sujar muito menos e a limpeza do dia a dia se resume a um pano de microfibra levemente úmido.",
+    ],
+    faqs: [
+      {
+        pergunta: "Quanto tempo dura a vitrificação de couro?",
+        resposta:
+          "De 12 a 24 meses, dependendo do uso do veículo e da exposição ao sol. Bancos de uso diário e carros que ficam na rua tendem a exigir manutenção mais cedo.",
+      },
+      {
+        pergunta: "A vitrificação deixa o couro escorregadio ou brilhante?",
+        resposta:
+          "Não. O acabamento é acetinado e mantém o toque natural do couro, sem aspecto oleoso ou plastificado.",
+      },
+      {
+        pergunta: "Serve para couro sintético (courvin)?",
+        resposta:
+          "Sim. Aplicamos também em couro sintético e em volantes, com produto adequado a cada material.",
+      },
+      {
+        pergunta: "Resolve manchas de tinta de calça jeans?",
+        resposta:
+          "Sim, a camada cerâmica dificulta a transferência da tinta e facilita muito a remoção quando ela acontece. Manchas antigas são tratadas na etapa de limpeza profunda.",
+      },
+    ],
+  },
+  {
+    slug: "revitalizacao-de-plasticos",
+    nome: "Revitalização de Plásticos",
+    Icon: Sparkles,
+    beforeAfter: {
+      antes: plasticosAntes,
+      depois: plasticosDepois,
+      altAntes: "Plástico externo do carro esbranquiçado antes da revitalização em Joinville",
+      altDepois: "Plástico externo do carro preto e uniforme após revitalização em Joinville",
+      badge: "Preto profundo",
+      BadgeIcon: Sparkles,
+    },
+    descricao:
+      "Devolve a cor preta original de parachoques, frisos e retrovisores esbranquiçados pelo sol.",
+    lista: [
+      "Fim do aspecto esbranquiçado e desbotado",
+      "Acabamento preto acetinado e uniforme",
+      "Proteção UV que retarda o desbotamento",
+    ],
+    processo: [
+      "Limpeza e descontaminação dos plásticos",
+      "Remoção de resíduos de cera e silicone antigo",
+      "Aplicação do revitalizador com proteção UV",
+      "Nivelamento do acabamento e secagem",
+    ],
+    durabilidade: "4 a 8 meses",
+    whatsapp: "Olá! Gostaria de saber mais sobre a Revitalização de Plásticos.",
+    seoTitle: "Revitalização de Plásticos Automotivos em Joinville | Clínica do Carro",
+    seoDescription:
+      "Revitalização de plásticos automotivos em Joinville: devolve o preto original de parachoques, frisos e retrovisores com proteção UV. Orçamento no WhatsApp.",
+    h1: "Revitalização de Plásticos Automotivos em Joinville",
+    intro: [
+      "Com o tempo, o sol e a chuva deixam os plásticos externos do carro esbranquiçados e acinzentados. Parachoques texturizados, frisos, colunas, capas de retrovisor e caixas de roda são os primeiros a envelhecer — e é justamente isso que faz um carro bem cuidado parecer velho.",
+      "Na Clínica do Carro — Studio Detail, em Joinville/SC, a revitalização começa pela limpeza e descontaminação, removendo silicones e ceras antigas que impedem a fixação do produto. Só depois aplicamos o revitalizador, que penetra no plástico e devolve a cor preta original com acabamento acetinado, sem aquele efeito oleoso que atrai poeira.",
+      "O produto conta com filtro UV, retardando um novo desbotamento. É um serviço rápido, de excelente custo-benefício, e faz uma diferença enorme quando combinado com polimento ou lavação premium.",
+    ],
+    faqs: [
+      {
+        pergunta: "Quanto tempo dura a revitalização de plásticos?",
+        resposta:
+          "Em média de 4 a 8 meses, variando conforme a exposição ao sol, a frequência de lavagem e se o carro fica em garagem.",
+      },
+      {
+        pergunta: "O produto deixa o plástico oleoso?",
+        resposta:
+          "Não. Usamos um revitalizador de acabamento acetinado, que não escorre com a chuva nem atrai poeira como o silicone comum.",
+      },
+      {
+        pergunta: "Funciona em plásticos muito desbotados?",
+        resposta:
+          "Sim, na grande maioria dos casos recuperamos o preto original. Em plásticos com desgaste extremo, o resultado é uma melhora significativa, mas pode não ficar 100% uniforme — avaliamos por fotos no WhatsApp.",
+      },
+      {
+        pergunta: "Serve para plásticos internos?",
+        resposta:
+          "Para o interior usamos produtos específicos de acabamento fosco, aplicados dentro da higienização interna.",
+      },
+    ],
+  },
 ];
 
 export const getService = (slug: string) => services.find((s) => s.slug === slug);
