@@ -60,7 +60,7 @@ export type Service = {
 
 export const services: Service[] = [
   {
-    slug: "polimento-automotivo",
+    slug: "polimento-tecnico",
     nome: "Polimento Técnico",
     Icon: Sparkles,
     image: polimentoImg,
@@ -380,7 +380,7 @@ export const services: Service[] = [
     ],
   },
   {
-    slug: "lavacao-premium",
+    slug: "lavacao-completa-premium",
     nome: "Lavação Completa Premium + Cera",
     Icon: Droplets,
     image: lavacaoImg,
@@ -429,7 +429,7 @@ export const services: Service[] = [
     ],
   },
   {
-    slug: "limpeza-de-motor",
+    slug: "limpeza-tecnica-do-motor",
     nome: "Limpeza Técnica do Motor",
     Icon: EngineShineIcon,
     image: motorImg,
