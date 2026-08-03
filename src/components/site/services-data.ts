@@ -601,8 +601,16 @@ export const services: Service[] = [
     slug: "revitalizacao-de-plasticos",
     nome: "Revitalização de Plásticos",
     Icon: Sparkles,
-    image: plasticosImg.url,
-    alt: "Antes e depois da revitalização de plásticos automotivos em Joinville, com parachoque desbotado recuperado",
+    beforeAfter: {
+      antes: plasticosAntes,
+      depois: plasticosDepois,
+      altAntes:
+        "Parachoque e frisos plásticos esbranquiçados pelo sol antes da revitalização em Joinville",
+      altDepois:
+        "Plásticos automotivos com acabamento preto acetinado após revitalização em Joinville",
+      badge: "Preto restaurado",
+      BadgeIcon: Sparkles,
+    },
     descricao:
       "Devolve a cor preta original de parachoques, frisos e retrovisores esbranquiçados pelo sol.",
     lista: [
