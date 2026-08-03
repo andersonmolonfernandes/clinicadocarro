@@ -73,14 +73,6 @@ export const Route = createFileRoute("/")({
               },
             },
             {
-              "@type": "WebSite",
-              "@id": `${SITE_URL}#website`,
-              url: SITE_URL,
-              name: "Clínica do Carro Studio Detail",
-              inLanguage: "pt-BR",
-              publisher: { "@id": `${SITE_URL}#localbusiness` },
-            },
-            {
               "@type": "FAQPage",
               "@id": `${SITE_URL}#faq`,
               mainEntity: homeFaqs.map((f) => ({
