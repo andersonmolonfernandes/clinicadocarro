@@ -30,28 +30,38 @@ export const Route = createRootRoute({
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { name: "theme-color", content: "#00e676" },
-      { title: "Clínica do Carro — Studio Detail | Joinville/SC" },
+      { name: "application-name", content: "Clínica do Carro Studio Detail" },
+      { name: "apple-mobile-web-app-title", content: "Clínica do Carro" },
+      { name: "apple-mobile-web-app-capable", content: "yes" },
+      { name: "apple-mobile-web-app-status-bar-style", content: "black-translucent" },
+      { title: "Clínica do Carro Studio Detail | Joinville/SC" },
       {
         name: "description",
         content:
           "Estética automotiva em Joinville/SC desde 2013. Polimento, vitrificação, higienização e mais. Agende pelo WhatsApp.",
       },
       { name: "author", content: "Clínica do Carro" },
-      { property: "og:title", content: "Clínica do Carro — Studio Detail | Joinville/SC" },
+      { property: "og:title", content: "Clínica do Carro Studio Detail | Joinville/SC" },
       {
         property: "og:description",
         content:
           "Polimento, vitrificação, higienização e muito mais. Agende agora pelo WhatsApp.",
       },
       { property: "og:type", content: "website" },
+      { property: "og:site_name", content: "Clínica do Carro Studio Detail" },
       { property: "og:locale", content: "pt_BR" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Clínica do Carro — Studio Detail | Joinville/SC" },
+      { name: "twitter:title", content: "Clínica do Carro Studio Detail | Joinville/SC" },
       { name: "twitter:description", content: "Estética automotiva em Joinville desde 2013. Polimento, vitrificação, higienização, faróis, vidros e martelinho de ouro. Agende pelo WhatsApp!" },
     ],
     links: [
-      { rel: "icon", type: "image/png", href: "/logo.png" },
-      { rel: "apple-touch-icon", href: "/logo.png" },
+      { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
+      { rel: "icon", type: "image/png", sizes: "16x16", href: "/icons/favicon-16x16.png" },
+      { rel: "icon", type: "image/png", sizes: "32x32", href: "/icons/favicon-32x32.png" },
+      { rel: "icon", type: "image/png", sizes: "48x48", href: "/icons/favicon-48x48.png" },
+      { rel: "icon", type: "image/png", sizes: "512x512", href: "/icons/favicon-512x512.png" },
+      { rel: "apple-touch-icon", sizes: "180x180", href: "/icons/apple-touch-icon.png" },
+      { rel: "manifest", href: "/manifest.webmanifest" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
@@ -62,6 +72,37 @@ export const Route = createRootRoute({
       {
         rel: "stylesheet",
         href: appCss,
+      },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "Organization",
+              "@id": "https://clinicadocarro.vercel.app/#organization",
+              name: "Clínica do Carro Studio Detail",
+              url: "https://clinicadocarro.vercel.app/",
+              logo: {
+                "@type": "ImageObject",
+                url: "https://clinicadocarro.vercel.app/icons/favicon-512x512.png",
+                width: 512,
+                height: 512,
+              },
+            },
+            {
+              "@type": "WebSite",
+              "@id": "https://clinicadocarro.vercel.app/#website",
+              url: "https://clinicadocarro.vercel.app/",
+              name: "Clínica do Carro Studio Detail",
+              alternateName: "Clínica do Carro",
+              inLanguage: "pt-BR",
+              publisher: { "@id": "https://clinicadocarro.vercel.app/#organization" },
+            },
+          ],
+        }),
       },
     ],
   }),

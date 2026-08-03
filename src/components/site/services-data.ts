@@ -23,8 +23,7 @@ import vidrosAntes from "@/assets/services/polimento-vidros-antes-joinville.jpg"
 import vidrosDepois from "@/assets/services/polimento-vidros-depois-joinville.jpg";
 import couroAntes from "@/assets/services/vitrificacao-de-couro-antes-joinville.jpg";
 import couroDepois from "@/assets/services/vitrificacao-de-couro-depois-joinville.jpg";
-import plasticosAntes from "@/assets/services/revitalizacao-de-plasticos-antes-joinville.jpg";
-import plasticosDepois from "@/assets/services/revitalizacao-de-plasticos-depois-joinville.jpg";
+import plasticosImg from "@/assets/services/revitalizacao-plasticos-antes-depois-joinville.png.asset.json";
 
 export const SITE_URL = "https://clinicadocarro.vercel.app";
 
@@ -601,14 +600,8 @@ export const services: Service[] = [
     slug: "revitalizacao-de-plasticos",
     nome: "Revitalização de Plásticos",
     Icon: Sparkles,
-    beforeAfter: {
-      antes: plasticosAntes,
-      depois: plasticosDepois,
-      altAntes: "Plástico externo do carro esbranquiçado antes da revitalização em Joinville",
-      altDepois: "Plástico externo do carro preto e uniforme após revitalização em Joinville",
-      badge: "Preto profundo",
-      BadgeIcon: Sparkles,
-    },
+    image: plasticosImg.url,
+    alt: "Antes e depois da revitalização de plásticos automotivos em Joinville, com parachoque desbotado recuperado",
     descricao:
       "Devolve a cor preta original de parachoques, frisos e retrovisores esbranquiçados pelo sol.",
     lista: [

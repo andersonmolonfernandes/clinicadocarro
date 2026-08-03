@@ -41,11 +41,11 @@ export const Route = createFileRoute("/")({
             {
               "@type": ["LocalBusiness", "AutoBodyShop"],
               "@id": `${SITE_URL}#localbusiness`,
-              name: "Clínica do Carro — Studio Detail",
+              name: "Clínica do Carro Studio Detail",
               description: DESCRIPTION,
               url: SITE_URL,
               image: `${SITE_URL}/logo.png`,
-              logo: `${SITE_URL}/logo.png`,
+              logo: `${SITE_URL}/icons/favicon-512x512.png`,
               telephone: "+5547999940973",
               priceRange: "$$",
               foundingDate: "2013",
@@ -71,14 +71,6 @@ export const Route = createFileRoute("/")({
                   },
                 })),
               },
-            },
-            {
-              "@type": "WebSite",
-              "@id": `${SITE_URL}#website`,
-              url: SITE_URL,
-              name: "Clínica do Carro — Studio Detail",
-              inLanguage: "pt-BR",
-              publisher: { "@id": `${SITE_URL}#localbusiness` },
             },
             {
               "@type": "FAQPage",

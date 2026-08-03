@@ -58,11 +58,11 @@ export const Route = createFileRoute("/$slug")({
                 },
                 provider: {
                   "@type": "AutoBodyShop",
-                  name: "Clínica do Carro — Studio Detail",
+                  name: "Clínica do Carro Studio Detail",
                   "@id": `${SITE_URL}#localbusiness`,
                   url: SITE_URL,
                   telephone: "+5547999940973",
-                  image: `${SITE_URL}/logo.png`,
+                  image: `${SITE_URL}/icons/favicon-512x512.png`,
                   priceRange: "$$",
                   address: {
                     "@type": "PostalAddress",
