@@ -9,7 +9,7 @@ import { WHATSAPP_DEFAULT } from "@/components/site/constants";
 import { services, SITE_URL } from "@/components/site/services-data";
 
 const URL = `${SITE_URL}/servicos`;
-const TITLE = "Serviços de Estética Automotiva em Joinville | Clínica do Carro";
+const TITLE = "Serviços de Estética Automotiva | Clínica do Carro";
 const DESCRIPTION =
   "Todos os serviços de estética automotiva em Joinville: polimento, vitrificação, higienização interna, faróis, vidros, motor e martelinho de ouro.";
 

@@ -308,7 +308,7 @@ export const services: Service[] = [
     ],
     video: "https://www.instagram.com/reel/DWcLd4HD4nA/?igsh=MWVsYXZ6emM3aWcwYw==",
     whatsapp: "Olá! Gostaria de saber mais sobre o Polimento de Vidros.",
-    seoTitle: "Polimento de Vidros Automotivos em Joinville | Clínica do Carro",
+    seoTitle: "Polimento de Vidros em Joinville | Clínica do Carro",
     seoDescription:
       "Polimento de vidros automotivos em Joinville: remove marcas de palhetas e riscos leves do para-brisa, devolvendo transparência e visibilidade segura.",
     h1: "Polimento de Vidros Automotivos em Joinville",
@@ -405,7 +405,7 @@ export const services: Service[] = [
     durabilidade: "Cera premium: 3 a 5 meses",
     video: "https://www.instagram.com/reel/DVeiGUXjwAV/?igsh=YjByZWdzMGptZWtj",
     whatsapp: "Olá! Gostaria de saber mais sobre a Lavação Completa Premium + Cera.",
-    seoTitle: "Lavação Automotiva Premium com Cera em Joinville | Clínica do Carro",
+    seoTitle: "Lavação Premium com Cera em Joinville | Clínica do Carro",
     seoDescription:
       "Lavação completa premium em Joinville com técnica dos dois baldes e cera de alta performance: brilho intenso e proteção da pintura por 3 a 5 meses.",
     h1: "Lavação Automotiva Premium com Cera em Joinville",
@@ -626,7 +626,7 @@ export const services: Service[] = [
     ],
     durabilidade: "4 a 8 meses",
     whatsapp: "Olá! Gostaria de saber mais sobre a Revitalização de Plásticos.",
-    seoTitle: "Revitalização de Plásticos Automotivos em Joinville | Clínica do Carro",
+    seoTitle: "Revitalização de Plásticos em Joinville | Clínica do Carro",
     seoDescription:
       "Revitalização de plásticos automotivos em Joinville: devolve o preto original de parachoques, frisos e retrovisores com proteção UV. Orçamento no WhatsApp.",
     h1: "Revitalização de Plásticos Automotivos em Joinville",
