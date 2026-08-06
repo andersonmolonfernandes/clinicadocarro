@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import type {} from "@tanstack/react-start";
 import { services } from "@/components/site/services-data";
 
-const BASE_URL = "https://clinicadocarro.lovable.app";
+const BASE_URL = "https://clinicadocarro.vercel.app";
 
 interface SitemapEntry {
   path: string;
@@ -44,9 +44,10 @@ export const Route = createFileRoute("/sitemap.xml")({
         ].join("\n");
 
         return new Response(xml, {
+          status: 200,
           headers: {
-            "Content-Type": "application/xml",
-            "Cache-Control": "no-store, max-age=0",
+            "Content-Type": "application/xml; charset=utf-8",
+            "Cache-Control": "public, max-age=3600",
             "X-Robots-Tag": "noindex, follow",
           },
         });

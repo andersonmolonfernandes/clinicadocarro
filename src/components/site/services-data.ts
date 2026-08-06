@@ -26,7 +26,7 @@ import couroDepois from "@/assets/services/vitrificacao-de-couro-depois-joinvill
 import plasticosAntes from "@/assets/services/revitalizacao-de-plasticos-antes-joinville.jpg";
 import plasticosDepois from "@/assets/services/revitalizacao-de-plasticos-depois-joinville.jpg";
 
-export const SITE_URL = "https://clinicadocarro.lovable.app";
+export const SITE_URL = "https://clinicadocarro.vercel.app";
 
 export type ServiceIcon =
   | LucideIcon
