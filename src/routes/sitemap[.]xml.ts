@@ -44,9 +44,10 @@ export const Route = createFileRoute("/sitemap.xml")({
         ].join("\n");
 
         return new Response(xml, {
+          status: 200,
           headers: {
-            "Content-Type": "application/xml",
-            "Cache-Control": "no-store, max-age=0",
+            "Content-Type": "application/xml; charset=utf-8",
+            "Cache-Control": "public, max-age=3600",
             "X-Robots-Tag": "noindex, follow",
           },
         });
