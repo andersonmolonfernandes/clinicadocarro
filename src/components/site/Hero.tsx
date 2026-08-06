@@ -5,7 +5,7 @@ import { WHATSAPP_DEFAULT } from "./constants";
 import { useReducedMotion } from "@/hooks/use-reduced-motion";
 import { EASE } from "./Section";
 
-const words = ["Seu", "carro", "merece", "o", "melhor"];
+const words = ["Estética", "Automotiva", "Premium", "em", "Joinville"];
 
 export function Hero() {
   const ref = useRef<HTMLElement>(null);
