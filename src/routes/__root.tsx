@@ -41,6 +41,10 @@ export const Route = createRootRoute({
           "Estética automotiva em Joinville/SC desde 2013. Polimento, vitrificação, higienização e mais. Agende pelo WhatsApp.",
       },
       { name: "author", content: "Clínica do Carro" },
+      {
+        name: "robots",
+        content: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      },
       { property: "og:title", content: "Clínica do Carro Studio Detail | Joinville/SC" },
       {
         property: "og:description",
