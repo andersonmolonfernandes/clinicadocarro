@@ -17,22 +17,22 @@ export const Route = createFileRoute("/$slug")({
   },
   head: ({ params }) => {
     const s = getService(params.slug);
-    if (!s) return { meta: [{ title: "Página não encontrada" }, { name: "robots", content: "noindex" }] };
+    if (!s) return { meta: [{ title: "Página não encontrada", key: "title" }, { name: "robots", content: "noindex", key: "robots" }] };
     const url = `${SITE_URL}/${s.slug}`;
     return {
       meta: [
-        { title: s.seoTitle },
-        { name: "description", content: s.seoDescription },
-        { property: "og:title", content: s.seoTitle },
-        { property: "og:description", content: s.seoDescription },
+        { title: s.seoTitle, key: "title" },
+        { name: "description", content: s.seoDescription, key: "description" },
+        { property: "og:title", content: s.seoTitle, key: "og:title" },
+        { property: "og:description", content: s.seoDescription, key: "og:description" },
         { property: "og:type", content: "article" },
         { property: "og:url", content: url },
-        { property: "og:image", content: `${SITE_URL}/logo.png` },
-        { name: "twitter:card", content: "summary_large_image" },
-        { name: "twitter:title", content: s.seoTitle },
-        { name: "twitter:description", content: s.seoDescription },
-        { name: "twitter:image", content: `${SITE_URL}/logo.png` },
-        { name: "robots", content: "index, follow" },
+        { property: "og:image", content: `${SITE_URL}/logo.png`, key: "og:image" },
+        { name: "twitter:card", content: "summary_large_image", key: "twitter:card" },
+        { name: "twitter:title", content: s.seoTitle, key: "twitter:title" },
+        { name: "twitter:description", content: s.seoDescription, key: "twitter:description" },
+        { name: "twitter:image", content: `${SITE_URL}/logo.png`, key: "twitter:image" },
+        { name: "robots", content: "index, follow", key: "robots" },
       ],
       links: [{ rel: "canonical", href: url }],
       scripts: [

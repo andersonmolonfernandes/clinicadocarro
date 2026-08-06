@@ -34,29 +34,10 @@ export const Route = createRootRoute({
       { name: "apple-mobile-web-app-title", content: "Clínica do Carro" },
       { name: "apple-mobile-web-app-capable", content: "yes" },
       { name: "apple-mobile-web-app-status-bar-style", content: "black-translucent" },
-      { title: "Clínica do Carro Studio Detail | Joinville/SC" },
-      {
-        name: "description",
-        content:
-          "Estética automotiva em Joinville/SC desde 2013. Polimento, vitrificação, higienização e mais. Agende pelo WhatsApp.",
-      },
       { name: "author", content: "Clínica do Carro" },
-      {
-        name: "robots",
-        content: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
-      },
-      { property: "og:title", content: "Clínica do Carro Studio Detail | Joinville/SC" },
-      {
-        property: "og:description",
-        content:
-          "Polimento, vitrificação, higienização e muito mais. Agende agora pelo WhatsApp.",
-      },
       { property: "og:type", content: "website" },
       { property: "og:site_name", content: "Clínica do Carro Studio Detail" },
       { property: "og:locale", content: "pt_BR" },
-      { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Clínica do Carro Studio Detail | Joinville/SC" },
-      { name: "twitter:description", content: "Estética automotiva em Joinville desde 2013. Polimento, vitrificação, higienização, faróis, vidros e martelinho de ouro. Agende pelo WhatsApp!" },
     ],
     links: [
       { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
@@ -90,13 +71,13 @@ export const Route = createRootRoute({
           "@graph": [
             {
               "@type": ["Organization", "AutoBodyShop", "LocalBusiness"],
-              "@id": "https://clinicadocarro.vercel.app/#organization",
+              "@id": "https://clinicadocarro.lovable.app/#organization",
               name: "Clínica do Carro",
               legalName: "Clínica do Carro Studio Detail",
               alternateName: ["Clínica do Carro Studio Detail", "Clínica do Carro Joinville"],
               description:
                 "Estética automotiva em Joinville/SC desde 2013: polimento técnico, vitrificação, higienização interna, martelinho de ouro, restauração de faróis, cristalização de para-brisa e lavação premium.",
-              url: "https://clinicadocarro.vercel.app/",
+              url: "https://clinicadocarro.lovable.app/",
               telephone: "+5547999940973",
               foundingDate: "2013",
               priceRange: "$$",
@@ -138,28 +119,28 @@ export const Route = createRootRoute({
                 "https://maps.google.com/?q=Rua+Alois+Finder,+1401,+Aventureiro,+Joinville,+SC",
               logo: {
                 "@type": "ImageObject",
-                "@id": "https://clinicadocarro.vercel.app/#logo",
-                url: "https://clinicadocarro.vercel.app/logo.png",
-                contentUrl: "https://clinicadocarro.vercel.app/logo.png",
+                "@id": "https://clinicadocarro.lovable.app/#logo",
+                url: "https://clinicadocarro.lovable.app/logo.png",
+                contentUrl: "https://clinicadocarro.lovable.app/logo.png",
                 width: 1254,
                 height: 1254,
                 caption: "Clínica do Carro Studio Detail",
               },
-              image: "https://clinicadocarro.vercel.app/logo.png",
+              image: "https://clinicadocarro.lovable.app/logo.png",
             },
             {
               "@type": "WebSite",
-              "@id": "https://clinicadocarro.vercel.app/#website",
-              url: "https://clinicadocarro.vercel.app/",
+              "@id": "https://clinicadocarro.lovable.app/#website",
+              url: "https://clinicadocarro.lovable.app/",
               name: "Clínica do Carro Studio Detail",
               alternateName: ["Clínica do Carro", "Clínica do Carro Joinville"],
               inLanguage: "pt-BR",
-              publisher: { "@id": "https://clinicadocarro.vercel.app/#organization" },
+              publisher: { "@id": "https://clinicadocarro.lovable.app/#organization" },
               potentialAction: {
                 "@type": "SearchAction",
                 target: {
                   "@type": "EntryPoint",
-                  urlTemplate: "https://clinicadocarro.vercel.app/servicos?q={search_term_string}",
+                  urlTemplate: "https://clinicadocarro.lovable.app/servicos?q={search_term_string}",
                 },
                 "query-input": "required name=search_term_string",
               },

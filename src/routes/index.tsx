@@ -13,21 +13,23 @@ import { services, SITE_URL } from "@/components/site/services-data";
 
 const TITLE = "Estética Automotiva em Joinville | Clínica do Carro";
 const DESCRIPTION =
-  "Estética automotiva em Joinville/SC desde 2013: polimento técnico, vitrificação, higienização interna, martelinho de ouro, restauração de faróis e lavação premium. Atendimento profissional — orçamento pelo WhatsApp.";
+  "Estética automotiva premium em Joinville desde 2013. Polimento, vitrificação e higienização. Peça seu orçamento pelo WhatsApp.";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: TITLE },
-      { name: "description", content: DESCRIPTION },
-      { property: "og:title", content: TITLE },
-      { property: "og:description", content: DESCRIPTION },
+      { title: TITLE, key: "title" },
+      { name: "description", content: DESCRIPTION, key: "description" },
+      { property: "og:title", content: TITLE, key: "og:title" },
+      { property: "og:description", content: DESCRIPTION, key: "og:description" },
       { property: "og:type", content: "website" },
       { property: "og:url", content: `${SITE_URL}/` },
       { property: "og:image", content: `${SITE_URL}/logo.png` },
-      { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:image", content: `${SITE_URL}/logo.png` },
-      { name: "robots", content: "index, follow, max-image-preview:large, max-snippet:-1" },
+      { name: "twitter:card", content: "summary_large_image", key: "twitter:card" },
+      { name: "twitter:title", content: TITLE, key: "twitter:title" },
+      { name: "twitter:description", content: DESCRIPTION, key: "twitter:description" },
+      { name: "twitter:image", content: `${SITE_URL}/logo.png`, key: "twitter:image" },
+      { name: "robots", content: "index, follow, max-image-preview:large, max-snippet:-1", key: "robots" },
       { property: "og:site_name", content: "Clínica do Carro Studio Detail" },
       { name: "geo.region", content: "BR-SC" },
       { name: "geo.placename", content: "Joinville" },

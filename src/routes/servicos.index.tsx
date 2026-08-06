@@ -16,14 +16,18 @@ const DESCRIPTION =
 export const Route = createFileRoute("/servicos/")({
   head: () => ({
     meta: [
-      { title: TITLE },
-      { name: "description", content: DESCRIPTION },
-      { property: "og:title", content: TITLE },
-      { property: "og:description", content: DESCRIPTION },
+      { title: TITLE, key: "title" },
+      { name: "description", content: DESCRIPTION, key: "description" },
+      { property: "og:title", content: TITLE, key: "og:title" },
+      { property: "og:description", content: DESCRIPTION, key: "og:description" },
       { property: "og:type", content: "website" },
       { property: "og:url", content: URL },
-      { name: "twitter:card", content: "summary_large_image" },
-      { name: "robots", content: "index, follow" },
+      { property: "og:image", content: `${SITE_URL}/logo.png`, key: "og:image" },
+      { name: "twitter:card", content: "summary_large_image", key: "twitter:card" },
+      { name: "twitter:title", content: TITLE, key: "twitter:title" },
+      { name: "twitter:description", content: DESCRIPTION, key: "twitter:description" },
+      { name: "twitter:image", content: `${SITE_URL}/logo.png`, key: "twitter:image" },
+      { name: "robots", content: "index, follow", key: "robots" },
     ],
     links: [{ rel: "canonical", href: URL }],
     scripts: [
