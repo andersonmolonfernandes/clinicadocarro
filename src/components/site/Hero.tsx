@@ -86,7 +86,7 @@ export function Hero() {
                 hidden: { opacity: 0, y: 20 },
                 show: { opacity: 1, y: 0, transition: { duration: 0.55, ease: EASE } },
               }}
-              className={w === "melhor" ? "text-neon glow-neon" : undefined}
+              className={w === "Premium" ? "text-neon glow-neon" : undefined}
             >
               {w}
             </motion.span>
