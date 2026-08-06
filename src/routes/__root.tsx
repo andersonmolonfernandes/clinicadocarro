@@ -35,14 +35,9 @@ export const Route = createRootRoute({
       { name: "apple-mobile-web-app-capable", content: "yes" },
       { name: "apple-mobile-web-app-status-bar-style", content: "black-translucent" },
       { name: "author", content: "Clínica do Carro" },
-      {
-        name: "robots",
-        content: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
-      },
       { property: "og:type", content: "website" },
       { property: "og:site_name", content: "Clínica do Carro Studio Detail" },
       { property: "og:locale", content: "pt_BR" },
-      { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [
       { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
