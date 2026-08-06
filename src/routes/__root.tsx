@@ -102,7 +102,7 @@ export const Route = createRootRoute({
               "@id": "https://clinicadocarro.lovable.app/#website",
               url: "https://clinicadocarro.lovable.app/",
               name: "Clínica do Carro Studio Detail",
-              alternateName: "Clínica do Carro",
+              alternateName: ["Clínica do Carro", "Clínica do Carro Joinville"],
               inLanguage: "pt-BR",
               publisher: { "@id": "https://clinicadocarro.lovable.app/#organization" },
             },
