@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import type {} from "@tanstack/react-start";
 import { services } from "@/components/site/services-data";
 
-const BASE_URL = "https://clinicadocarro.lovable.app";
+const BASE_URL = "https://clinicadocarro.vercel.app";
 
 interface SitemapEntry {
   path: string;
