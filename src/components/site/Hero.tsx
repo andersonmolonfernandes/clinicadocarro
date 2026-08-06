@@ -5,7 +5,7 @@ import { WHATSAPP_DEFAULT } from "./constants";
 import { useReducedMotion } from "@/hooks/use-reduced-motion";
 import { EASE } from "./Section";
 
-const words = ["Seu", "carro", "merece", "o", "melhor"];
+const words = ["Estética", "Automotiva", "Premium", "em", "Joinville"];
 
 export function Hero() {
   const ref = useRef<HTMLElement>(null);
@@ -86,7 +86,7 @@ export function Hero() {
                 hidden: { opacity: 0, y: 20 },
                 show: { opacity: 1, y: 0, transition: { duration: 0.55, ease: EASE } },
               }}
-              className={w === "melhor" ? "text-neon glow-neon" : undefined}
+              className={w === "Premium" ? "text-neon glow-neon" : undefined}
             >
               {w}
             </motion.span>
