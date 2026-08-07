@@ -132,8 +132,12 @@ export const Route = createRootRoute({
               "@type": "WebSite",
               "@id": "https://clinicadocarro.vercel.app/#website",
               url: "https://clinicadocarro.vercel.app/",
-              name: "Clínica do Carro Studio Detail",
-              alternateName: ["Clínica do Carro", "Clínica do Carro Joinville"],
+              name: "Clínica do Carro | Estética Automotiva",
+              alternateName: [
+                "Clínica do Carro",
+                "Clínica do Carro Studio Detail",
+                "Clínica do Carro Joinville",
+              ],
               inLanguage: "pt-BR",
               publisher: { "@id": "https://clinicadocarro.vercel.app/#organization" },
               potentialAction: {
