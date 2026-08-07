@@ -50,7 +50,7 @@ export function Hero() {
             alt="Clínica do Carro — Studio Detail"
             fetchPriority="high"
             decoding="async"
-            className="w-[min(78vw,340px)] object-contain"
+            className="w-[min(84vw,400px)] object-contain"
             style={{ filter: "drop-shadow(0 0 32px rgba(0,230,118,0.28))" }}
           />
         </motion.div>
