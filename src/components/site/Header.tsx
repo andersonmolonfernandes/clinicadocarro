@@ -49,7 +49,7 @@ export function Header() {
               alt="Clínica do Carro Studio Detail"
               fetchPriority="high"
               decoding="async"
-              className="h-11 w-auto md:h-14"
+              className="h-14 w-auto md:h-16"
             />
           </a>
 
