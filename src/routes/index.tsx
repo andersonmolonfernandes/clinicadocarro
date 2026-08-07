@@ -11,9 +11,9 @@ import { FloatingWhats } from "@/components/site/FloatingWhats";
 import { HomeFaq, homeFaqs } from "@/components/site/HomeFaq";
 import { services, SITE_URL } from "@/components/site/services-data";
 
-const TITLE = "Estética Automotiva em Joinville | Clínica do Carro";
+const TITLE = "Clínica do Carro | Estética Automotiva em Joinville";
 const DESCRIPTION =
-  "Estética automotiva em Joinville/SC desde 2013: polimento técnico, vitrificação, higienização interna, restauração de faróis, polimento de vidros, cristalização de para-brisa e lavação premium. Orçamento pelo WhatsApp.";
+  "Estética automotiva premium em Joinville/SC desde 2013: polimento técnico, vitrificação, higienização interna e lavação. Orçamento pelo WhatsApp.";
 
 export const Route = createFileRoute("/")({
   head: () => ({
