@@ -11,9 +11,9 @@ import { FloatingWhats } from "@/components/site/FloatingWhats";
 import { HomeFaq, homeFaqs } from "@/components/site/HomeFaq";
 import { services, SITE_URL } from "@/components/site/services-data";
 
-const TITLE = "Clínica do Carro | Estética Automotiva em Joinville";
+const TITLE = "Clínica do Carro — Estética Automotiva Premium em Joinville";
 const DESCRIPTION =
-  "Estética automotiva premium em Joinville/SC desde 2013: polimento técnico, vitrificação, higienização interna e lavação. Orçamento pelo WhatsApp.";
+  "Clínica do Carro (Joinville/SC) — Estética automotiva premium desde 2013. Polimento técnico, vitrificação cerâmica, higienização interna e serviços que valorizam seu veículo. Agende rápido pelo WhatsApp.";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -24,11 +24,11 @@ export const Route = createFileRoute("/")({
       { property: "og:description", content: DESCRIPTION, key: "og:description" },
       { property: "og:type", content: "website" },
       { property: "og:url", content: `${SITE_URL}/` },
-      { property: "og:image", content: `${SITE_URL}/logo.png` },
+      { property: "og:image", content: `${SITE_URL}/og/og-home-1200x630.png?v=20260809` },
       { name: "twitter:card", content: "summary_large_image", key: "twitter:card" },
       { name: "twitter:title", content: TITLE, key: "twitter:title" },
       { name: "twitter:description", content: DESCRIPTION, key: "twitter:description" },
-      { name: "twitter:image", content: `${SITE_URL}/logo.png`, key: "twitter:image" },
+      { name: "twitter:image", content: `${SITE_URL}/og/og-home-1200x630.png?v=20260809`, key: "twitter:image" },
       { name: "robots", content: "index, follow, max-image-preview:large, max-snippet:-1", key: "robots" },
       { property: "og:site_name", content: "Clínica do Carro Studio Detail" },
       { name: "geo.region", content: "BR-SC" },
@@ -47,8 +47,8 @@ export const Route = createFileRoute("/")({
               name: "Clínica do Carro Studio Detail",
               description: DESCRIPTION,
               url: SITE_URL,
-              image: `${SITE_URL}/logo.png`,
-              logo: `${SITE_URL}/icons/favicon-512x512.png`,
+              image: `${SITE_URL}/og/og-home-1200x630.png?v=20260809`,
+              logo: `${SITE_URL}/icons/favicon-512x512.png?v=20260809`,
               telephone: "+5547999940973",
               priceRange: "$$",
               foundingDate: "2013",
