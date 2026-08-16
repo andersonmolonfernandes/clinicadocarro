@@ -38,6 +38,7 @@ export const Route = createRootRoute({
       { property: "og:type", content: "website" },
       { property: "og:site_name", content: "Clínica do Carro Studio Detail" },
       { property: "og:locale", content: "pt_BR" },
+      { name: "language", content: "pt-BR" },
     ],
     links: [
       { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
@@ -76,7 +77,7 @@ export const Route = createRootRoute({
               legalName: "Clínica do Carro Studio Detail",
               alternateName: ["Clínica do Carro Studio Detail", "Clínica do Carro Joinville"],
               description:
-                "Estética automotiva em Joinville/SC desde 2013: polimento técnico, vitrificação, higienização interna, martelinho de ouro, restauração de faróis, cristalização de para-brisa e lavação premium.",
+                "Estética automotiva em Joinville/SC desde 2013: polimento técnico, vitrificação, higienização interna, restauração de faróis e outros serviços especializados. Orçamento pelo WhatsApp.",
               url: "https://clinicadocarro.vercel.app/",
               telephone: "+5547999940973",
               foundingDate: "2013",
