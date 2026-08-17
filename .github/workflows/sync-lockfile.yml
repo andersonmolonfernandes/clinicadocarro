@@ -13,25 +13,98 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: main
 
-      - name: Use Node.js 18
+      - name: Use Node.js 24
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
-          cache: 'npm'
+          node-version: '24'
+          cache: npm
 
-      - name: Regenerate package-lock.json
-        run: npm install --package-lock-only
+      - name: Mostrar versões
+        run: |
+          set -euo pipefail
+          node -v
+          npm -v
+
+      - name: Regenerar package-lock.json
+        run: |
+          set -euo pipefail
+          npm install --package-lock-only
+
+      - name: Verificar que package.json não mudou
+        run: |
+          set -euo pipefail
+
+          if git diff --quiet -- package.json; then
+            echo "OK: package.json não foi alterado."
+          else
+            echo "ERRO: package.json foi alterado."
+            git diff -- package.json
+            exit 1
+          fi
+
+      - name: Verificar package-lock.json
+        run: |
+          set -euo pipefail
+
+          if git diff --quiet -- package-lock.json; then
+            echo "package-lock.json já estava sincronizado."
+          else
+            echo "package-lock.json foi atualizado."
+            git diff --stat -- package-lock.json
+          fi
 
       - name: Commit package-lock.json
         run: |
+          set -euo pipefail
+
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
           if git diff --quiet -- package-lock.json; then
-            echo "package-lock.json já está sincronizado."
-          else
-            git add package-lock.json
-            git commit -m "chore(ci): sync package-lock.json with package.json"
-            git push origin HEAD:main
+            echo "Nenhuma alteração para commitar."
+            exit 0
           fi
+
+          git add package-lock.json
+
+          git commit -m "chore(ci): synchronize package-lock.json"
+
+      - name: Push para main
+        run: |
+          set -euo pipefail
+
+          git push origin HEAD:main
+
+      - name: Confirmar push
+        run: |
+          set -euo pipefail
+
+          git fetch origin main
+
+          LOCAL_LOCK=$(git rev-parse HEAD:package-lock.json)
+          REMOTE_LOCK=$(git rev-parse origin/main:package-lock.json)
+
+          echo "Lockfile local:  $LOCAL_LOCK"
+          echo "Lockfile remoto: $REMOTE_LOCK"
+
+          if [ "$LOCAL_LOCK" != "$REMOTE_LOCK" ]; then
+            echo "ERRO: package-lock.json remoto ainda não corresponde ao gerado."
+            exit 1
+          fi
+
+          echo "SUCESSO: package-lock.json foi realmente enviado para main."
+
+      - name: Testar npm ci
+        run: |
+          set -euo pipefail
+          rm -rf node_modules
+          npm ci
+
+      - name: Testar build
+        run: |
+          set -euo pipefail
+          npm run build
