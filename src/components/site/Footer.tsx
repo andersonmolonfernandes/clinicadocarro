@@ -20,6 +20,8 @@ export function Footer() {
               src="/logo-mark.png"
               alt="Clínica do Carro Studio Detail"
               loading="lazy"
+              width="308"
+              height="150"
               decoding="async"
               className="h-12 w-auto"
             />

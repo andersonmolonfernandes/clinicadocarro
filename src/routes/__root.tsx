@@ -42,8 +42,6 @@ export const Route = createRootRoute({
     ],
     links: [
       { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
-      { rel: "icon", type: "image/png", sizes: "16x16", href: "/icons/favicon-16x16.png" },
-      { rel: "icon", type: "image/png", sizes: "32x32", href: "/icons/favicon-32x32.png" },
       { rel: "icon", type: "image/png", sizes: "48x48", href: "/icons/favicon-48x48.png" },
       { rel: "icon", type: "image/png", sizes: "96x96", href: "/icons/favicon-96x96.png" },
       { rel: "icon", type: "image/png", sizes: "192x192", href: "/icons/favicon-192x192.png" },
