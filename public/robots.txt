@@ -1,1 +1,6 @@
-__REMOTE_FILE__public__robots.txt
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /_build/
+
+Sitemap: https://clinicadocarro.vercel.app/sitemap.xml
