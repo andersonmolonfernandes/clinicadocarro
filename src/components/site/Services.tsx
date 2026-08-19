@@ -6,6 +6,7 @@ import {
   Play,
   Clock,
   ArrowRight,
+  Plus,
   type LucideIcon,
 } from "lucide-react";
 import { Link } from "@tanstack/react-router";
@@ -250,6 +251,51 @@ const ServiceCard = memo(function ServiceCard({
                   />
                 </div>
               ) : null}
+
+              {s.addOn && (
+                <div
+                  className="mb-6 overflow-hidden rounded-xl border"
+                  style={{
+                    borderColor: "rgba(0,230,118,0.22)",
+                    background: "linear-gradient(135deg, rgba(0,230,118,0.07), rgba(255,255,255,0.02))",
+                  }}
+                >
+                  <div className="grid grid-cols-[96px_1fr] items-stretch">
+                    <img
+                      src={s.addOn.image}
+                      alt={s.addOn.alt}
+                      loading="lazy"
+                      decoding="async"
+                      width={320}
+                      height={240}
+                      className="h-full min-h-[112px] w-full object-cover"
+                    />
+                    <div className="p-4">
+                      <span className="text-[0.62rem] font-semibold uppercase tracking-[0.18em] text-neon">
+                        Adicional Premium
+                      </span>
+                      <h4
+                        className="mt-1 text-[0.98rem] font-semibold text-white"
+                        style={{ fontFamily: "var(--font-display)" }}
+                      >
+                        {s.addOn.nome}
+                      </h4>
+                      <p className="mt-1 text-[0.76rem] leading-relaxed text-white/55">
+                        {s.addOn.descricao}
+                      </p>
+                      <a
+                        href={waLink(s.addOn.whatsapp)}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="mt-3 inline-flex w-full items-center justify-center gap-2 rounded-lg border border-neon/40 bg-neon/10 px-3 py-2.5 text-[0.72rem] font-semibold uppercase tracking-[0.08em] text-neon transition-colors hover:bg-neon hover:text-[#06120b]"
+                      >
+                        <Plus className="h-3.5 w-3.5" />
+                        Adicionar ao serviço
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              )}
 
               <p className="text-[0.9rem] leading-relaxed text-white/60">{s.descricao}</p>
 

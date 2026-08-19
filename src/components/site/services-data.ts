@@ -16,6 +16,7 @@ import higienizacaoImg from "@/assets/services/higienizacao-interna-automotiva-j
 import faroisImg from "@/assets/services/restauracao-farois-joinville.jpg";
 import cristalizacaoImg from "@/assets/services/cristalizacao-vidros-joinville.jpg";
 import lavacaoImg from "@/assets/services/lavacao-premium-cera-joinville.jpg";
+import engineImg from "@/assets/services/limpeza-tecnica-motor-joinville.jpg";
 import martelinhoAntes from "@/assets/services/martelinho-de-ouro-antes-joinville.jpg";
 import martelinhoDepois from "@/assets/services/martelinho-de-ouro-depois-joinville.jpg";
 import vidrosAntes from "@/assets/services/polimento-vidros-antes-joinville.jpg";
@@ -45,6 +46,13 @@ export type Service = {
   whatsapp: string;
   image?: string;
   alt?: string;
+  addOn?: {
+    nome: string;
+    descricao: string;
+    image: string;
+    alt: string;
+    whatsapp: string;
+  };
   beforeAfter?: {
     antes: string;
     depois: string;
@@ -384,36 +392,42 @@ export const services: Service[] = [
   },
   {
     slug: "lavacao-completa-premium",
-    nome: "Lavação Completa Premium + Cera",
+    nome: "Lavação Completa Premium",
     Icon: Droplets,
     image: lavacaoImg,
-    alt: "Lavação completa premium com cera em Joinville: carro limpo e brilhante",
+    alt: "Lavação completa premium em Joinville: carro limpo e brilhante",
     descricao:
-      "Lavagem completa por fora e por dentro, finalizada com cera premium que dá brilho intenso e protege a pintura por cerca de 3 a 5 meses.",
+      "Cuidado completo por dentro e por fora, com lavagem técnica, acabamento detalhado e proteção da pintura.",
     lista: [
-      "Carro impecável por dentro e por fora",
+      "Rodas, pneus e caixas de roda",
       "Lavagem técnica com dois baldes e microfibra",
-      "Cera premium: brilho intenso e proteção da pintura",
-      "Limpeza técnica do motor disponível como adicional",
+      "Aspiração e limpeza interna",
+      "Cera premium incluída no acabamento",
     ],
     processo: [
       "Rodas, pneus e caixas de roda",
       "Lavagem externa completa",
       "Aspiração e limpeza interna",
-      "Aplicação da cera premium na pintura",
-      "Opcional: limpeza técnica do motor com verniz protetor",
+      "Acabamento e aplicação da cera premium",
     ],
-    durabilidade: "Cera premium: 3 a 5 meses",
+    durabilidade: "Proteção da cera: cerca de 3 a 5 meses",
     video: "https://www.instagram.com/reel/DVeiGUXjwAV/?igsh=YjByZWdzMGptZWtj",
-    whatsapp: "Olá! Gostaria de saber mais sobre a Lavação Completa Premium + Cera.",
-    seoTitle: "Lavação Premium com Cera em Joinville | Clínica do Carro",
+    whatsapp: "Olá! Gostaria de saber mais sobre a Lavação Completa Premium.",
+    addOn: {
+      nome: "Limpeza Técnica do Motor",
+      descricao: "Acabamento impecável em cada detalhe do cofre do motor.",
+      image: engineImg,
+      alt: "Limpeza técnica do motor em Joinville na Clínica do Carro",
+      whatsapp: "Olá! Quero adicionar a Limpeza Técnica do Motor à Lavação Completa Premium.",
+    },
+    seoTitle: "Lavação Completa Premium em Joinville | Clínica do Carro",
     seoDescription:
-      "Lavação completa premium em Joinville com técnica dos dois baldes e cera de alta performance: brilho intenso e proteção da pintura por 3 a 5 meses.",
-    h1: "Lavação Automotiva Premium com Cera em Joinville",
+      "Lavação completa premium em Joinville com lavagem técnica, limpeza interna, acabamento detalhado e cera premium incluída.",
+    h1: "Lavação Completa Premium em Joinville",
     intro: [
-      "Nossa lavação premium é feita com a técnica dos dois baldes e luvas de microfibra, evitando os micro riscos circulares causados por lavagens automáticas e panos inadequados.",
-      "O serviço cobre rodas, pneus, caixas de roda, toda a parte externa, além de aspiração e limpeza interna — e termina com a aplicação de uma cera premium que realça o brilho e protege a pintura por cerca de 3 a 5 meses.",
-      "É a manutenção ideal entre polimentos, mantendo o carro sempre apresentável e a pintura protegida contra sol, chuva e poeira. A limpeza técnica do motor pode ser adicionada ao serviço quando necessário.",
+      "Nossa lavação premium é feita com técnica dos dois baldes, luvas de microfibra e produtos adequados para cada superfície do veículo.",
+      "O serviço inclui rodas, pneus, caixas de roda, parte externa, aspiração e limpeza interna, com acabamento final e cera premium incluída.",
+      "A Limpeza Técnica do Motor pode ser adicionada à lavação quando você quiser elevar o acabamento do veículo.",
     ],
     faqs: [
       {
