@@ -661,3 +661,8 @@ export const services: Service[] = [
 ];
 
 export const getService = (slug: string) => services.find((s) => s.slug === slug);
+
+
+export function getService(slug: string): Service | undefined {
+  return services.find((service) => service.slug === slug);
+}
