@@ -1,4 +1,1 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://clinicadocarro.vercel.app/sitemap.xml
+__REMOTE_FILE__public__robots.txt
