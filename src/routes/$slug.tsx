@@ -1,5 +1,5 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { MessageCircle, Clock, ChevronRight, ArrowRight } from "lucide-react";
+import { MessageCircle, Clock, ChevronRight, ArrowRight, Plus } from "lucide-react";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { FloatingWhats } from "@/components/site/FloatingWhats";
@@ -217,7 +217,21 @@ function ServicePage() {
                   ))}
                 </ol>
 
-                {s.durabilidade && (
+                {(s.addOns ?? (s.addOn ? [s.addOn] : [])).length > 0 && (
+                <section className="mt-10 border-t border-white/[0.06] pt-8">
+                  <div className="mb-5"><p className="text-[0.62rem] font-semibold uppercase tracking-[0.2em] text-neon/80">Adicionais</p><h2 className="mt-1 text-2xl font-semibold text-white">Personalize seu serviço</h2><p className="mt-2 max-w-2xl text-[0.88rem] leading-relaxed text-white/48">Opções selecionadas para complementar o cuidado do veículo.</p></div>
+                  <div className="grid gap-4 sm:grid-cols-2">
+                    {(s.addOns ?? (s.addOn ? [s.addOn] : [])).map((addOn) => { const AddOnIcon = addOn.Icon ?? Plus; return (
+                      <div key={addOn.nome} className="overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.025]">
+                        {addOn.image ? <div className="relative aspect-[16/9] overflow-hidden bg-black"><img src={addOn.image} alt={addOn.alt ?? addOn.nome} loading="lazy" decoding="async" width={640} height={360} className="h-full w-full object-cover" /><div className="absolute inset-0 bg-gradient-to-t from-black/65 via-transparent to-transparent" /></div> : <div className="grid aspect-[16/9] place-items-center bg-gradient-to-br from-neon/[0.12] to-white/[0.02]"><AddOnIcon className="h-9 w-9 text-neon" /></div>}
+                        <div className="p-5"><div className="flex items-start justify-between gap-3"><div><span className="text-[0.6rem] font-semibold uppercase tracking-[0.2em] text-neon/75">Adicional</span><h3 className="mt-1 text-lg font-semibold text-white">{addOn.nome}</h3></div>{addOn.etiqueta && <span className="rounded-full border border-neon/20 bg-neon/[0.08] px-2 py-1 text-[0.58rem] font-semibold uppercase tracking-[0.1em] text-neon">{addOn.etiqueta}</span>}</div><p className="mt-2 text-[0.8rem] leading-relaxed text-white/52">{addOn.descricao}</p><a href={waLink(addOn.whatsapp)} onClick={() => trackWhatsAppClick("addon")} target="_blank" rel="noopener noreferrer" className="mt-4 flex w-full items-center justify-center gap-2 rounded-xl bg-neon px-4 py-3 text-[0.68rem] font-bold uppercase tracking-[0.12em] text-[#06120b] transition-transform hover:-translate-y-0.5"><Plus className="h-4 w-4" />Adicionar ao serviço</a></div>
+                      </div>
+                    ); })}
+                  </div>
+                </section>
+              )}
+
+              {s.durabilidade && (
                   <p className="mt-8 inline-flex items-center gap-2 rounded-lg border border-white/[0.08] bg-white/[0.03] px-3 py-2 text-[0.85rem] text-white/75">
                     <Clock className="h-4 w-4 shrink-0 text-neon" />
                     <span>

@@ -49,10 +49,21 @@ export type Service = {
   addOn?: {
     nome: string;
     descricao: string;
-    image: string;
-    alt: string;
+    image?: string;
+    alt?: string;
     whatsapp: string;
+    Icon?: LucideIcon;
+    etiqueta?: string;
   };
+  addOns?: {
+    nome: string;
+    descricao: string;
+    image?: string;
+    alt?: string;
+    whatsapp: string;
+    Icon?: LucideIcon;
+    etiqueta?: string;
+  }[];
   beforeAfter?: {
     antes: string;
     depois: string;
@@ -254,6 +265,15 @@ export const services: Service[] = [
       "Ou vitrificação: acabamento cristalino, em média de 1 a 1,5 anos",
     ],
     durabilidade: "Em média de 1 a 1,5 anos com vitrificação; até 3 anos com verniz UV",
+    addOns: [
+      {
+        nome: "Verniz UV",
+        descricao: "Proteção de alta resistência para preservar a transparência do farol por até 3 anos.",
+        whatsapp: "Olá! Gostaria de escolher o Verniz UV como proteção para a Restauração de Faróis.",
+        Icon: Shield,
+        etiqueta: "Até 3 anos",
+      },
+    ],
     video: "https://www.instagram.com/reel/DYIubqlANtF/?igsh=MTZqc3FrNHp2b3IzZw==",
     whatsapp: "Olá! Gostaria de saber mais sobre a Restauração de Faróis.",
     seoTitle: "Restauração de Faróis em Joinville | Clínica do Carro",
@@ -413,13 +433,16 @@ export const services: Service[] = [
     durabilidade: "Proteção da cera: cerca de 3 a 5 meses",
     video: "https://www.instagram.com/reel/DVeiGUXjwAV/?igsh=YjByZWdzMGptZWtj",
     whatsapp: "Olá! Gostaria de saber mais sobre a Lavação Completa Premium.",
-    addOn: {
-      nome: "Limpeza Técnica do Motor",
-      descricao: "Acabamento impecável em cada detalhe do cofre do motor.",
-      image: engineImg,
-      alt: "Limpeza técnica do motor em Joinville na Clínica do Carro",
-      whatsapp: "Olá! Quero adicionar a Limpeza Técnica do Motor à Lavação Completa Premium.",
-    },
+    addOns: [
+      {
+        nome: "Limpeza Técnica do Motor",
+        descricao: "Acabamento impecável em cada detalhe do cofre do motor.",
+        image: engineImg,
+        alt: "Limpeza técnica do motor em Joinville na Clínica do Carro",
+        whatsapp: "Olá! Quero adicionar a Limpeza Técnica do Motor à Lavação Completa Premium.",
+        etiqueta: "Mais escolhido",
+      },
+    ],
     seoTitle: "Lavação Completa Premium em Joinville | Clínica do Carro",
     seoDescription:
       "Lavação completa premium em Joinville com lavagem técnica, limpeza interna, acabamento detalhado e cera premium incluída.",
