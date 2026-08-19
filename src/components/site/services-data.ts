@@ -412,7 +412,7 @@ export const services: Service[] = [
   },
   {
     slug: "lavacao-completa-premium",
-    nome: "Lavação Completa Premium",
+    nome: "Lavação Completa Premium + Cera",
     Icon: Droplets,
     image: lavacaoImg,
     alt: "Lavação completa premium em Joinville: carro limpo e brilhante",
@@ -433,16 +433,6 @@ export const services: Service[] = [
     durabilidade: "Proteção da cera: cerca de 3 a 5 meses",
     video: "https://www.instagram.com/reel/DVeiGUXjwAV/?igsh=YjByZWdzMGptZWtj",
     whatsapp: "Olá! Gostaria de saber mais sobre a Lavação Completa Premium.",
-    addOns: [
-      {
-        nome: "Limpeza Técnica do Motor",
-        descricao: "Acabamento impecável em cada detalhe do cofre do motor.",
-        image: engineImg,
-        alt: "Limpeza técnica do motor em Joinville na Clínica do Carro",
-        whatsapp: "Olá! Quero adicionar a Limpeza Técnica do Motor à Lavação Completa Premium.",
-        etiqueta: "Mais escolhido",
-      },
-    ],
     seoTitle: "Lavação Completa Premium em Joinville | Clínica do Carro",
     seoDescription:
       "Lavação completa premium em Joinville com lavagem técnica, limpeza interna, acabamento detalhado e cera premium incluída.",
@@ -450,7 +440,6 @@ export const services: Service[] = [
     intro: [
       "Nossa lavação premium é feita com técnica dos dois baldes, luvas de microfibra e produtos adequados para cada superfície do veículo.",
       "O serviço inclui rodas, pneus, caixas de roda, parte externa, aspiração e limpeza interna, com acabamento final e cera premium incluída.",
-      "A Limpeza Técnica do Motor pode ser adicionada à lavação quando você quiser elevar o acabamento do veículo.",
     ],
     faqs: [
       {
@@ -469,6 +458,49 @@ export const services: Service[] = [
           "Sim, recomendamos agendar pelo WhatsApp para garantir horário e o tempo necessário de dedicação ao seu carro.",
       },
     ],
+  },
+  {
+    slug: "limpeza-tecnica-do-motor",
+    nome: "Limpeza Técnica do Motor",
+    Icon: Droplets,
+    image: engineImg,
+    alt: "Limpeza técnica do motor em Joinville na Clínica do Carro",
+    descricao: "Limpeza detalhada e segura do cofre do motor para remover sujeira, fuligem e resíduos, com acabamento das partes acessíveis e proteção das superfícies compatíveis. É uma escolha prática para quem acabou de passar pelo mecânico e quer deixar o motor limpo, organizado e protegido.",
+    lista: [
+      "Limpeza técnica e controlada do cofre do motor",
+      "Produtos e métodos adequados para cada área",
+      "Acabamento das partes acessíveis",
+      "Proteção das superfícies compatíveis"
+    ],
+    processo: [
+      "Proteção e preparação das áreas sensíveis",
+      "Limpeza controlada do cofre",
+      "Secagem completa e acabamento",
+      "Aplicação de proteção quando indicada"
+    ],
+    seoTitle: "Limpeza Técnica do Motor em Joinville | Clínica do Carro",
+    seoDescription: "Limpeza técnica do motor em Joinville com método controlado, acabamento detalhado e proteção das superfícies compatíveis.",
+    h1: "Limpeza Técnica do Motor em Joinville",
+    intro: [
+      "Um serviço pensado para quem quer o cofre do motor limpo, organizado e bem cuidado depois de uma manutenção mecânica.",
+      "O processo é feito de forma controlada, com atenção às áreas sensíveis e aos materiais presentes no compartimento.",
+      "Depois da limpeza, as superfícies compatíveis recebem acabamento e proteção adequada para manter o aspecto cuidado por mais tempo."
+    ],
+    faqs: [
+      {
+        pergunta: "A limpeza técnica do motor é segura?",
+        resposta: "Sim. O serviço é feito de forma controlada, com proteção das áreas sensíveis, produtos adequados e cuidado com os componentes do compartimento do motor."
+      },
+      {
+        pergunta: "Precisa ser feita depois de passar pelo mecânico?",
+        resposta: "É uma ótima opção. Depois de uma manutenção, a limpeza ajuda a remover sujeira, resíduos e marcas do serviço, deixando o cofre mais organizado e bem apresentado."
+      },
+      {
+        pergunta: "O motor recebe proteção?",
+        resposta: "As superfícies compatíveis podem receber proteção e acabamento adequados ao material, sempre respeitando as características de cada componente."
+      }
+    ],
+    whatsapp: "Olá! Quero fazer a Limpeza Técnica do Motor na Clínica do Carro."
   },
   {
     slug: "martelinho-de-ouro",
