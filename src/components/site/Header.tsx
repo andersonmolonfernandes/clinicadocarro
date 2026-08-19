@@ -49,6 +49,8 @@ export function Header() {
               alt="Clínica do Carro Studio Detail"
               fetchPriority="high"
               decoding="async"
+              width={64}
+              height={64}
               className="h-12 w-auto sm:h-14 md:h-16 object-contain"
             />
           </a>
@@ -97,7 +99,7 @@ export function Header() {
             style={{ background: "rgba(8,8,8,0.97)", backdropFilter: "blur(18px)" }}
           >
             <div className="flex h-[72px] items-center justify-between px-5">
-              <img src="/logo-mark.png" alt="" className="h-11 w-auto" />
+              <img src="/logo-mark.png" alt="" width={64} height={64} loading="lazy" decoding="async" className="h-11 w-auto" />
               <button
                 aria-label="Fechar menu"
                 className="p-2 text-white"
