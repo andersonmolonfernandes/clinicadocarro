@@ -136,7 +136,10 @@ export function Header() {
                 href={WHATSAPP_DEFAULT}
                 target="_blank"
                 rel="noopener noreferrer"
-                onClick={() => setOpen(false)}
+                onClick={() => {
+                  trackWhatsAppClick("mobile_header");
+                  setOpen(false);
+                }}
                 className="btn-base btn-primary mt-8 w-full"
               >
                 <MessageCircle className="h-5 w-5" />

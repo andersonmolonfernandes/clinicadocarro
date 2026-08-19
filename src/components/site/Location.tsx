@@ -1,5 +1,5 @@
 import { MapPin, Navigation, MessageCircle, Clock } from "lucide-react";
-import { ADDRESS, MAPS_LINK, WHATSAPP_DEFAULT } from "./constants";
+import { ADDRESS, MAPS_LINK, WHATSAPP_DEFAULT, trackWhatsAppClick } from "./constants";
 import { Reveal, SectionHeading } from "./Section";
 
 export function Location() {
@@ -29,6 +29,7 @@ export function Location() {
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center">
               <a
                 href={WHATSAPP_DEFAULT}
+                onClick={() => trackWhatsAppClick("location")}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-base btn-primary"

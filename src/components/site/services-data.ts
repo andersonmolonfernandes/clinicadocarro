@@ -16,7 +16,6 @@ import higienizacaoImg from "@/assets/services/higienizacao-interna-automotiva-j
 import faroisImg from "@/assets/services/restauracao-farois-joinville.jpg";
 import cristalizacaoImg from "@/assets/services/cristalizacao-vidros-joinville.jpg";
 import lavacaoImg from "@/assets/services/lavacao-premium-cera-joinville.jpg";
-import motorImg from "@/assets/services/limpeza-tecnica-motor-joinville.jpg";
 import martelinhoAntes from "@/assets/services/martelinho-de-ouro-antes-joinville.jpg";
 import martelinhoDepois from "@/assets/services/martelinho-de-ouro-depois-joinville.jpg";
 import vidrosAntes from "@/assets/services/polimento-vidros-antes-joinville.jpg";
@@ -126,7 +125,7 @@ export const services: Service[] = [
     alt: "Aplicação de vitrificação cerâmica em carro na Clínica do Carro em Joinville",
     destaque: true,
     descricao:
-      "Camada protetora que repele água, resiste a riscos e bloqueia UV. Dura até 3 anos.",
+      "Camada protetora que repele água, ajuda a proteger contra UV e facilita a manutenção da pintura. Durabilidade média de 1 a 1,5 anos.",
     lista: [
       "Efeito hidrofóbico — a água escorre sozinha",
       "Proteção contra UV, chuva ácida e resíduos",
@@ -142,12 +141,12 @@ export const services: Service[] = [
     whatsapp: "Olá! Gostaria de saber mais sobre a Vitrificação.",
     seoTitle: "Vitrificação de Pintura em Joinville | Clínica do Carro",
     seoDescription:
-      "Vitrificação cerâmica em Joinville: proteção hidrofóbica contra UV, chuva ácida e riscos leves, com brilho profundo e durabilidade de até 3 anos.",
+      "Vitrificação cerâmica em Joinville: proteção hidrofóbica contra UV, chuva ácida e resíduos, com brilho profundo e durabilidade média de 1 a 1,5 anos.",
     h1: "Vitrificação Cerâmica em Joinville",
     intro: [
       "A vitrificação cria uma camada cerâmica transparente sobre o verniz do seu carro. Essa camada é muito mais dura e resistente que a cera tradicional: repele água e sujeira, resiste a riscos leves e bloqueia os raios UV que desbotam a pintura ao longo dos anos.",
       "Em carros novos, a vitrificação é a melhor forma de preservar a pintura de fábrica desde o primeiro dia. Em carros usados, fazemos antes o polimento técnico — a camada cerâmica sela a pintura, então tudo que estiver embaixo dela fica registrado.",
-      "No dia a dia, a diferença é enorme: a água escorre sozinha levando a sujeira junto, a lavagem fica muito mais rápida e o brilho se mantém por anos em Joinville, mesmo com chuva, sol forte e poeira.",
+      "No dia a dia, a água escorre com facilidade levando parte da sujeira junto, a lavagem fica mais rápida e o brilho permanece por mais tempo, mesmo com chuva, sol e poeira.",
     ],
     faqs: [
       {
@@ -255,7 +254,7 @@ export const services: Service[] = [
     h1: "Restauração de Faróis em Joinville",
     intro: [
       "Faróis amarelados ou opacos reduzem drasticamente a iluminação da estrada à noite — além de envelhecerem a aparência do carro. A restauração recupera a transparência do policarbonato sem a necessidade de trocar a peça, com um custo muito menor.",
-      "O processo passa por lixamento progressivo, polimento até a transparência total e, por fim, uma proteção à sua escolha: vapor de polímero, com até 3 anos de resistência, ou vitrificação, com acabamento cristalino de 1 a 2 anos.",
+      "O processo passa por lixamento progressivo, polimento até a transparência total e, por fim, uma proteção à sua escolha: verniz UV, com até 3 anos de durabilidade, ou vitrificação, com acabamento cristalino e durabilidade média de 1 a 1,5 anos.",
       "Sem a etapa de proteção o farol volta a amarelar em poucos meses — por isso ela é parte obrigatória do nosso serviço.",
     ],
     faqs: [
@@ -267,7 +266,7 @@ export const services: Service[] = [
       {
         pergunta: "O farol volta a amarelar?",
         resposta:
-          "Com a proteção aplicada, a transparência se mantém de 1 a 3 anos conforme o tipo escolhido e a exposição ao sol.",
+          "Com vitrificação, a proteção tem durabilidade média de 1 a 1,5 anos. Com verniz UV, a proteção pode chegar a 3 anos, conforme exposição ao sol e cuidados.",
       },
       {
         pergunta: "Quanto tempo leva o serviço?",
@@ -393,14 +392,16 @@ export const services: Service[] = [
       "Lavagem completa por fora e por dentro, finalizada com cera premium que dá brilho intenso e protege a pintura por cerca de 3 a 5 meses.",
     lista: [
       "Carro impecável por dentro e por fora",
-      "Sem riscos: técnica dos dois baldes",
+      "Lavagem técnica com dois baldes e microfibra",
       "Cera premium: brilho intenso e proteção da pintura",
+      "Limpeza técnica do motor disponível como adicional",
     ],
     processo: [
       "Rodas, pneus e caixas de roda",
       "Lavagem externa completa",
       "Aspiração e limpeza interna",
       "Aplicação da cera premium na pintura",
+      "Opcional: limpeza técnica do motor com verniz protetor",
     ],
     durabilidade: "Cera premium: 3 a 5 meses",
     video: "https://www.instagram.com/reel/DVeiGUXjwAV/?igsh=YjByZWdzMGptZWtj",
@@ -412,7 +413,7 @@ export const services: Service[] = [
     intro: [
       "Nossa lavação premium é feita com a técnica dos dois baldes e luvas de microfibra, evitando os micro riscos circulares causados por lavagens automáticas e panos inadequados.",
       "O serviço cobre rodas, pneus, caixas de roda, toda a parte externa, além de aspiração e limpeza interna — e termina com a aplicação de uma cera premium que realça o brilho e protege a pintura por cerca de 3 a 5 meses.",
-      "É a manutenção ideal entre polimentos, mantendo o carro sempre apresentável e a pintura protegida contra sol, chuva e poeira.",
+      "É a manutenção ideal entre polimentos, mantendo o carro sempre apresentável e a pintura protegida contra sol, chuva e poeira. A limpeza técnica do motor pode ser adicionada ao serviço quando necessário.",
     ],
     faqs: [
       {
@@ -429,53 +430,6 @@ export const services: Service[] = [
         pergunta: "Preciso agendar?",
         resposta:
           "Sim, recomendamos agendar pelo WhatsApp para garantir horário e o tempo necessário de dedicação ao seu carro.",
-      },
-    ],
-  },
-  {
-    slug: "limpeza-tecnica-do-motor",
-    nome: "Limpeza Técnica do Motor",
-    Icon: EngineShineIcon,
-    image: motorImg,
-    alt: "Limpeza técnica de motor em Joinville: compartimento do motor limpo e com verniz protetor",
-    descricao: "Desengraxamento técnico completo, finalizado com verniz protetor.",
-    lista: [
-      "Motor limpo facilita manutenção e revisão",
-      "Evita acúmulo de graxa e sujeira",
-      "Valoriza o carro na venda",
-    ],
-    processo: [
-      "Proteção de borrachas, plásticos e componentes",
-      "Desengraxamento por partes",
-      "Secagem a ar comprimido",
-      "Verniz protetor final",
-    ],
-    video: "https://www.instagram.com/reel/DYkyhh_A_Ll/?igsh=MnB0cmdnM3p3Zncx",
-    whatsapp: "Olá! Gostaria de saber mais sobre a Limpeza Técnica do Motor.",
-    seoTitle: "Limpeza Técnica de Motor em Joinville | Clínica do Carro",
-    seoDescription:
-      "Limpeza técnica de motor em Joinville: desengraxamento seguro com proteção de componentes, secagem a ar comprimido e verniz protetor final.",
-    h1: "Limpeza Técnica de Motor em Joinville",
-    intro: [
-      "A limpeza do compartimento do motor exige método. Antes de qualquer produto, protegemos módulos, chicotes, alternador e demais componentes sensíveis — só então fazemos o desengraxamento por partes, com produtos específicos e sem jatos de alta pressão diretos.",
-      "Depois da secagem a ar comprimido, aplicamos um verniz protetor que devolve a cor de plásticos e mangueiras e dificulta o acúmulo de poeira e graxa.",
-      "Além do resultado visual, um motor limpo facilita revisões, ajuda a identificar vazamentos precocemente e valoriza bastante o carro na hora da venda.",
-    ],
-    faqs: [
-      {
-        pergunta: "Lavar o motor pode causar problemas elétricos?",
-        resposta:
-          "Não, quando feito de forma técnica. Protegemos todos os componentes sensíveis e não usamos jato de alta pressão direto no compartimento.",
-      },
-      {
-        pergunta: "Com que frequência devo limpar o motor?",
-        resposta:
-          "Uma a duas vezes por ano é suficiente para a maioria dos veículos, ou antes de vender o carro.",
-      },
-      {
-        pergunta: "O verniz protetor mancha as peças?",
-        resposta:
-          "Não. Ele deixa um acabamento uniforme e acetinado, sem aspecto oleoso, e ainda dificulta o acúmulo de sujeira.",
       },
     ],
   },

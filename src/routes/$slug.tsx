@@ -6,7 +6,7 @@ import { FloatingWhats } from "@/components/site/FloatingWhats";
 import { CTA } from "@/components/site/CTA";
 import { Location } from "@/components/site/Location";
 import { BeforeAfter, VideoCard } from "@/components/site/Services";
-import { waLink } from "@/components/site/constants";
+import { waLink, trackWhatsAppClick } from "@/components/site/constants";
 import { services, getService, SITE_URL } from "@/components/site/services-data";
 
 export const Route = createFileRoute("/$slug")({
@@ -60,7 +60,7 @@ export const Route = createFileRoute("/$slug")({
                   },
                 },
                 provider: {
-                  "@type": "AutoBodyShop",
+                  "@type": "LocalBusiness",
                   name: "Clínica do Carro Studio Detail",
                   "@id": `${SITE_URL}#localbusiness`,
                   url: SITE_URL,
@@ -150,6 +150,7 @@ function ServicePage() {
               <p className="mt-5 text-[1rem] leading-relaxed text-white/65">{s.descricao}</p>
               <a
                 href={waLink(s.whatsapp)}
+                onClick={() => trackWhatsAppClick("service")}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-base btn-primary mt-7 w-full sm:w-auto"

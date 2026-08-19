@@ -1,4 +1,4 @@
-import { WHATSAPP_DEFAULT, ADDRESS } from "./constants";
+import { WHATSAPP_DEFAULT, ADDRESS, trackWhatsAppClick } from "./constants";
 
 const links = [
   { label: "Serviços", href: "#servicos" },
@@ -36,6 +36,7 @@ export function Footer() {
                 href={l.href}
                 target={l.ext ? "_blank" : undefined}
                 rel={l.ext ? "noopener noreferrer" : undefined}
+                onClick={l.ext ? () => trackWhatsAppClick("footer") : undefined}
                 className="text-sm font-medium text-white/50 transition-colors hover:text-neon"
               >
                 {l.label}

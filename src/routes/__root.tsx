@@ -27,7 +27,7 @@ function NotFoundComponent() {
 export const Route = createRootRoute({
   head: () => ({
     meta: [
-      { title: "Clínica do Carro | Estética Automotiva em Joinville" },
+      { title: "Clínica do Carro | Estética Automotiva em Joinville", key: "title" },
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { name: "theme-color", content: "#00e676" },
@@ -36,18 +36,10 @@ export const Route = createRootRoute({
       { name: "apple-mobile-web-app-capable", content: "yes" },
       { name: "apple-mobile-web-app-status-bar-style", content: "black-translucent" },
       { name: "author", content: "Clínica do Carro Studio Detail" },
-      { name: "description", content: "Estética automotiva profissional em Joinville/SC desde 2013. Polimento técnico, vitrificação, higienização interna, restauração de faróis e outros serviços. Orçamento pelo WhatsApp." },
-      { name: "robots", content: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" },
-      { property: "og:type", content: "website" },
-      { property: "og:site_name", content: "Clínica do Carro Studio Detail" },
-      { property: "og:locale", content: "pt_BR" },
-      { property: "og:image", content: "https://clinicadocarro.vercel.app/logo.png" },
-      { property: "og:image:alt", content: "Clínica do Carro Studio Detail em Joinville" },
-      { name: "twitter:card", content: "summary_large_image" },
+      { name: "description", content: "Estética automotiva profissional em Joinville/SC desde 2013. Polimento técnico, vitrificação, higienização interna, restauração de faróis e outros serviços. Orçamento pelo WhatsApp.", key: "description" },
       { name: "language", content: "pt-BR" },
     ],
     links: [
-      { rel: "canonical", href: "https://clinicadocarro.vercel.app/" },
       { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
       { rel: "icon", type: "image/png", sizes: "48x48", href: "/icons/favicon-48x48.png" },
       { rel: "icon", type: "image/png", sizes: "96x96", href: "/icons/favicon-96x96.png" },
@@ -117,10 +109,7 @@ export const Route = createRootRoute({
                   closes: "12:00",
                 },
               ],
-              sameAs: [
-                "https://wa.me/5547999940973",
-                "https://maps.google.com/?q=Rua+Alois+Finder,+1401,+Aventureiro,+Joinville,+SC",
-              ],
+              sameAs: [],
               hasMap:
                 "https://maps.google.com/?q=Rua+Alois+Finder,+1401,+Aventureiro,+Joinville,+SC",
               logo: {

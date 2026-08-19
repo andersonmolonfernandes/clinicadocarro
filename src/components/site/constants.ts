@@ -10,7 +10,15 @@ export const ADDRESS = "Rua Alois Finder, 1401 — Aventureiro, Joinville/SC";
 export const MAPS_LINK =
   "https://maps.google.com/?q=Rua+Alois+Finder,+1401,+Aventureiro,+Joinville,+SC";
 
-export type ConversionSource = "header" | "hero" | "cta" | "floating_whatsapp" | "service";
+export type ConversionSource =
+  | "header"
+  | "mobile_header"
+  | "hero"
+  | "cta"
+  | "floating_whatsapp"
+  | "service"
+  | "footer"
+  | "location";
 
 export function trackWhatsAppClick(source: ConversionSource) {
   if (typeof window === "undefined") return;
