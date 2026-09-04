@@ -17,6 +17,7 @@ export type ConversionSource =
   | "cta"
   | "floating_whatsapp"
   | "service"
+  | "addon"
   | "footer"
   | "location";
 
