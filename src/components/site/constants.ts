@@ -1,3 +1,5 @@
+import { serviceKeyFromSlug, trackWhatsAppLead } from "@/lib/tracking";
+
 export const WHATSAPP_BASE = "https://wa.me/5547999940973";
 export const WHATSAPP_DEFAULT = `${WHATSAPP_BASE}?text=${encodeURIComponent(
   "Olá! Vi o site e gostaria de agendar um serviço."
