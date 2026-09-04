@@ -1,3 +1,5 @@
+import { serviceKeyFromSlug, trackWhatsAppLead } from "@/lib/tracking";
+
 export const WHATSAPP_BASE = "https://wa.me/5547999940973";
 export const WHATSAPP_DEFAULT = `${WHATSAPP_BASE}?text=${encodeURIComponent(
   "Olá! Vi o site e gostaria de agendar um serviço."
@@ -19,25 +21,15 @@ export type ConversionSource =
   | "service"
   | "addon"
   | "footer"
-  | "location";
+  | "location"
+  | "home_service_card"
+  | "home_addon"
+  | "services_index";
 
-export function trackWhatsAppClick(source: ConversionSource) {
-  if (typeof window === "undefined") return;
-  const event = {
-    event: "whatsapp_lead",
-    conversion_source: source,
-    conversion_value: 1,
-  };
-  const w = window as Window & { dataLayer?: Record<string, unknown>[] };
-  w.dataLayer = w.dataLayer || [];
-  w.dataLayer.push(event);
-  const gtag = (w as Window & { gtag?: (...args: unknown[]) => void }).gtag;
-  if (typeof gtag === "function") {
-    gtag("event", "generate_lead", {
-      method: "WhatsApp",
-      source,
-      value: 1,
-      currency: "BRL",
-    });
-  }
+/**
+ * Clique real no WhatsApp = conversão principal.
+ * O disparo (e a proteção contra eventos duplicados) fica em @/lib/tracking.
+ */
+export function trackWhatsAppClick(source: ConversionSource, slug?: string) {
+  trackWhatsAppLead({ placement: source, service: serviceKeyFromSlug(slug) });
 }
