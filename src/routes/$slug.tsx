@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { MessageCircle, Clock, ChevronRight, ArrowRight, Plus } from "lucide-react";
 import { Header } from "@/components/site/Header";
@@ -6,8 +7,17 @@ import { FloatingWhats } from "@/components/site/FloatingWhats";
 import { CTA } from "@/components/site/CTA";
 import { Location } from "@/components/site/Location";
 import { BeforeAfter, VideoCard } from "@/components/site/Services";
+import { FaqAccordion } from "@/components/site/Faq";
 import { waLink, trackWhatsAppClick } from "@/components/site/constants";
-import { services, getService, SITE_URL } from "@/components/site/services-data";
+import { serviceKeyFromSlug, trackServiceView } from "@/lib/tracking";
+import {
+  services,
+  getService,
+  SITE_URL,
+  primaryImage,
+  primaryAlt,
+  absUrl,
+} from "@/components/site/services-data";
 
 export const Route = createFileRoute("/$slug")({
   loader: ({ params }) => {
@@ -19,6 +29,9 @@ export const Route = createFileRoute("/$slug")({
     const s = getService(params.slug);
     if (!s) return { meta: [{ title: "Página não encontrada", key: "title" }, { name: "robots", content: "noindex", key: "robots" }] };
     const url = `${SITE_URL}/${s.slug}`;
+    const img = primaryImage(s);
+    const imgUrl = img ? absUrl(img) : `${SITE_URL}/logo.png`;
+    const imgAlt = primaryAlt(s);
     return {
       meta: [
         { title: s.seoTitle, key: "title" },
@@ -27,13 +40,14 @@ export const Route = createFileRoute("/$slug")({
         { property: "og:description", content: s.seoDescription, key: "og:description" },
         { property: "og:type", content: "website" },
         { property: "og:url", content: url },
-        { property: "og:image", content: `${SITE_URL}/logo.png`, key: "og:image" },
-        { property: "og:image:alt", content: `${s.nome} em Joinville | Clínica do Carro`, key: "og:image:alt" },
+        { property: "og:image", content: imgUrl, key: "og:image" },
+        { property: "og:image:alt", content: imgAlt, key: "og:image:alt" },
         { name: "twitter:card", content: "summary_large_image", key: "twitter:card" },
         { name: "twitter:title", content: s.seoTitle, key: "twitter:title" },
         { name: "twitter:description", content: s.seoDescription, key: "twitter:description" },
-        { name: "twitter:image", content: `${SITE_URL}/logo.png`, key: "twitter:image" },
-        { name: "robots", content: "index, follow", key: "robots" },
+        { name: "twitter:image", content: imgUrl, key: "twitter:image" },
+        { name: "twitter:image:alt", content: imgAlt, key: "twitter:image:alt" },
+        { name: "robots", content: "index, follow, max-image-preview:large, max-snippet:-1", key: "robots" },
       ],
       links: [{ rel: "canonical", href: url }],
       scripts: [
@@ -49,6 +63,13 @@ export const Route = createFileRoute("/$slug")({
                 serviceType: `${s.nome} automotivo`,
                 description: s.seoDescription,
                 url,
+                image: {
+                  "@type": "ImageObject",
+                  "@id": `${url}#primaryimage`,
+                  url: imgUrl,
+                  contentUrl: imgUrl,
+                  caption: imgAlt,
+                },
                 areaServed: {
                   "@type": "City",
                   name: "Joinville",
@@ -75,6 +96,15 @@ export const Route = createFileRoute("/$slug")({
                     addressCountry: "BR",
                   },
                 },
+              },
+              {
+                "@type": "WebPage",
+                "@id": `${url}#webpage`,
+                url,
+                name: s.seoTitle,
+                description: s.seoDescription,
+                primaryImageOfPage: { "@id": `${url}#primaryimage` },
+                inLanguage: "pt-BR",
               },
               {
                 "@type": "FAQPage",
@@ -107,6 +137,7 @@ export const Route = createFileRoute("/$slug")({
   },
   component: ServicePage,
 });
+
 
 function ServicePage() {
   const { slug } = Route.useLoaderData();
