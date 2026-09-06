@@ -685,3 +685,15 @@ export const services: Service[] = [
 
 export const getService = (slug: string) => services.find((s) => s.slug === slug);
 
+
+/** Imagem principal do serviço (usada em SEO/social e no topo da página). */
+export const primaryImage = (s: Service): string | undefined =>
+  s.image ?? s.beforeAfter?.depois;
+
+/** Texto alternativo da imagem principal. */
+export const primaryAlt = (s: Service): string =>
+  s.alt ?? s.beforeAfter?.altDepois ?? `${s.nome} em Joinville — Clínica do Carro`;
+
+/** Transforma um caminho de asset em URL absoluta para metadados. */
+export const absUrl = (path: string): string =>
+  path.startsWith("http") ? path : `${SITE_URL}${path.startsWith("/") ? "" : "/"}${path}`;
