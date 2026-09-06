@@ -117,7 +117,7 @@ export const services: Service[] = [
       {
         pergunta: "Quanto tempo dura um polimento automotivo?",
         resposta:
-          "Com uma proteção aplicada logo após o serviço, o resultado do polimento se mantém de 6 a 12 meses. Com vitrificação cerâmica, a proteção tem durabilidade média de 1 a 1,5 anos.",
+          "Com uma proteção aplicada logo após o serviço, o resultado do polimento se mantém de 6 a 12 meses. Com vitrificação cerâmica, a proteção pode durar de 3 a 5 anos, conforme produto, uso e manutenção.",
       },
       {
         pergunta: "O polimento desgasta a pintura do carro?",
