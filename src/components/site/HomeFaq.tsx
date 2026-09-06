@@ -1,4 +1,5 @@
 import { SectionHeading } from "./Section";
+import { FaqAccordion } from "./Faq";
 import type { Faq } from "./services-data";
 
 export const homeFaqs: Faq[] = [
