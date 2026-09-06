@@ -143,6 +143,11 @@ function ServicePage() {
   const { slug } = Route.useLoaderData();
   const s = getService(slug)!;
   const outros = services.filter((o) => o.slug !== s.slug).slice(0, 6);
+  const img = primaryImage(s);
+
+  useEffect(() => {
+    trackServiceView(serviceKeyFromSlug(slug), "service_page");
+  }, [slug]);
 
   return (
     <>
@@ -181,7 +186,7 @@ function ServicePage() {
               <p className="mt-5 text-[1rem] leading-relaxed text-white/65">{s.descricao}</p>
               <a
                 href={waLink(s.whatsapp)}
-                onClick={() => trackWhatsAppClick("service")}
+                onClick={() => trackWhatsAppClick("service", s.slug)}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-base btn-primary mt-7 w-full sm:w-auto"
@@ -193,16 +198,14 @@ function ServicePage() {
 
             <div className="mt-10 grid gap-10 lg:grid-cols-[1.35fr_1fr] lg:gap-12">
               <div>
-                {s.beforeAfter ? (
-                  <BeforeAfter {...s.beforeAfter} />
-                ) : s.image ? (
+                {img && (
                   <div
-                    className="mb-8 overflow-hidden rounded-2xl border border-white/[0.08]"
+                    className="mb-8 overflow-hidden rounded-2xl border border-white/[0.08] bg-black"
                     style={{ aspectRatio: "16 / 9" }}
                   >
                     <img
-                      src={s.image}
-                      alt={s.alt ?? `${s.nome} — Clínica do Carro Joinville`}
+                      src={img}
+                      alt={primaryAlt(s)}
                       width={1280}
                       height={720}
                       decoding="async"
@@ -210,7 +213,12 @@ function ServicePage() {
                       className="h-full w-full object-cover"
                     />
                   </div>
-                ) : null}
+                )}
+                {s.beforeAfter && (
+                  <div className="mb-8">
+                    <BeforeAfter {...s.beforeAfter} />
+                  </div>
+                )}
 
                 <div className="space-y-4">
                   {s.intro.map((p) => (
@@ -255,7 +263,7 @@ function ServicePage() {
                     {(s.addOns ?? (s.addOn ? [s.addOn] : [])).map((addOn) => { const AddOnIcon = addOn.Icon ?? Plus; return (
                       <div key={addOn.nome} className="overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.025]">
                         {addOn.image ? <div className="relative aspect-[16/9] overflow-hidden bg-black"><img src={addOn.image} alt={addOn.alt ?? addOn.nome} loading="lazy" decoding="async" width={640} height={360} className="h-full w-full object-cover" /><div className="absolute inset-0 bg-gradient-to-t from-black/65 via-transparent to-transparent" /></div> : <div className="grid aspect-[16/9] place-items-center bg-gradient-to-br from-neon/[0.12] to-white/[0.02]"><AddOnIcon className="h-9 w-9 text-neon" /></div>}
-                        <div className="p-5"><div className="flex items-start justify-between gap-3"><div><span className="text-[0.6rem] font-semibold uppercase tracking-[0.2em] text-neon/75">Adicional</span><h3 className="mt-1 text-lg font-semibold text-white">{addOn.nome}</h3></div>{addOn.etiqueta && <span className="rounded-full border border-neon/20 bg-neon/[0.08] px-2 py-1 text-[0.58rem] font-semibold uppercase tracking-[0.1em] text-neon">{addOn.etiqueta}</span>}</div><p className="mt-2 text-[0.8rem] leading-relaxed text-white/52">{addOn.descricao}</p><a href={waLink(addOn.whatsapp)} onClick={() => trackWhatsAppClick("addon")} target="_blank" rel="noopener noreferrer" className="mt-4 flex w-full items-center justify-center gap-2 rounded-xl bg-neon px-4 py-3 text-[0.68rem] font-bold uppercase tracking-[0.12em] text-[#06120b] transition-transform hover:-translate-y-0.5"><Plus className="h-4 w-4" />Adicionar ao serviço</a></div>
+                        <div className="p-5"><div className="flex items-start justify-between gap-3"><div><span className="text-[0.6rem] font-semibold uppercase tracking-[0.2em] text-neon/75">Adicional</span><h3 className="mt-1 text-lg font-semibold text-white">{addOn.nome}</h3></div>{addOn.etiqueta && <span className="rounded-full border border-neon/20 bg-neon/[0.08] px-2 py-1 text-[0.58rem] font-semibold uppercase tracking-[0.1em] text-neon">{addOn.etiqueta}</span>}</div><p className="mt-2 text-[0.8rem] leading-relaxed text-white/52">{addOn.descricao}</p><a href={waLink(addOn.whatsapp)} onClick={() => trackWhatsAppClick("addon", s.slug)} target="_blank" rel="noopener noreferrer" className="mt-4 flex w-full items-center justify-center gap-2 rounded-xl bg-neon px-4 py-3 text-[0.68rem] font-bold uppercase tracking-[0.12em] text-[#06120b] transition-transform hover:-translate-y-0.5"><Plus className="h-4 w-4" />Adicionar ao serviço</a></div>
                       </div>
                     ); })}
                   </div>
@@ -273,20 +281,7 @@ function ServicePage() {
                 )}
 
                 <h2 className="mt-12 text-2xl text-white">Perguntas frequentes</h2>
-                <div className="mt-5 space-y-3">
-                  {s.faqs.map((f) => (
-                    <details key={f.pergunta} className="surface-card px-5 py-4">
-                      <summary className="cursor-pointer list-none text-[0.95rem] font-semibold text-white">
-                        <h3 className="inline text-[0.95rem] font-semibold text-white">
-                          {f.pergunta}
-                        </h3>
-                      </summary>
-                      <p className="mt-3 text-[0.9rem] leading-relaxed text-white/65">
-                        {f.resposta}
-                      </p>
-                    </details>
-                  ))}
-                </div>
+                <FaqAccordion faqs={s.faqs} className="mt-5" />
               </div>
 
               <aside className="lg:sticky lg:top-28 lg:self-start">

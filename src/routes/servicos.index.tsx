@@ -6,7 +6,9 @@ import { FloatingWhats } from "@/components/site/FloatingWhats";
 import { CTA } from "@/components/site/CTA";
 import { Location } from "@/components/site/Location";
 import { WHATSAPP_DEFAULT } from "@/components/site/constants";
-import { services, SITE_URL } from "@/components/site/services-data";
+import { services, SITE_URL, primaryImage, absUrl } from "@/components/site/services-data";
+
+const SHARE_IMAGE = absUrl(primaryImage(services[0]!) ?? "/logo.png");
 
 const URL = `${SITE_URL}/servicos`;
 const TITLE = "Serviços de Estética Automotiva | Clínica do Carro";
@@ -22,12 +24,12 @@ export const Route = createFileRoute("/servicos/")({
       { property: "og:description", content: DESCRIPTION, key: "og:description" },
       { property: "og:type", content: "website" },
       { property: "og:url", content: URL },
-      { property: "og:image", content: `${SITE_URL}/logo.png`, key: "og:image" },
+      { property: "og:image", content: SHARE_IMAGE, key: "og:image" },
       { property: "og:image:alt", content: "Serviços de estética automotiva da Clínica do Carro em Joinville", key: "og:image:alt" },
       { name: "twitter:card", content: "summary_large_image", key: "twitter:card" },
       { name: "twitter:title", content: TITLE, key: "twitter:title" },
       { name: "twitter:description", content: DESCRIPTION, key: "twitter:description" },
-      { name: "twitter:image", content: `${SITE_URL}/logo.png`, key: "twitter:image" },
+      { name: "twitter:image", content: SHARE_IMAGE, key: "twitter:image" },
       { name: "robots", content: "index, follow", key: "robots" },
     ],
     links: [{ rel: "canonical", href: URL }],
