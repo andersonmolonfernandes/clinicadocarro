@@ -144,7 +144,7 @@ export const services: Service[] = [
     alt: "Aplicação de vitrificação cerâmica em carro na Clínica do Carro em Joinville",
     destaque: true,
     descricao:
-      "Camada protetora que repele água, ajuda a proteger contra UV e facilita a manutenção da pintura. Durabilidade média de 1 a 1,5 anos.",
+      "Camada cerâmica que repele água, ajuda a proteger contra UV e facilita a manutenção da pintura. Proteção de até 5 anos.",
     lista: [
       "Efeito hidrofóbico — a água escorre sozinha",
       "Proteção contra UV, chuva ácida e resíduos",
@@ -155,23 +155,23 @@ export const services: Service[] = [
       "Carro usado: descontaminação + polimento + vitrificação",
       "Cura controlada da camada cerâmica",
     ],
-    durabilidade: "Em média de 1 a 1,5 anos",
+    durabilidade: "3 a 5 anos, conforme produto, aplicação, uso e manutenção",
     video: "https://www.instagram.com/reel/DWpOqxYD6Ta/?igsh=MWZlaDlxaWJpZ3JvYw==",
     whatsapp: "Olá! Gostaria de saber mais sobre a Vitrificação.",
     seoTitle: "Vitrificação de Pintura em Joinville | Clínica do Carro",
     seoDescription:
-      "Vitrificação cerâmica em Joinville: proteção hidrofóbica contra UV, chuva ácida e resíduos, com brilho profundo e durabilidade média de 1 a 1,5 anos.",
+      "Vitrificação cerâmica em Joinville: proteção hidrofóbica contra UV, chuva ácida e resíduos, com brilho profundo e proteção de até 5 anos.",
     h1: "Vitrificação Cerâmica em Joinville",
     intro: [
-      "A vitrificação cria uma camada cerâmica transparente sobre o verniz do seu carro. Essa camada é muito mais dura e resistente que a cera tradicional: repele água e sujeira, resiste a riscos leves e bloqueia os raios UV que desbotam a pintura ao longo dos anos.",
-      "Em carros novos, a vitrificação é a melhor forma de preservar a pintura de fábrica desde o primeiro dia. Em carros usados, fazemos antes o polimento técnico — a camada cerâmica sela a pintura, então tudo que estiver embaixo dela fica registrado.",
-      "No dia a dia, a água escorre com facilidade levando parte da sujeira junto, a lavagem fica mais rápida e o brilho permanece por mais tempo, mesmo com chuva, sol e poeira.",
+      "A vitrificação cria uma camada cerâmica transparente sobre o verniz do seu carro. Essa camada é muito mais dura e resistente que a cera tradicional: repele água e sujeira, resiste a riscos leves e ajuda a bloquear os raios UV que desbotam a pintura ao longo dos anos.",
+      "Conforme o produto escolhido, a aplicação, o uso do veículo e a manutenção, a proteção trabalha na faixa de 3 a 5 anos — bem acima de ceras e selantes convencionais.",
+      "Em carros novos, é a melhor forma de preservar a pintura de fábrica desde o primeiro dia. Em carros usados, fazemos antes o polimento técnico, já que a camada cerâmica sela a pintura e registra o que estiver embaixo dela.",
     ],
     faqs: [
       {
         pergunta: "Quanto tempo dura a vitrificação?",
         resposta:
-          "Em média de 1 a 1,5 anos, dependendo do uso do veículo, exposição ao sol e cuidados na lavagem. Lavagens corretas ajudam a preservar a proteção.",
+          "De 3 a 5 anos, conforme o produto aplicado, o uso do veículo, a exposição ao sol e a manutenção. Lavagens corretas e revisões periódicas ajudam a preservar a camada por mais tempo.",
       },
       {
         pergunta: "Preciso polir o carro antes de vitrificar?",
@@ -181,7 +181,7 @@ export const services: Service[] = [
       {
         pergunta: "Posso lavar o carro normalmente depois?",
         resposta:
-          "Sim, e fica mais fácil. Recomendamos lavagem com shampoo neutro e técnica dos dois baldes, evitando lavagens automáticas com escova.",
+          "Sim, e fica mais fácil. Recomendamos lavagem com shampoo neutro, Snow Foam e luva de microfibra, evitando lavagens automáticas com escova.",
       },
       {
         pergunta: "Vitrificação evita riscos?",
