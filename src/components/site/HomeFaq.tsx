@@ -1,4 +1,5 @@
 import { SectionHeading } from "./Section";
+import { FaqAccordion } from "./Faq";
 import type { Faq } from "./services-data";
 
 export const homeFaqs: Faq[] = [
@@ -40,16 +41,8 @@ export function HomeFaq() {
           description="As dúvidas mais comuns de quem procura estética automotiva em Joinville."
         />
 
-        <div className="mx-auto mt-12 max-w-3xl space-y-3">
-          {homeFaqs.map((f) => (
-            <details key={f.pergunta} className="surface-card px-5 py-4">
-              <summary className="cursor-pointer list-none">
-                <h3 className="inline text-[0.95rem] font-semibold text-white">{f.pergunta}</h3>
-              </summary>
-              <p className="mt-3 text-[0.9rem] leading-relaxed text-white/65">{f.resposta}</p>
-            </details>
-          ))}
-        </div>
+        <FaqAccordion faqs={homeFaqs} className="mx-auto mt-12 max-w-3xl" />
+
       </div>
     </section>
   );

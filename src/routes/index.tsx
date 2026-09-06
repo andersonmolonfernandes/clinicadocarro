@@ -9,7 +9,9 @@ import { Location } from "@/components/site/Location";
 import { Footer } from "@/components/site/Footer";
 import { FloatingWhats } from "@/components/site/FloatingWhats";
 import { HomeFaq, homeFaqs } from "@/components/site/HomeFaq";
-import { services, SITE_URL } from "@/components/site/services-data";
+import { services, SITE_URL, primaryImage, absUrl } from "@/components/site/services-data";
+
+const SHARE_IMAGE = absUrl(primaryImage(services[0]!) ?? "/logo.png");
 
 const TITLE = "Estética Automotiva em Joinville | Clínica do Carro";
 const DESCRIPTION =
@@ -24,12 +26,12 @@ export const Route = createFileRoute("/")({
       { property: "og:description", content: DESCRIPTION, key: "og:description" },
       { property: "og:type", content: "website" },
       { property: "og:url", content: `${SITE_URL}/` },
-      { property: "og:image", content: `${SITE_URL}/logo.png` },
+      { property: "og:image", content: SHARE_IMAGE },
       { property: "og:image:alt", content: "Clínica do Carro | Estética Automotiva em Joinville" },
       { name: "twitter:card", content: "summary_large_image", key: "twitter:card" },
       { name: "twitter:title", content: TITLE, key: "twitter:title" },
       { name: "twitter:description", content: DESCRIPTION, key: "twitter:description" },
-      { name: "twitter:image", content: `${SITE_URL}/logo.png`, key: "twitter:image" },
+      { name: "twitter:image", content: SHARE_IMAGE, key: "twitter:image" },
       { name: "robots", content: "index, follow, max-image-preview:large, max-snippet:-1", key: "robots" },
       { property: "og:site_name", content: "Clínica do Carro Studio Detail" },
       { name: "geo.region", content: "BR-SC" },
