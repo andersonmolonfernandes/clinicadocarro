@@ -262,9 +262,9 @@ export const services: Service[] = [
       "Lixamento progressivo do policarbonato",
       "Polimento até a transparência total",
       "Vapor de polímero: até 3 anos de resistência",
-      "Ou vitrificação: acabamento cristalino, em média de 1 a 1,5 anos",
+      "Ou vitrificação: acabamento cristalino e proteção de longa duração",
     ],
-    durabilidade: "Em média de 1 a 1,5 anos com vitrificação; até 3 anos com verniz UV",
+    durabilidade: "Até 3 anos com verniz UV; acabamento cristalino com vitrificação",
     addOns: [
       {
         nome: "Verniz UV",
@@ -282,7 +282,7 @@ export const services: Service[] = [
     h1: "Restauração de Faróis em Joinville",
     intro: [
       "Faróis amarelados ou opacos reduzem drasticamente a iluminação da estrada à noite — além de envelhecerem a aparência do carro. A restauração recupera a transparência do policarbonato sem a necessidade de trocar a peça, com um custo muito menor.",
-      "O processo passa por lixamento progressivo, polimento até a transparência total e, por fim, uma proteção à sua escolha: verniz UV, com até 3 anos de durabilidade, ou vitrificação, com acabamento cristalino e durabilidade média de 1 a 1,5 anos.",
+      "O processo passa por lixamento progressivo, polimento até a transparência total e, por fim, uma proteção à sua escolha: verniz UV, com até 3 anos de durabilidade, ou vitrificação, com acabamento cristalino e proteção de longa duração.",
       "Sem a etapa de proteção o farol volta a amarelar em poucos meses — por isso ela é parte obrigatória do nosso serviço.",
     ],
     faqs: [
@@ -294,7 +294,7 @@ export const services: Service[] = [
       {
         pergunta: "O farol volta a amarelar?",
         resposta:
-          "Com vitrificação, a proteção tem durabilidade média de 1 a 1,5 anos. Com verniz UV, a proteção pode chegar a 3 anos, conforme exposição ao sol e cuidados.",
+          "Com a proteção aplicada, o amarelamento é retardado por bastante tempo: o verniz UV pode chegar a 3 anos e a vitrificação mantém o acabamento cristalino, conforme exposição ao sol e cuidados.",
       },
       {
         pergunta: "Quanto tempo leva o serviço?",
@@ -420,13 +420,13 @@ export const services: Service[] = [
       "Cuidado completo por dentro e por fora, com lavagem técnica, acabamento detalhado e proteção da pintura.",
     lista: [
       "Rodas, pneus e caixas de roda",
-      "Lavagem técnica com dois baldes e microfibra",
+      "Lavagem técnica com Snow Foam e luva de microfibra",
       "Aspiração e limpeza interna",
       "Cera premium incluída no acabamento",
     ],
     processo: [
       "Rodas, pneus e caixas de roda",
-      "Lavagem externa completa",
+      "Snow Foam e lavagem externa completa",
       "Aspiração e limpeza interna",
       "Acabamento e aplicação da cera premium",
     ],
@@ -438,14 +438,14 @@ export const services: Service[] = [
       "Lavação completa premium em Joinville com lavagem técnica, limpeza interna, acabamento detalhado e cera premium incluída.",
     h1: "Lavação Completa Premium em Joinville",
     intro: [
-      "Nossa lavação premium é feita com técnica dos dois baldes, luvas de microfibra e produtos adequados para cada superfície do veículo.",
+      "Nossa lavação premium começa com Snow Foam: a espuma cobre toda a carroceria, solta a sujeira antes de qualquer contato e reduz muito o risco de riscar a pintura.",
       "O serviço inclui rodas, pneus, caixas de roda, parte externa, aspiração e limpeza interna, com acabamento final e cera premium incluída.",
     ],
     faqs: [
       {
         pergunta: "Qual a diferença para uma lavagem comum?",
         resposta:
-          "Usamos técnica dos dois baldes, luvas de microfibra e produtos com pH neutro, evitando riscos, além de finalizar com cera premium — o que uma lavagem simples não inclui.",
+          "Usamos Snow Foam, luva de microfibra e produtos de pH neutro para limpar sem riscar, cuidamos das rodas e do interior com aspiração completa e finalizamos com cera premium — o que uma lavagem simples não inclui.",
       },
       {
         pergunta: "Quanto tempo dura a cera aplicada?",
