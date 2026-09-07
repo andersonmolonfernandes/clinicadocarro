@@ -50,7 +50,7 @@ export const Route = createFileRoute("/")({
               name: "Clínica do Carro Studio Detail",
               description: DESCRIPTION,
               url: SITE_URL,
-              image: `${SITE_URL}/logo.png`,
+              image: SHARE_IMAGE,
               logo: `${SITE_URL}/icons/favicon-512x512.png`,
               telephone: "+5547999940973",
               priceRange: "$$",
