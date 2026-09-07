@@ -276,3 +276,12 @@ export function trackWhatsAppLead(opts: { placement: string; service?: ServiceKe
     });
   }
 }
+
+/**
+ * Clique em telefone — contato mensurável, mas NÃO é a conversão principal
+ * (a conversão principal é o WhatsApp). Nunca dispara conversão do Ads.
+ */
+export function trackPhoneClick(placement: string, service: ServiceKey = "geral") {
+  if (!shouldFire(`phone:${placement}:${service}`)) return;
+  gtag("event", "contact_phone", { method: "phone", service, placement });
+}
