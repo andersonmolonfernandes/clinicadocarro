@@ -5,7 +5,7 @@ import { Footer } from "@/components/site/Footer";
 import { FloatingWhats } from "@/components/site/FloatingWhats";
 import { CTA } from "@/components/site/CTA";
 import { Location } from "@/components/site/Location";
-import { WHATSAPP_DEFAULT } from "@/components/site/constants";
+import { WHATSAPP_DEFAULT, trackWhatsAppClick } from "@/components/site/constants";
 import { services, SITE_URL, primaryImage, absUrl } from "@/components/site/services-data";
 
 const SHARE_IMAGE = absUrl(primaryImage(services[0]!) ?? "/logo.png");
@@ -101,6 +101,7 @@ function ServicosIndex() {
               </p>
               <a
                 href={WHATSAPP_DEFAULT}
+                onClick={() => trackWhatsAppClick("services_index")}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-base btn-primary mt-7 w-full sm:w-auto"

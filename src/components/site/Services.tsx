@@ -11,7 +11,8 @@ import {
 } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import { memo, useCallback, useState } from "react";
-import { waLink } from "./constants";
+import { waLink, trackWhatsAppClick } from "./constants";
+import { serviceKeyFromSlug, trackServiceView } from "@/lib/tracking";
 import { SectionHeading, EASE } from "./Section";
 import { services, type Service } from "./services-data";
 
@@ -163,7 +164,7 @@ export function VideoCard({ url, nome }: { url: string; nome: string }) {
   );
 }
 
-const AddOnCard = memo(function AddOnCard({ addOn }: { addOn: NonNullable<Service["addOns"]>[number] }) {
+const AddOnCard = memo(function AddOnCard({ addOn, slug }: { slug?: string; addOn: NonNullable<Service["addOns"]>[number] }) {
   const Icon = addOn.Icon ?? Plus;
   return (
     <div className="overflow-hidden rounded-2xl border border-neon/20 bg-white/[0.025]">
@@ -184,7 +185,7 @@ const AddOnCard = memo(function AddOnCard({ addOn }: { addOn: NonNullable<Servic
             {addOn.etiqueta && <span className="shrink-0 rounded-full border border-neon/20 bg-neon/[0.08] px-2 py-1 text-[0.58rem] font-semibold uppercase tracking-[0.12em] text-neon">{addOn.etiqueta}</span>}
           </div>
           <p className="mt-2 text-[0.78rem] leading-relaxed text-white/55">{addOn.descricao}</p>
-          <a href={waLink(addOn.whatsapp)} target="_blank" rel="noopener noreferrer" className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-neon px-4 py-2.5 text-[0.68rem] font-bold uppercase tracking-[0.12em] text-[#06120b] transition-transform hover:-translate-y-0.5"><Plus className="h-3.5 w-3.5" />Adicionar ao serviço</a>
+          <a href={waLink(addOn.whatsapp)} onClick={() => trackWhatsAppClick("home_addon", slug)} target="_blank" rel="noopener noreferrer" className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-neon px-4 py-2.5 text-[0.68rem] font-bold uppercase tracking-[0.12em] text-[#06120b] transition-transform hover:-translate-y-0.5"><Plus className="h-3.5 w-3.5" />Adicionar ao serviço</a>
         </div>
       </div>
     </div>
@@ -209,10 +210,10 @@ const ServiceCard = memo(function ServiceCard({ s, idx, open, onToggle }: { s: S
               <div><p className="text-[0.62rem] font-semibold uppercase tracking-[0.2em] text-white/35">Inclui</p><ul className="mt-3 space-y-2.5">{s.lista.map((item) => <li key={item} className="flex items-start gap-2.5 text-[0.82rem] leading-relaxed text-white/78"><span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-neon" />{item}</li>)}</ul></div>
               <div><p className="text-[0.62rem] font-semibold uppercase tracking-[0.2em] text-white/35">Processo</p><ol className="mt-3 space-y-2.5">{s.processo.map((step, i) => <li key={step} className="flex items-start gap-2.5 text-[0.82rem] leading-relaxed text-white/68"><span className="grid h-5 w-5 shrink-0 place-items-center rounded-md border border-neon/20 bg-neon/[0.07] text-[0.58rem] font-bold text-neon">{i + 1}</span>{step}</li>)}</ol></div>
             </div>
-            {addOns.length > 0 && <div className="mt-7 border-t border-white/[0.06] pt-6"><div className="mb-3 flex items-end justify-between gap-4"><div><p className="text-[0.62rem] font-semibold uppercase tracking-[0.2em] text-neon/80">Personalize</p><h4 className="mt-1 text-lg font-semibold text-white" style={{ fontFamily: "var(--font-display)" }}>Adicionais para este serviço</h4></div><span className="hidden text-[0.68rem] text-white/35 sm:block">Escolha no orçamento</span></div><div className="grid gap-3">{addOns.map((addOn) => <AddOnCard key={addOn.nome} addOn={addOn} />)}</div></div>}
+            {addOns.length > 0 && <div className="mt-7 border-t border-white/[0.06] pt-6"><div className="mb-3 flex items-end justify-between gap-4"><div><p className="text-[0.62rem] font-semibold uppercase tracking-[0.2em] text-neon/80">Personalize</p><h4 className="mt-1 text-lg font-semibold text-white" style={{ fontFamily: "var(--font-display)" }}>Adicionais para este serviço</h4></div><span className="hidden text-[0.68rem] text-white/35 sm:block">Escolha no orçamento</span></div><div className="grid gap-3">{addOns.map((addOn) => <AddOnCard key={addOn.nome} addOn={addOn} slug={s.slug} />)}</div></div>}
             {s.durabilidade && <p className="mt-6 inline-flex items-center gap-2 rounded-xl border border-white/[0.08] bg-white/[0.025] px-3.5 py-2.5 text-[0.78rem] text-white/65"><Clock className="h-4 w-4 text-neon" /><span><span className="text-white/38">Durabilidade: </span>{s.durabilidade}</span></p>}
             {s.video && <VideoCard url={s.video} nome={s.nome} />}
-            <a href={waLink(s.whatsapp)} target="_blank" rel="noopener noreferrer" aria-label={`Falar pelo WhatsApp sobre ${s.nome}`} className="btn-base btn-primary mt-4 w-full"><MessageCircle className="h-4 w-4" />Orçamento no WhatsApp</a>
+            <a href={waLink(s.whatsapp)} onClick={() => trackWhatsAppClick("home_service_card", s.slug)} target="_blank" rel="noopener noreferrer" aria-label={`Falar pelo WhatsApp sobre ${s.nome}`} className="btn-base btn-primary mt-4 w-full"><MessageCircle className="h-4 w-4" />Orçamento no WhatsApp</a>
             <Link to="/$slug" params={{ slug: s.slug }} className="mt-3 flex w-full items-center justify-center gap-1.5 rounded-xl border border-white/[0.08] bg-white/[0.02] px-4 py-2.5 text-[0.78rem] font-medium text-white/58 transition-colors hover:border-neon/30 hover:text-neon">Ver página completa <ArrowRight className="h-3.5 w-3.5" /></Link>
           </div>
         </motion.div>
@@ -224,7 +225,13 @@ const ServiceCard = memo(function ServiceCard({ s, idx, open, onToggle }: { s: S
 export function Services() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
   const toggle = useCallback(
-    (idx: number) => setOpenIndex((cur) => (cur === idx ? null : idx)),
+    (idx: number) =>
+      setOpenIndex((cur) => {
+        if (cur === idx) return null;
+        const svc = services[idx];
+        if (svc) trackServiceView(serviceKeyFromSlug(svc.slug), "home_service_card");
+        return idx;
+      }),
     []
   );
 
