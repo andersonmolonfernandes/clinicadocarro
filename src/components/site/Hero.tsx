@@ -29,7 +29,7 @@ export function Hero() {
         className="pointer-events-none absolute inset-0"
         style={{
           background:
-            "radial-gradient(ellipse 70% 55% at 50% 42%, rgba(0,230,118,0.10), transparent 70%)",
+            "radial-gradient(ellipse 70% 55% at 50% 42%, rgba(0,230,118,0.07), transparent 70%)",
         }}
       />
       <div
@@ -52,8 +52,8 @@ export function Hero() {
             decoding="async"
             width={512}
             height={512}
-            className="w-[min(84vw,400px)] object-contain"
-            style={{ filter: "drop-shadow(0 0 32px rgba(0,230,118,0.28))" }}
+            className="w-[min(62vw,300px)] object-contain"
+            style={{ aspectRatio: "1 / 1", filter: "drop-shadow(0 0 22px rgba(0,230,118,0.18))" }}
           />
         </motion.div>
 
