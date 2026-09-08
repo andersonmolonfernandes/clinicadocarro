@@ -45,26 +45,8 @@ export const Route = createFileRoute("/")({
           "@context": "https://schema.org",
           "@graph": [
             {
-              "@type": ["LocalBusiness", "AutoBodyShop"],
-              "@id": `${SITE_URL}#localbusiness`,
-              name: "Clínica do Carro Studio Detail",
-              description: DESCRIPTION,
-              url: SITE_URL,
-              image: SHARE_IMAGE,
-              logo: `${SITE_URL}/icons/favicon-512x512.png`,
-              telephone: "+5547999940973",
-              priceRange: "$$",
-              foundingDate: "2013",
-              currenciesAccepted: "BRL",
-              address: {
-                "@type": "PostalAddress",
-                streetAddress: "Rua Alois Finder, 1401",
-                addressLocality: "Joinville",
-                addressRegion: "SC",
-                addressCountry: "BR",
-              },
-              areaServed: { "@type": "City", name: "Joinville" },
-              sameAs: ["https://wa.me/5547999940973"],
+              // Complementa o nó de negócio declarado em __root.tsx (mesmo @id).
+              "@id": `${SITE_URL}/#organization`,
               hasOfferCatalog: {
                 "@type": "OfferCatalog",
                 name: "Serviços de estética automotiva em Joinville",
@@ -79,8 +61,18 @@ export const Route = createFileRoute("/")({
               },
             },
             {
+              "@type": "WebPage",
+              "@id": `${SITE_URL}/#webpage`,
+              url: `${SITE_URL}/`,
+              name: TITLE,
+              description: DESCRIPTION,
+              inLanguage: "pt-BR",
+              isPartOf: { "@id": `${SITE_URL}/#website` },
+              about: { "@id": `${SITE_URL}/#organization` },
+            },
+            {
               "@type": "FAQPage",
-              "@id": `${SITE_URL}#faq`,
+              "@id": `${SITE_URL}/#faq`,
               mainEntity: homeFaqs.map((f) => ({
                 "@type": "Question",
                 name: f.pergunta,
