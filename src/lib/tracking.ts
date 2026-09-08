@@ -15,12 +15,11 @@
 export const GOOGLE_TAG_ID = "AW-18316297542";
 
 /**
- * Rótulo da conversão do Google Ads (Conversion Label).
- * Ainda NÃO identificado — enquanto estiver vazio, o evento `generate_lead`
- * é enviado normalmente, mas nenhuma conversão do Ads é disparada.
- * Preencher com o valor real do painel do Google Ads (ex.: "AbC-D_efG").
+ * Rótulo da conversão do Google Ads ("WhatsApp - Lead"), confirmado no snippet
+ * do Google Ads. Usado como `send_to: AW-18316297542/<label>`.
  */
-export const ADS_CONVERSION_LABEL = "";
+export const ADS_CONVERSION_LABEL = "eJDECPO93vAcEMaK8p1E";
+
 
 const ATTRIBUTION_KEY = "cdc_attribution_v1";
 
@@ -219,7 +218,8 @@ export function initGoogleTag() {
   w.document.head.appendChild(script);
 
   gtag("js", new Date());
-  gtag("config", GOOGLE_TAG_ID, { send_page_view: true });
+  // page_view é enviado manualmente em cada mudança de rota (SPA) — evita duplicidade.
+  gtag("config", GOOGLE_TAG_ID, { send_page_view: false });
 }
 
 export function trackPageView(path: string, title?: string) {

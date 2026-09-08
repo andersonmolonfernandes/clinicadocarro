@@ -80,22 +80,7 @@ export const Route = createFileRoute("/$slug")({
                     addressCountry: "BR",
                   },
                 },
-                provider: {
-                  "@type": "LocalBusiness",
-                  name: "Clínica do Carro Studio Detail",
-                  "@id": `${SITE_URL}#localbusiness`,
-                  url: SITE_URL,
-                  telephone: "+5547999940973",
-                  image: `${SITE_URL}/icons/favicon-512x512.png`,
-                  priceRange: "$$",
-                  address: {
-                    "@type": "PostalAddress",
-                    streetAddress: "Rua Alois Finder, 1401",
-                    addressLocality: "Joinville",
-                    addressRegion: "SC",
-                    addressCountry: "BR",
-                  },
-                },
+                provider: { "@id": `${SITE_URL}/#organization` },
               },
               {
                 "@type": "WebPage",

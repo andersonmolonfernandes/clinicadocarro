@@ -114,8 +114,8 @@
 
   img {
     -webkit-user-drag: none;
-    content-visibility: auto;
   }
+
 
   @media (prefers-reduced-motion: reduce) {
     html {
