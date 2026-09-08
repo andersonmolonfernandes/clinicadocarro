@@ -80,8 +80,6 @@ export const Route = createRootRoute({
               url: "https://clinicadocarro.vercel.app/",
               telephone: "+5547999940973",
               foundingDate: "2013",
-              priceRange: "$$",
-              currenciesAccepted: "BRL",
               knowsLanguage: "pt-BR",
               slogan: "Estética automotiva premium em Joinville",
               areaServed: [
@@ -93,10 +91,8 @@ export const Route = createRootRoute({
                 streetAddress: "Rua Alois Finder, 1401",
                 addressLocality: "Joinville",
                 addressRegion: "SC",
-                postalCode: "89226-000",
                 addressCountry: "BR",
               },
-              geo: { "@type": "GeoCoordinates", latitude: -26.2679, longitude: -48.8172 },
               openingHoursSpecification: [
                 {
                   "@type": "OpeningHoursSpecification",
@@ -111,7 +107,6 @@ export const Route = createRootRoute({
                   closes: "12:00",
                 },
               ],
-              sameAs: [],
               hasMap:
                 "https://maps.google.com/?q=Rua+Alois+Finder,+1401,+Aventureiro,+Joinville,+SC",
               logo: {
