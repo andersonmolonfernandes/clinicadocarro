@@ -93,29 +93,46 @@ export const services: Service[] = [
     alt: "Polimento técnico automotivo em Joinville: pintura preta com brilho espelhado após correção",
     destaque: true,
     descricao:
-      "Correção da pintura em 2 etapas: corte remove riscos e oxidação, refino devolve o brilho espelhado.",
+      "Correção da pintura em 2 etapas: o corte remove riscos e oxidação; o refino recupera acabamento, uniformidade e brilho.",
     lista: [
-      "Remove riscos, oxidação e marcas de lavagem",
-      "Brilho espelhado profundo e uniforme",
-      "Valoriza o carro na revenda",
+      "Remove riscos leves, oxidação e marcas de lavagem",
+      "Acabamento uniforme e brilho profundo",
+      "Avaliação do verniz antes de qualquer etapa",
     ],
     processo: [
-      "Lavagem técnica e descontaminação",
-      "Etapa 1 — corte: remoção de riscos e oxidação",
-      "Etapa 2 — refino: brilho espelhado",
-      "Proteção com cera, selante ou vitrificação",
+      "Lavagem técnica e descontaminação da pintura",
+      "Avaliação do verniz e escolha do nível de correção",
+      "Corte: remoção de riscos e oxidação",
+      "Refino: recuperação do acabamento, uniformidade e brilho",
+      "Proteção final: cera, selante ou vitrificação",
     ],
-    durabilidade: "6 a 12 meses (com proteção aplicada)",
+    durabilidade: "Depende da proteção aplicada: cera (meses), selante (até cerca de 1 ano) ou vitrificação (3 a 5 anos)",
+    opcoes: {
+      titulo: "Tipo de polimento",
+      itens: [
+        {
+          nome: "Polimento Comercial",
+          descricao: "Etapa única de refino para realçar o brilho e uniformizar a pintura em carros com poucos defeitos.",
+          etiqueta: "1 etapa",
+        },
+        {
+          nome: "Polimento Técnico",
+          descricao: "Corte + refino para corrigir riscos, oxidação e marcas de lavagem, com avaliação do verniz.",
+          etiqueta: "2 etapas",
+        },
+      ],
+    },
+    relacionados: ["vitrificacao", "lavacao-completa-premium", "revitalizacao-de-plasticos", "polimento-de-vidros"],
     video: "https://www.instagram.com/reel/DVMh1Wnjxsw/?igsh=anM0OHp0bm1qcXNx",
     whatsapp: "Olá! Gostaria de saber mais sobre o Polimento Técnico.",
     seoTitle: "Polimento Automotivo em Joinville | Clínica do Carro",
     seoDescription:
-      "Polimento automotivo em Joinville com correção de pintura em 2 etapas: remove riscos, oxidação e devolve brilho espelhado. Orçamento pelo WhatsApp.",
+      "Polimento técnico e comercial em Joinville: corte e refino recuperam acabamento, uniformidade e brilho da pintura. Orçamento pelo WhatsApp.",
     h1: "Polimento Automotivo em Joinville",
     intro: [
-      "O polimento automotivo é o serviço que devolve a aparência de novo à pintura do seu carro. Na Clínica do Carro — Studio Detail, em Joinville/SC, trabalhamos com correção técnica em duas etapas: primeiro o corte, que remove riscos finos, oxidação, marcas de lavagem automática e manchas de sol; depois o refino, que fecha os poros da pintura e cria aquele brilho espelhado profundo.",
-      "Cada veículo passa por uma avaliação prévia da espessura e do estado do verniz, garantindo uma correção segura e sem desgaste desnecessário. O resultado é uma pintura mais viva, uniforme e com muito mais valor de revenda — especialmente em carros pretos e cores escuras, onde qualquer risco fica evidente.",
-      "Para manter o resultado por muito mais tempo, recomendamos finalizar o polimento com uma proteção, como cera premium ou vitrificação cerâmica.",
+      "O polimento recupera a aparência da pintura sem repintar. No Polimento Técnico, trabalhamos em duas etapas: o corte remove riscos finos, oxidação, marcas de lavagem automática e manchas de sol; o refino faz o acabamento da superfície para recuperar uniformidade e brilho.",
+      "Antes de começar, avaliamos o estado do verniz para definir o nível de correção adequado, removendo apenas o necessário. Em pinturas escuras, onde qualquer risco aparece, a diferença é mais evidente.",
+      "Para carros com poucos defeitos, o Polimento Comercial (etapa única de refino) já realça o brilho. Em ambos os casos, o serviço termina com uma proteção à sua escolha: cera, selante ou vitrificação.",
     ],
     faqs: [
       {
