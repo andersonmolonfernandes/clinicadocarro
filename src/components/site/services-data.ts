@@ -73,6 +73,10 @@ export type Service = {
     BadgeIcon: LucideIcon;
   };
   destaque?: boolean;
+  /** Opções de proteção/acabamento escolhidas no orçamento (não são adicionais). */
+  opcoes?: { titulo: string; itens: { nome: string; descricao: string; etiqueta?: string }[] };
+  /** Slugs de serviços realmente relacionados (links internos). */
+  relacionados?: string[];
   seoTitle: string;
   seoDescription: string;
   h1: string;
@@ -89,29 +93,46 @@ export const services: Service[] = [
     alt: "Polimento técnico automotivo em Joinville: pintura preta com brilho espelhado após correção",
     destaque: true,
     descricao:
-      "Correção da pintura em 2 etapas: corte remove riscos e oxidação, refino devolve o brilho espelhado.",
+      "Correção da pintura em 2 etapas: o corte remove riscos e oxidação; o refino recupera acabamento, uniformidade e brilho.",
     lista: [
-      "Remove riscos, oxidação e marcas de lavagem",
-      "Brilho espelhado profundo e uniforme",
-      "Valoriza o carro na revenda",
+      "Remove riscos leves, oxidação e marcas de lavagem",
+      "Acabamento uniforme e brilho profundo",
+      "Avaliação do verniz antes de qualquer etapa",
     ],
     processo: [
-      "Lavagem técnica e descontaminação",
-      "Etapa 1 — corte: remoção de riscos e oxidação",
-      "Etapa 2 — refino: brilho espelhado",
-      "Proteção com cera, selante ou vitrificação",
+      "Lavagem técnica e descontaminação da pintura",
+      "Avaliação do verniz e escolha do nível de correção",
+      "Corte: remoção de riscos e oxidação",
+      "Refino: recuperação do acabamento, uniformidade e brilho",
+      "Proteção final: cera, selante ou vitrificação",
     ],
-    durabilidade: "6 a 12 meses (com proteção aplicada)",
+    durabilidade: "Depende da proteção aplicada: cera (meses), selante (até cerca de 1 ano) ou vitrificação (3 a 5 anos)",
+    opcoes: {
+      titulo: "Tipo de polimento",
+      itens: [
+        {
+          nome: "Polimento Comercial",
+          descricao: "Etapa única de refino para realçar o brilho e uniformizar a pintura em carros com poucos defeitos.",
+          etiqueta: "1 etapa",
+        },
+        {
+          nome: "Polimento Técnico",
+          descricao: "Corte + refino para corrigir riscos, oxidação e marcas de lavagem, com avaliação do verniz.",
+          etiqueta: "2 etapas",
+        },
+      ],
+    },
+    relacionados: ["vitrificacao", "lavacao-completa-premium", "revitalizacao-de-plasticos", "polimento-de-vidros"],
     video: "https://www.instagram.com/reel/DVMh1Wnjxsw/?igsh=anM0OHp0bm1qcXNx",
     whatsapp: "Olá! Gostaria de saber mais sobre o Polimento Técnico.",
     seoTitle: "Polimento Automotivo em Joinville | Clínica do Carro",
     seoDescription:
-      "Polimento automotivo em Joinville com correção de pintura em 2 etapas: remove riscos, oxidação e devolve brilho espelhado. Orçamento pelo WhatsApp.",
+      "Polimento técnico e comercial em Joinville: corte e refino recuperam acabamento, uniformidade e brilho da pintura. Orçamento pelo WhatsApp.",
     h1: "Polimento Automotivo em Joinville",
     intro: [
-      "O polimento automotivo é o serviço que devolve a aparência de novo à pintura do seu carro. Na Clínica do Carro — Studio Detail, em Joinville/SC, trabalhamos com correção técnica em duas etapas: primeiro o corte, que remove riscos finos, oxidação, marcas de lavagem automática e manchas de sol; depois o refino, que fecha os poros da pintura e cria aquele brilho espelhado profundo.",
-      "Cada veículo passa por uma avaliação prévia da espessura e do estado do verniz, garantindo uma correção segura e sem desgaste desnecessário. O resultado é uma pintura mais viva, uniforme e com muito mais valor de revenda — especialmente em carros pretos e cores escuras, onde qualquer risco fica evidente.",
-      "Para manter o resultado por muito mais tempo, recomendamos finalizar o polimento com uma proteção, como cera premium ou vitrificação cerâmica.",
+      "O polimento recupera a aparência da pintura sem repintar. No Polimento Técnico, trabalhamos em duas etapas: o corte remove riscos finos, oxidação, marcas de lavagem automática e manchas de sol; o refino faz o acabamento da superfície para recuperar uniformidade e brilho.",
+      "Antes de começar, avaliamos o estado do verniz para definir o nível de correção adequado, removendo apenas o necessário. Em pinturas escuras, onde qualquer risco aparece, a diferença é mais evidente.",
+      "Para carros com poucos defeitos, o Polimento Comercial (etapa única de refino) já realça o brilho. Em ambos os casos, o serviço termina com uma proteção à sua escolha: cera, selante ou vitrificação.",
     ],
     faqs: [
       {
@@ -144,28 +165,31 @@ export const services: Service[] = [
     alt: "Aplicação de vitrificação cerâmica em carro na Clínica do Carro em Joinville",
     destaque: true,
     descricao:
-      "Camada cerâmica que repele água, ajuda a proteger contra UV e facilita a manutenção da pintura. Proteção de até 5 anos.",
+      "Camada cerâmica que repele água, ajuda a proteger contra UV e facilita a manutenção da pintura. Proteção de 3 a 5 anos.",
     lista: [
-      "Efeito hidrofóbico — a água escorre sozinha",
-      "Proteção contra UV, chuva ácida e resíduos",
-      "Brilho profundo e lavagem muito mais fácil",
+      "Proteção de 3 a 5 anos",
+      "Efeito hidrofóbico — a água escorre com facilidade",
+      "Ajuda a proteger contra UV, chuva e resíduos",
+      "Brilho profundo e lavagem mais fácil",
     ],
     processo: [
-      "Carro novo: descontaminação + aplicação direta",
-      "Carro usado: descontaminação + polimento + vitrificação",
-      "Cura controlada da camada cerâmica",
+      "Lavagem técnica e descontaminação da pintura",
+      "Carro usado: polimento antes da aplicação",
+      "Aplicação da camada cerâmica por painel",
+      "Cura controlada e orientações de manutenção",
     ],
     durabilidade: "3 a 5 anos, conforme produto, aplicação, uso e manutenção",
+    relacionados: ["polimento-tecnico", "vitrificacao-de-couro", "cristalizacao-de-vidros", "lavacao-completa-premium"],
     video: "https://www.instagram.com/reel/DWpOqxYD6Ta/?igsh=MWZlaDlxaWJpZ3JvYw==",
     whatsapp: "Olá! Gostaria de saber mais sobre a Vitrificação.",
-    seoTitle: "Vitrificação de Pintura em Joinville | Clínica do Carro",
+    seoTitle: "Vitrificação Automotiva em Joinville | Clínica do Carro",
     seoDescription:
-      "Vitrificação cerâmica em Joinville: proteção hidrofóbica contra UV, chuva ácida e resíduos, com brilho profundo e proteção de até 5 anos.",
-    h1: "Vitrificação Cerâmica em Joinville",
+      "Vitrificação automotiva em Joinville: camada cerâmica com proteção de 3 a 5 anos, efeito hidrofóbico, brilho profundo e manutenção mais fácil.",
+    h1: "Vitrificação Automotiva em Joinville",
     intro: [
-      "A vitrificação cria uma camada cerâmica transparente sobre o verniz do seu carro. Essa camada é muito mais dura e resistente que a cera tradicional: repele água e sujeira, resiste a riscos leves e ajuda a bloquear os raios UV que desbotam a pintura ao longo dos anos.",
-      "Conforme o produto escolhido, a aplicação, o uso do veículo e a manutenção, a proteção trabalha na faixa de 3 a 5 anos — bem acima de ceras e selantes convencionais.",
-      "Em carros novos, é a melhor forma de preservar a pintura de fábrica desde o primeiro dia. Em carros usados, fazemos antes o polimento técnico, já que a camada cerâmica sela a pintura e registra o que estiver embaixo dela.",
+      "A vitrificação cria uma camada cerâmica transparente sobre o verniz. Ela repele água e sujeira, ajuda a proteger contra os raios UV que desbotam a pintura e deixa a lavagem do dia a dia bem mais simples.",
+      "Conforme o produto escolhido, a aplicação, o uso do veículo e a manutenção, a proteção dura de 3 a 5 anos — bem acima de ceras e selantes convencionais.",
+      "Em carros novos, é a forma mais prática de preservar a pintura de fábrica desde o início. Em carros usados, fazemos antes o polimento, porque a camada cerâmica sela a pintura e mantém o que estiver embaixo dela.",
     ],
     faqs: [
       {
