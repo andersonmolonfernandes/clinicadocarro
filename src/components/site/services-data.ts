@@ -73,6 +73,10 @@ export type Service = {
     BadgeIcon: LucideIcon;
   };
   destaque?: boolean;
+  /** Opções de proteção/acabamento escolhidas no orçamento (não são adicionais). */
+  opcoes?: { titulo: string; itens: { nome: string; descricao: string; etiqueta?: string }[] };
+  /** Slugs de serviços realmente relacionados (links internos). */
+  relacionados?: string[];
   seoTitle: string;
   seoDescription: string;
   h1: string;
