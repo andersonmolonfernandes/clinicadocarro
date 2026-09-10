@@ -99,6 +99,12 @@ function win(): TrackingWindow | null {
 function gtag(...args: unknown[]) {
   const w = win();
   if (!w) return;
+  // Usa a própria gtag quando já existe (garante o formato esperado pelo
+  // Assistente de Tags); caso contrário, enfileira no dataLayer.
+  if (typeof w.gtag === "function") {
+    w.gtag(...args);
+    return;
+  }
   w.dataLayer = w.dataLayer || [];
   w.dataLayer.push(args);
 }
