@@ -213,9 +213,11 @@ export function initGoogleTag() {
 
   w.dataLayer = w.dataLayer || [];
   if (typeof w.gtag !== "function") {
-    w.gtag = ((...args: unknown[]) => {
-      w.dataLayer!.push(args);
-    }) as Gtag;
+    // Formato oficial do snippet: empurra o próprio `arguments`.
+    w.gtag = function gtagShim() {
+      // eslint-disable-next-line prefer-rest-params
+      w.dataLayer!.push(arguments);
+    } as unknown as Gtag;
   }
 
   const script = w.document.createElement("script");
