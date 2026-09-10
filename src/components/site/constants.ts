@@ -27,9 +27,34 @@ export type ConversionSource =
   | "services_index";
 
 /**
- * Clique real no WhatsApp = conversão principal.
- * O disparo (e a proteção contra eventos duplicados) fica em @/lib/tracking.
+ * Clique real no WhatsApp = conversão principal (função central de tracking).
+ *
+ * Todos os CTAs de WhatsApp do site passam por aqui. Quando o link abre na
+ * mesma aba, a navegação é adiada até o envio do evento (ou timeout curto),
+ * garantindo que a conversão não seja perdida. O disparo e a proteção contra
+ * eventos duplicados ficam em @/lib/tracking.
  */
-export function trackWhatsAppClick(source: ConversionSource, slug?: string) {
-  trackWhatsAppLead({ placement: source, service: serviceKeyFromSlug(slug) });
+export function trackWhatsAppClick(
+  source: ConversionSource,
+  slug?: string,
+  event?: { currentTarget: HTMLAnchorElement | null; preventDefault: () => void }
+) {
+  const service = serviceKeyFromSlug(slug);
+  const anchor = event?.currentTarget ?? null;
+  const sameTab = Boolean(anchor && anchor.target !== "_blank");
+
+  if (!sameTab) {
+    trackWhatsAppLead({ placement: source, service });
+    return;
+  }
+
+  const href = anchor!.href;
+  event!.preventDefault();
+  trackWhatsAppLead({
+    placement: source,
+    service,
+    onReady: () => {
+      window.location.href = href;
+    },
+  });
 }

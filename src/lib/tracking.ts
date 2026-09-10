@@ -99,6 +99,12 @@ function win(): TrackingWindow | null {
 function gtag(...args: unknown[]) {
   const w = win();
   if (!w) return;
+  // Usa a própria gtag quando já existe (garante o formato esperado pelo
+  // Assistente de Tags); caso contrário, enfileira no dataLayer.
+  if (typeof w.gtag === "function") {
+    w.gtag(...args);
+    return;
+  }
   w.dataLayer = w.dataLayer || [];
   w.dataLayer.push(args);
 }
@@ -207,9 +213,11 @@ export function initGoogleTag() {
 
   w.dataLayer = w.dataLayer || [];
   if (typeof w.gtag !== "function") {
-    w.gtag = ((...args: unknown[]) => {
-      w.dataLayer!.push(args);
-    }) as Gtag;
+    // Formato oficial do snippet: empurra o próprio `arguments`.
+    w.gtag = function gtagShim() {
+      // eslint-disable-next-line prefer-rest-params
+      w.dataLayer!.push(arguments);
+    } as unknown as Gtag;
   }
 
   const script = w.document.createElement("script");
@@ -245,12 +253,25 @@ export function trackServiceView(service: ServiceKey, placement: string) {
 
 /**
  * Contato real pelo WhatsApp — conversão principal.
- * Envia sempre `generate_lead` com origem preservada; a conversão do Google Ads
- * é enviada apenas com evidência de clique pago e label configurado.
+ *
+ * Envia `generate_lead` (GA4) com a origem preservada e SEMPRE a conversão do
+ * Google Ads (`AW-18316297542/eJDECPO93vAcEMaK8p1E`). A atribuição de mídia
+ * paga continua registrada nos parâmetros do evento, mas nunca bloqueia o
+ * disparo — é o Google Ads que decide a atribuição.
+ *
+ * `onReady` é chamado após o envio (ou no timeout), permitindo abrir o
+ * WhatsApp sem risco de perder o evento.
  */
-export function trackWhatsAppLead(opts: { placement: string; service?: ServiceKey }) {
-  const { placement, service = "geral" } = opts;
-  if (!shouldFire(`lead:${placement}:${service}`)) return;
+export function trackWhatsAppLead(
+  opts: { placement: string; service?: ServiceKey; onReady?: () => void }
+) {
+  const { placement, service = "geral", onReady } = opts;
+  const done = onceCallback(onReady);
+
+  if (!shouldFire(`lead:${placement}:${service}`)) {
+    done();
+    return;
+  }
 
   const a = getAttribution();
   const paid = hasPaidGoogleEvidence(a);
@@ -268,13 +289,30 @@ export function trackWhatsAppLead(opts: { placement: string; service?: ServiceKe
     currency: "BRL",
   });
 
-  if (paid && ADS_CONVERSION_LABEL) {
+  // Conversão do Google Ads — uma única por clique.
+  if (shouldFire("ads_conversion:whatsapp_lead")) {
     gtag("event", "conversion", {
       send_to: `${GOOGLE_TAG_ID}/${ADS_CONVERSION_LABEL}`,
       value: 1,
       currency: "BRL",
+      event_callback: done,
     });
   }
+
+  // Rede lenta ou tag bloqueada: nunca travar o usuário.
+  const w = win();
+  if (w) w.setTimeout(done, 350);
+  else done();
+}
+
+/** Garante que o callback de navegação rode no máximo uma vez. */
+function onceCallback(cb?: () => void) {
+  let used = false;
+  return () => {
+    if (used) return;
+    used = true;
+    cb?.();
+  };
 }
 
 /**
