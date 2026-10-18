@@ -235,6 +235,7 @@ export const services: Service[] = [
       "Finalização com proteção UV",
     ],
     durabilidade: "Recomendado a cada 6 a 12 meses",
+    relacionados: ["vitrificacao-de-couro", "lavacao-completa-premium", "revitalizacao-de-plasticos", "limpeza-tecnica-do-motor"],
     video: "https://www.instagram.com/reel/DbMNNBhAsb9/?igsh=MTZ5Nmo2YXgwdWIxeg==",
     whatsapp: "Olá! Gostaria de saber mais sobre a Higienização Interna.",
     seoTitle: "Higienização Automotiva em Joinville | Clínica do Carro",
@@ -358,6 +359,7 @@ export const services: Service[] = [
       "Refino da superfície até a transparência",
       "Limpeza e inspeção final na contraluz",
     ],
+    relacionados: ["cristalizacao-de-vidros", "polimento-tecnico", "restauracao-de-farois", "lavacao-completa-premium"],
     video: "https://www.instagram.com/reel/DWcLd4HD4nA/?igsh=MWVsYXZ6emM3aWcwYw==",
     whatsapp: "Olá! Gostaria de saber mais sobre o Polimento de Vidros.",
     seoTitle: "Polimento de Vidros em Joinville | Clínica do Carro",
@@ -406,6 +408,7 @@ export const services: Service[] = [
       "Cura controlada e inspeção do efeito",
     ],
     durabilidade: "Até 12 meses",
+    relacionados: ["polimento-de-vidros", "vitrificacao", "restauracao-de-farois", "lavacao-completa-premium"],
     video: "https://www.instagram.com/reel/DYVkYAhAyIP/?igsh=YTE1ZmY0N3luOTJ1",
     whatsapp: "Olá! Gostaria de saber mais sobre a Cristalização de Vidros.",
     seoTitle: "Cristalização de Vidros em Joinville | Clínica do Carro",
@@ -560,6 +563,7 @@ export const services: Service[] = [
       "Conferência do reflexo na contraluz",
     ],
     durabilidade: "Reparo permanente",
+    relacionados: ["polimento-tecnico", "vitrificacao", "lavacao-completa-premium", "restauracao-de-farois"],
     whatsapp: "Olá! Gostaria de saber mais sobre o Martelinho de Ouro.",
     seoTitle: "Martelinho de Ouro em Joinville | Clínica do Carro",
     seoDescription:
@@ -619,6 +623,7 @@ export const services: Service[] = [
       "Cura e acabamento acetinado uniforme",
     ],
     durabilidade: "12 a 24 meses",
+    relacionados: ["higienizacao-interna", "vitrificacao", "lavacao-completa-premium", "revitalizacao-de-plasticos"],
     whatsapp: "Olá! Gostaria de saber mais sobre a Vitrificação de Couro.",
     seoTitle: "Vitrificação de Couro em Joinville | Clínica do Carro",
     seoDescription:
@@ -680,6 +685,7 @@ export const services: Service[] = [
       "Nivelamento do acabamento e secagem",
     ],
     durabilidade: "4 a 8 meses",
+    relacionados: ["lavacao-completa-premium", "polimento-tecnico", "higienizacao-interna", "restauracao-de-farois"],
     whatsapp: "Olá! Gostaria de saber mais sobre a Revitalização de Plásticos.",
     seoTitle: "Revitalização de Plásticos em Joinville | Clínica do Carro",
     seoDescription:
