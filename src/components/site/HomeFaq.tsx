@@ -26,7 +26,7 @@ export const homeFaqs: Faq[] = [
   {
     pergunta: "Há quanto tempo vocês atuam em Joinville?",
     resposta:
-      "Somos um studio de detailing com mais de 13 anos de experiência, atuando em Joinville desde 2013.",
+      "Somos um studio de detailing atuando em Joinville desde 2013, com atendimento agendado e dedicado a cada veículo.",
   },
 ];
 

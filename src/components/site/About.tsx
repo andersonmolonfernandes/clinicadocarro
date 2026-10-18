@@ -5,7 +5,7 @@ const diferenciais = [
   "Produtos de alto desempenho",
   "Técnica em cada etapa",
   "Atenção obsessiva ao detalhe",
-  "Resultado garantido",
+  "Orçamento transparente, sem surpresa",
 ];
 
 export function About() {

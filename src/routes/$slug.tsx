@@ -127,7 +127,13 @@ export const Route = createFileRoute("/$slug")({
 function ServicePage() {
   const { slug } = Route.useLoaderData();
   const s = getService(slug)!;
-  const outros = services.filter((o) => o.slug !== s.slug).slice(0, 6);
+  const relacionados = (s.relacionados ?? [])
+    .map((r) => getService(r))
+    .filter((o): o is NonNullable<typeof o> => Boolean(o));
+  const outros =
+    relacionados.length > 0
+      ? relacionados
+      : services.filter((o) => o.slug !== s.slug).slice(0, 6);
   const img = primaryImage(s);
 
   useEffect(() => {
@@ -241,6 +247,33 @@ function ServicePage() {
                   ))}
                 </ol>
 
+                {s.opcoes && (
+                  <section className="mt-10 border-t border-white/[0.06] pt-8">
+                    <div className="mb-5">
+                      <p className="text-[0.62rem] font-semibold uppercase tracking-[0.2em] text-neon/80">Opções</p>
+                      <h2 className="mt-1 text-2xl font-semibold text-white">{s.opcoes.titulo}</h2>
+                      <p className="mt-2 max-w-2xl text-[0.88rem] leading-relaxed text-white/48">
+                        Definidas com você no orçamento, conforme o estado do veículo.
+                      </p>
+                    </div>
+                    <div className="grid gap-4 sm:grid-cols-2">
+                      {s.opcoes.itens.map((op) => (
+                        <div key={op.nome} className="rounded-2xl border border-white/[0.08] bg-white/[0.025] p-5">
+                          <div className="flex items-start justify-between gap-3">
+                            <h3 className="text-lg font-semibold text-white">{op.nome}</h3>
+                            {op.etiqueta && (
+                              <span className="rounded-full border border-neon/20 bg-neon/[0.08] px-2 py-1 text-[0.58rem] font-semibold uppercase tracking-[0.1em] text-neon">
+                                {op.etiqueta}
+                              </span>
+                            )}
+                          </div>
+                          <p className="mt-2 text-[0.8rem] leading-relaxed text-white/52">{op.descricao}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </section>
+                )}
+
                 {(s.addOns ?? (s.addOn ? [s.addOn] : [])).length > 0 && (
                 <section className="mt-10 border-t border-white/[0.06] pt-8">
                   <div className="mb-5"><p className="text-[0.62rem] font-semibold uppercase tracking-[0.2em] text-neon/80">Adicionais</p><h2 className="mt-1 text-2xl font-semibold text-white">Personalize seu serviço</h2><p className="mt-2 max-w-2xl text-[0.88rem] leading-relaxed text-white/48">Opções selecionadas para complementar o cuidado do veículo.</p></div>
@@ -273,7 +306,9 @@ function ServicePage() {
                 {s.video && <VideoCard url={s.video} nome={s.nome} />}
 
                 <div className="surface-card mt-6 p-5">
-                  <h2 className="text-lg text-white">Outros serviços em Joinville</h2>
+                  <h2 className="text-lg text-white">
+                    {relacionados.length > 0 ? "Serviços relacionados" : "Outros serviços em Joinville"}
+                  </h2>
                   <ul className="mt-4 space-y-1">
                     {outros.map((o) => (
                       <li key={o.slug}>
