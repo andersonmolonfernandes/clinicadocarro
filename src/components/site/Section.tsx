@@ -1,13 +1,15 @@
-import { motion } from "framer-motion";
 import type { ReactNode } from "react";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
-/** Standard scroll reveal used across every section for consistent motion. */
+/**
+ * Reveal intencionalmente sem animação de entrada: o conteúdo fica 100%
+ * visível no primeiro frame do SSR/HTML (LCP imediato e indexação
+ * completa por crawlers e IAs). Mantido como componente para preservar
+ * a API usada pelas seções.
+ */
 export function Reveal({
   children,
-  delay = 0,
-  y = 24,
   className,
 }: {
   children: ReactNode;
@@ -15,17 +17,7 @@ export function Reveal({
   y?: number;
   className?: string;
 }) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.25 }}
-      transition={{ duration: 0.6, delay, ease: EASE }}
-      className={className}
-    >
-      {children}
-    </motion.div>
-  );
+  return <div className={className}>{children}</div>;
 }
 
 export function SectionHeading({
@@ -44,30 +36,28 @@ export function SectionHeading({
   const isCenter = align === "center";
   return (
     <div className={isCenter ? "text-center" : "text-left"}>
-      <Reveal>
-        <span className="eyebrow">{eyebrow}</span>
-        <h2
-          className="mt-4 text-white"
-          style={{ fontSize: "clamp(2rem, 4.6vw, 3.25rem)", lineHeight: 1.05 }}
-        >
-          {title}
-          {highlight ? (
-            <>
-              {" "}
-              <span className="text-neon">{highlight}</span>
-            </>
-          ) : null}
-        </h2>
-        {description ? (
-          <p
-            className={`mt-4 text-[0.98rem] leading-relaxed text-white/60 ${
-              isCenter ? "mx-auto max-w-xl" : "max-w-xl"
-            }`}
-          >
-            {description}
-          </p>
+      <span className="eyebrow">{eyebrow}</span>
+      <h2
+        className="mt-4 text-white"
+        style={{ fontSize: "clamp(2rem, 4.6vw, 3.25rem)", lineHeight: 1.05 }}
+      >
+        {title}
+        {highlight ? (
+          <>
+            {" "}
+            <span className="text-neon">{highlight}</span>
+          </>
         ) : null}
-      </Reveal>
+      </h2>
+      {description ? (
+        <p
+          className={`mt-4 text-[0.98rem] leading-relaxed text-white/60 ${
+            isCenter ? "mx-auto max-w-xl" : "max-w-xl"
+          }`}
+        >
+          {description}
+        </p>
+      ) : null}
     </div>
   );
 }
