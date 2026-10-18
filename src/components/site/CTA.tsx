@@ -26,8 +26,8 @@ export function CTA() {
             Agende agora pelo <span className="text-neon glow-neon">WhatsApp</span>
           </h2>
           <p className="mx-auto mt-4 max-w-lg text-base text-white/60">
-            Manda uma mensagem com o modelo do seu carro e a gente responde na hora com
-            o orçamento.
+            Envie fotos do seu carro pelo WhatsApp e receba o orçamento e a
+            disponibilidade de horário no mesmo dia.
           </p>
           <div className="mt-9 flex justify-center">
             <a
@@ -38,7 +38,7 @@ export function CTA() {
               className="btn-base btn-primary !px-9 !py-[1.15rem] !text-base"
             >
               <MessageCircle className="h-5 w-5" />
-              Falar pelo WhatsApp
+              Solicitar orçamento por foto
             </a>
           </div>
         </Reveal>

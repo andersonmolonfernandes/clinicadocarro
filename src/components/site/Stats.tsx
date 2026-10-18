@@ -1,71 +1,45 @@
-import { motion, useInView } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
+import { CalendarCheck, MapPin, MessageCircle, Award, type LucideIcon } from "lucide-react";
 
-type Stat = { value: number; suffix: string; label: string; thousands?: boolean };
+type Pilar = { Icon: LucideIcon; titulo: string; descricao: string };
 
-const stats: Stat[] = [
-  { value: 13, suffix: "+", label: "Anos de experiência" },
-  { value: 5000, suffix: "+", label: "Carros atendidos", thousands: true },
-  { value: 100, suffix: "%", label: "Satisfação" },
-  { value: 9, suffix: "", label: "Serviços especializados" },
+const pilares: Pilar[] = [
+  {
+    Icon: Award,
+    titulo: "Desde 2013 em Joinville",
+    descricao: "Experiência em detailing e estética automotiva",
+  },
+  {
+    Icon: CalendarCheck,
+    titulo: "Atendimento com hora marcada",
+    descricao: "Cuidado dedicado e exclusivo a cada veículo",
+  },
+  {
+    Icon: MapPin,
+    titulo: "Studio no Aventureiro",
+    descricao: "Rua Alois Finder, 1401 — fácil acesso",
+  },
+  {
+    Icon: MessageCircle,
+    titulo: "Orçamento rápido via WhatsApp",
+    descricao: "Envie fotos do carro e receba a previsão no mesmo dia",
+  },
 ];
 
-function Counter({ stat, start }: { stat: Stat; start: boolean }) {
-  const [n, setN] = useState(0);
-
-  useEffect(() => {
-    if (!start) return;
-    const duration = 1500;
-    const t0 = performance.now();
-    let raf = 0;
-    const tick = (now: number) => {
-      const t = Math.min(1, (now - t0) / duration);
-      setN(Math.round(stat.value * (1 - Math.pow(1 - t, 3))));
-      if (t < 1) raf = requestAnimationFrame(tick);
-    };
-    raf = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(raf);
-  }, [start, stat.value]);
-
-  return (
-    <span className="text-neon">
-      {stat.thousands ? n.toLocaleString("pt-BR") : n}
-      {stat.suffix}
-    </span>
-  );
-}
-
+/** Barra de pilares de autoridade — sem contadores animados, 100% visível no SSR. */
 export function Stats() {
-  const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { amount: 0.35, once: true });
-
   return (
     <section className="border-y border-white/[0.07]" style={{ background: "#0d0d0d" }}>
-      <div
-        ref={ref}
-        className="shell grid grid-cols-2 gap-x-6 gap-y-10 py-14 md:grid-cols-4 md:py-16"
-      >
-        {stats.map((s, i) => (
-          <motion.div
-            key={s.label}
-            initial={{ opacity: 0, y: 20 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5, delay: i * 0.08 }}
-            className="text-center"
-          >
-            <div
-              className="font-semibold leading-none"
-              style={{
-                fontFamily: "var(--font-display)",
-                fontSize: "clamp(2.25rem, 5vw, 3.4rem)",
-              }}
-            >
-              <Counter stat={s} start={inView} />
+      <div className="shell grid grid-cols-1 gap-x-6 gap-y-8 py-12 sm:grid-cols-2 md:py-14 lg:grid-cols-4">
+        {pilares.map((p) => (
+          <div key={p.titulo} className="flex items-start gap-4">
+            <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl border border-neon/25 bg-neon/[0.08]">
+              <p.Icon className="h-5 w-5 text-neon" />
+            </span>
+            <div>
+              <p className="text-[0.95rem] font-semibold leading-snug text-white">{p.titulo}</p>
+              <p className="mt-1 text-[0.8rem] leading-relaxed text-white/50">{p.descricao}</p>
             </div>
-            <p className="mx-auto mt-3 max-w-[9rem] text-[0.78rem] font-medium uppercase leading-snug tracking-[0.14em] text-white/45">
-              {s.label}
-            </p>
-          </motion.div>
+          </div>
         ))}
       </div>
     </section>
