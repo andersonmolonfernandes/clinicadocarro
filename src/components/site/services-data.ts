@@ -130,7 +130,7 @@ export const services: Service[] = [
       "Polimento técnico e comercial em Joinville: corte e refino recuperam acabamento, uniformidade e brilho da pintura. Orçamento pelo WhatsApp.",
     h1: "Polimento Automotivo em Joinville",
     intro: [
-      "O polimento recupera a aparência da pintura sem repintar. No Polimento Técnico, trabalhamos em duas etapas: o corte remove riscos finos, oxidação, marcas de lavagem automática e manchas de sol; o refino faz o acabamento da superfície para recuperar uniformidade e brilho.",
+      "O polimento recupera a aparência da pintura sem repintar. No Polimento Técnico, trabalhamos em duas etapas: o corte faz o nivelamento micrométrico do verniz, removendo micro-riscos, oxidação, marcas de lavagem automática e manchas de sol; o refino faz o acabamento da superfície para recuperar uniformidade e brilho.",
       "Antes de começar, avaliamos o estado do verniz para definir o nível de correção adequado, removendo apenas o necessário. Em pinturas escuras, onde qualquer risco aparece, a diferença é mais evidente.",
       "Para carros com poucos defeitos, o Polimento Comercial (etapa única de refino) já realça o brilho. Em ambos os casos, o serviço termina com uma proteção à sua escolha: cera, selante ou vitrificação.",
     ],
@@ -187,8 +187,8 @@ export const services: Service[] = [
       "Vitrificação automotiva em Joinville: camada cerâmica com proteção de 3 a 5 anos, efeito hidrofóbico, brilho profundo e manutenção mais fácil.",
     h1: "Vitrificação Automotiva em Joinville",
     intro: [
-      "A vitrificação cria uma camada cerâmica transparente sobre o verniz. Ela repele água e sujeira, ajuda a proteger contra os raios UV que desbotam a pintura e deixa a lavagem do dia a dia bem mais simples.",
-      "Conforme o produto escolhido, a aplicação, o uso do veículo e a manutenção, a proteção dura de 3 a 5 anos — bem acima de ceras e selantes convencionais.",
+      "A vitrificação cria uma camada cerâmica transparente com ancoragem química sobre o verniz. Ela repele água e sujeira, ajuda a proteger contra os raios UV que desbotam a pintura e deixa a lavagem do dia a dia bem mais simples.",
+      "Conforme o produto escolhido, a aplicação, o uso do veículo e a manutenção, a proteção dura de 3 a 5 anos mediante revisões periódicas — bem acima de ceras e selantes convencionais.",
       "Em carros novos, é a forma mais prática de preservar a pintura de fábrica desde o início. Em carros usados, fazemos antes o polimento, porque a camada cerâmica sela a pintura e mantém o que estiver embaixo dela.",
     ],
     faqs: [
@@ -283,12 +283,13 @@ export const services: Service[] = [
       "Proteção contra amarelamento",
     ],
     processo: [
-      "Lixamento progressivo do policarbonato",
-      "Polimento até a transparência total",
-      "Vapor de polímero: até 3 anos de resistência",
-      "Ou vitrificação: acabamento cristalino e proteção de longa duração",
+      "Lixamento gradual do policarbonato, em etapas de granulação crescente",
+      "Polimento óptico até a transparência total",
+      "Aplicação de proteção UV / selante cerâmico específico para faróis",
+      "Inspeção final da transparência e do acabamento",
     ],
-    durabilidade: "Até 3 anos com verniz UV; acabamento cristalino com vitrificação",
+    durabilidade: "Até 3 anos com proteção UV; acabamento cristalino e proteção estendida com selante cerâmico",
+    relacionados: ["polimento-tecnico", "lavacao-completa-premium", "vitrificacao", "polimento-de-vidros"],
     addOns: [
       {
         nome: "Verniz UV",
@@ -444,17 +445,22 @@ export const services: Service[] = [
       "Cuidado completo por dentro e por fora, com lavagem técnica, acabamento detalhado e proteção da pintura.",
     lista: [
       "Rodas, pneus e caixas de roda",
-      "Lavagem técnica com Snow Foam e luva de microfibra",
-      "Aspiração e limpeza interna",
+      "Lavagem técnica com Snow Foam de pH neutro e luva de microfibra",
+      "Detalhamento de cantos, emblemas, frisos e vãos de porta",
+      "Aspiração completa e limpeza interna",
+      "Revitalização de plásticos internos e externos",
       "Cera premium incluída no acabamento",
     ],
     processo: [
       "Rodas, pneus e caixas de roda",
-      "Snow Foam e lavagem externa completa",
-      "Aspiração e limpeza interna",
+      "Snow Foam de pH neutro e lavagem externa completa",
+      "Detalhamento de cantos, emblemas e frisos",
+      "Aspiração completa e limpeza interna",
+      "Revitalização de plásticos internos e externos",
       "Acabamento e aplicação da cera premium",
     ],
     durabilidade: "Proteção da cera: cerca de 3 a 5 meses",
+    relacionados: ["polimento-tecnico", "higienizacao-interna", "revitalizacao-de-plasticos", "limpeza-tecnica-do-motor"],
     video: "https://www.instagram.com/reel/DVeiGUXjwAV/?igsh=YjByZWdzMGptZWtj",
     whatsapp: "Olá! Gostaria de saber mais sobre a Lavação Completa Premium.",
     seoTitle: "Lavação Completa Premium em Joinville | Clínica do Carro",
@@ -492,16 +498,18 @@ export const services: Service[] = [
     descricao: "Limpeza detalhada e segura do cofre do motor para remover sujeira, fuligem e resíduos, com acabamento das partes acessíveis e proteção das superfícies compatíveis. É uma escolha prática para quem acabou de passar pelo mecânico e quer deixar o motor limpo, organizado e protegido.",
     lista: [
       "Limpeza técnica e controlada do cofre do motor",
+      "Proteção dos componentes eletrônicos sensíveis",
       "Produtos e métodos adequados para cada área",
       "Acabamento das partes acessíveis",
-      "Proteção das superfícies compatíveis"
+      "Aplicação de verniz protetor térmico de motor"
     ],
     processo: [
-      "Proteção e preparação das áreas sensíveis",
+      "Proteção e isolamento dos componentes eletrônicos sensíveis",
       "Limpeza controlada do cofre",
       "Secagem completa e acabamento",
-      "Aplicação de proteção quando indicada"
+      "Aplicação de verniz protetor térmico de motor"
     ],
+    relacionados: ["lavacao-completa-premium", "polimento-tecnico", "higienizacao-interna", "revitalizacao-de-plasticos"],
     seoTitle: "Limpeza Técnica do Motor em Joinville | Clínica do Carro",
     seoDescription: "Limpeza técnica do motor em Joinville com método controlado, acabamento detalhado e proteção das superfícies compatíveis.",
     h1: "Limpeza Técnica do Motor em Joinville",
