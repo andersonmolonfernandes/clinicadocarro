@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { MessageCircle, Menu, X } from "lucide-react";
+import { MessageCircle, Menu, Phone, X } from "lucide-react";
 import { WHATSAPP_DEFAULT, trackWhatsAppClick } from "./constants";
 
 const links = [
@@ -65,6 +65,14 @@ export function Header() {
                 {l.label}
               </a>
             ))}
+            <a
+              href="tel:+5547999940973"
+              aria-label="Ligar para a Clínica do Carro: (47) 99994-0973"
+              className="inline-flex items-center gap-1.5 text-sm font-medium text-white/60 transition-colors hover:text-neon"
+            >
+              <Phone className="h-4 w-4" />
+              (47) 99994-0973
+            </a>
             <a
               href={WHATSAPP_DEFAULT}
               onClick={() => trackWhatsAppClick("header")}
