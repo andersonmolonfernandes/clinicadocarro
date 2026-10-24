@@ -28,6 +28,12 @@ export function Footer() {
             <p className="mt-4 max-w-xs text-[0.85rem] leading-relaxed text-white/45">
               {ADDRESS}
             </p>
+            <a
+              href="tel:+5547999940973"
+              className="mt-3 inline-block text-[0.85rem] font-medium text-white/60 transition-colors hover:text-neon"
+            >
+              Tel / WhatsApp: (47) 99994-0973
+            </a>
           </div>
           <nav className="flex flex-wrap gap-x-7 gap-y-3 md:justify-end">
             {links.map((l) => (
