@@ -65,16 +65,7 @@ export function Hero() {
         </div>
 
         <aside className="border-l-2 border-neon/60 pl-6">
-          <img
-            src="/logo-mark.png"
-            alt="Clínica do Carro — Studio Detail"
-            fetchPriority="high"
-            decoding="async"
-            width={512}
-            height={512}
-            className="mb-8 w-28 object-contain md:w-36"
-            style={{ aspectRatio: "1 / 1" }}
-          />
+          <p className="spec-label mb-4 !text-neon">Ficha do studio</p>
           <dl className="divide-y divide-white/[0.08]">
             {ficha.map((f) => (
               <div key={f.k} className="flex items-baseline justify-between gap-4 py-3">
