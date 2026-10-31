@@ -36,13 +36,12 @@
   --color-neon-soft: var(--neon-soft);
   --color-dim: var(--dim);
 
-  --font-display: "Barlow Condensed", "Arial Narrow", sans-serif;
-  --font-body: "Archivo", system-ui, sans-serif;
-  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --font-display: "Poppins", "Inter", sans-serif;
+  --font-body: "Inter", sans-serif;
 }
 
 :root {
-  --radius: 0.375rem;
+  --radius: 0.875rem;
 
   /* Brand — deep black, neon green, white */
   --ink: #0a0a0a;
@@ -104,8 +103,7 @@
   h4 {
     font-family: var(--font-display);
     font-weight: 700;
-    letter-spacing: -0.005em;
-    text-transform: uppercase;
+    letter-spacing: -0.02em;
     text-wrap: balance;
   }
 
@@ -174,10 +172,10 @@
 
 @utility eyebrow {
   display: inline-block;
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  font-weight: 500;
-  letter-spacing: 0.14em;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--neon);
 }
@@ -197,7 +195,7 @@
   font-size: 0.9rem;
   font-weight: 600;
   letter-spacing: 0.02em;
-  border-radius: 0.25rem;
+  border-radius: 0.75rem;
   padding: 0.95rem 1.6rem;
   line-height: 1;
   transition:
@@ -215,9 +213,9 @@
 @utility btn-primary {
   background: var(--neon);
   color: #06120b;
-  box-shadow: none;
+  box-shadow: 0 8px 30px rgba(0, 230, 118, 0.22);
   &:hover {
-    background: #33eb91;
+    box-shadow: 0 10px 40px rgba(0, 230, 118, 0.4);
   }
 }
 
@@ -236,21 +234,15 @@
 }
 
 @utility glow-white {
-  text-shadow: none;
+  text-shadow:
+    0 0 14px rgba(255, 255, 255, 0.4),
+    0 0 40px rgba(255, 255, 255, 0.14);
 }
 
 @utility glow-neon {
-  text-shadow: none;
+  text-shadow: 0 0 28px rgba(0, 230, 118, 0.4);
 }
 
 #lovable-badge {
   display: none !important;
-}
-
-@utility spec-label {
-  font-family: var(--font-mono);
-  font-size: 0.68rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.45);
 }
