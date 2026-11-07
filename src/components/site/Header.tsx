@@ -2,9 +2,11 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { MessageCircle, Menu, Phone, X } from "lucide-react";
 import { WHATSAPP_DEFAULT, trackWhatsAppClick } from "./constants";
+import { trackPhoneClick } from "@/lib/tracking";
 
 const links = [
   { label: "Serviços", href: "/servicos" },
+  { label: "Resultados", href: "/#resultados" },
   { label: "Sobre", href: "/#sobre" },
   { label: "Localização", href: "/#localizacao" },
 ];
@@ -67,6 +69,7 @@ export function Header() {
             ))}
             <a
               href="tel:+5547999940973"
+              onClick={() => trackPhoneClick("header")}
               aria-label="Ligar para a Clínica do Carro: (47) 99994-0973"
               className="inline-flex items-center gap-1.5 text-sm font-medium text-white/60 transition-colors hover:text-neon"
             >
@@ -85,14 +88,26 @@ export function Header() {
             </a>
           </nav>
 
-          <button
-            aria-label="Abrir menu"
-            aria-expanded={open}
-            className="p-2 text-white md:hidden"
-            onClick={() => setOpen(true)}
-          >
-            <Menu className="h-6 w-6" />
-          </button>
+          <div className="flex shrink-0 items-center gap-1 md:hidden">
+            <a
+              href={WHATSAPP_DEFAULT}
+              onClick={() => trackWhatsAppClick("mobile_header")}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-base btn-primary !px-3.5 !py-2.5 !text-[0.8rem]"
+            >
+              <MessageCircle className="h-4 w-4" />
+              WhatsApp
+            </a>
+            <button
+              aria-label="Abrir menu"
+              aria-expanded={open}
+              className="p-2 text-white"
+              onClick={() => setOpen(true)}
+            >
+              <Menu className="h-6 w-6" />
+            </button>
+          </div>
         </div>
       </header>
 

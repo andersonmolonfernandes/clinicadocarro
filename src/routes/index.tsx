@@ -8,6 +8,9 @@ import { CTA } from "@/components/site/CTA";
 import { Location } from "@/components/site/Location";
 import { Footer } from "@/components/site/Footer";
 import { FloatingWhats } from "@/components/site/FloatingWhats";
+import { Results } from "@/components/site/Results";
+import { Testimonials } from "@/components/site/Testimonials";
+import { HowItWorks } from "@/components/site/HowItWorks";
 import { HomeFaq, homeFaqs } from "@/components/site/HomeFaq";
 import { services, SITE_URL, primaryImage, absUrl } from "@/components/site/services-data";
 
@@ -94,9 +97,12 @@ function Index() {
       <main>
         <Hero />
         <Stats />
+        <Results />
         <Services />
+        <Testimonials />
         <About />
         <HomeFaq />
+        <HowItWorks />
         <CTA />
         <Location />
       </main>

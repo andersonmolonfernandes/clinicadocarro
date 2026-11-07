@@ -8,6 +8,8 @@ import { CTA } from "@/components/site/CTA";
 import { Location } from "@/components/site/Location";
 import { BeforeAfter, VideoCard } from "@/components/site/Services";
 import { FaqAccordion } from "@/components/site/Faq";
+import { TestimonialCard } from "@/components/site/Testimonials";
+import { testimonials } from "@/components/site/testimonials-data";
 import { waLink, trackWhatsAppClick } from "@/components/site/constants";
 import { serviceKeyFromSlug, trackServiceView } from "@/lib/tracking";
 import {
@@ -247,6 +249,14 @@ function ServicePage() {
                   ))}
                 </ol>
 
+                <div className="mt-8 rounded-2xl border border-neon/25 bg-neon/[0.05] p-5 sm:flex sm:items-center sm:justify-between sm:gap-4">
+                  <p className="text-[0.95rem] font-medium text-white">Quer esse resultado no seu carro? Chame e receba o orçamento.</p>
+                  <a href={waLink(s.whatsapp)} onClick={() => trackWhatsAppClick("service_mid", s.slug)} target="_blank" rel="noopener noreferrer" className="btn-base btn-primary mt-4 w-full shrink-0 sm:mt-0 sm:w-auto">
+                    <MessageCircle className="h-4 w-4" />
+                    Chamar no WhatsApp
+                  </a>
+                </div>
+
                 {s.opcoes && (
                   <section className="mt-10 border-t border-white/[0.06] pt-8">
                     <div className="mb-5">
@@ -298,6 +308,10 @@ function ServicePage() {
                   </p>
                 )}
 
+                <div className="mt-12">
+                  <TestimonialCard t={testimonials[0]!} />
+                </div>
+
                 <h2 className="mt-12 text-2xl text-white">Perguntas frequentes</h2>
                 <FaqAccordion faqs={s.faqs} className="mt-5" />
               </div>
@@ -339,7 +353,7 @@ function ServicePage() {
         <Location />
       </main>
       <Footer />
-      <FloatingWhats />
+      <FloatingWhats message={s.whatsapp} slug={s.slug} />
     </>
   );
 }
