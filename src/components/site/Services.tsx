@@ -1,20 +1,9 @@
-import { motion, AnimatePresence } from "framer-motion";
-import {
-  ChevronDown,
-  MessageCircle,
-  Instagram,
-  Play,
-  Clock,
-  ArrowRight,
-  Plus,
-  type LucideIcon,
-} from "lucide-react";
+import { MessageCircle, Instagram, Play, ArrowRight, type LucideIcon } from "lucide-react";
 import { Link } from "@tanstack/react-router";
-import { memo, useCallback, useState } from "react";
 import { waLink, trackWhatsAppClick } from "./constants";
 import { serviceKeyFromSlug, trackServiceView } from "@/lib/tracking";
-import { SectionHeading, EASE } from "./Section";
-import { services, type Service } from "./services-data";
+import { SectionHeading } from "./Section";
+import { services, primaryImage, primaryAlt } from "./services-data";
 
 export function BeforeAfter({
   antes,
@@ -164,77 +153,7 @@ export function VideoCard({ url, nome }: { url: string; nome: string }) {
   );
 }
 
-const AddOnCard = memo(function AddOnCard({ addOn, slug }: { slug?: string; addOn: NonNullable<Service["addOns"]>[number] }) {
-  const Icon = addOn.Icon ?? Plus;
-  return (
-    <div className="overflow-hidden rounded-2xl border border-neon/20 bg-white/[0.025]">
-      <div className="grid sm:grid-cols-[112px_1fr]">
-        {addOn.image ? (
-          <div className="relative min-h-[112px] overflow-hidden bg-black sm:min-h-full">
-            <img src={addOn.image} alt={addOn.alt ?? addOn.nome} loading="lazy" decoding="async" width={360} height={270} className="h-full w-full object-cover" />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/55 to-transparent" />
-          </div>
-        ) : (
-          <div className="grid min-h-[112px] place-items-center border-b border-white/[0.06] bg-gradient-to-br from-neon/[0.12] to-white/[0.02] sm:border-b-0 sm:border-r">
-            <Icon className="h-7 w-7 text-neon" />
-          </div>
-        )}
-        <div className="p-4 sm:p-5">
-          <div className="flex items-start justify-between gap-3">
-            <div><span className="text-[0.6rem] font-semibold uppercase tracking-[0.2em] text-neon/80">Adicional</span><h4 className="mt-1 text-base font-semibold text-white" style={{ fontFamily: "var(--font-display)" }}>{addOn.nome}</h4></div>
-            {addOn.etiqueta && <span className="shrink-0 rounded-full border border-neon/20 bg-neon/[0.08] px-2 py-1 text-[0.58rem] font-semibold uppercase tracking-[0.12em] text-neon">{addOn.etiqueta}</span>}
-          </div>
-          <p className="mt-2 text-[0.78rem] leading-relaxed text-white/55">{addOn.descricao}</p>
-          <a href={waLink(addOn.whatsapp)} onClick={() => trackWhatsAppClick("home_addon", slug)} target="_blank" rel="noopener noreferrer" className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-neon px-4 py-2.5 text-[0.68rem] font-bold uppercase tracking-[0.12em] text-[#06120b] transition-transform hover:-translate-y-0.5"><Plus className="h-3.5 w-3.5" />Adicionar ao serviço</a>
-        </div>
-      </div>
-    </div>
-  );
-});
-
-const ServiceCard = memo(function ServiceCard({ s, idx, open, onToggle }: { s: Service; idx: number; open: boolean; onToggle: (idx: number) => void }) {
-  const addOns = s.addOns ?? (s.addOn ? [s.addOn] : []);
-  return (
-    <motion.article initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.12 }} transition={{ duration: 0.45, delay: (idx % 3) * 0.05, ease: EASE }} className="group self-start overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.025] shadow-[0_16px_60px_rgba(0,0,0,0.18)] transition-all duration-300 hover:border-white/[0.14]" style={{ borderColor: open ? "rgba(0,230,118,0.28)" : undefined }}>
-      <button type="button" aria-expanded={open} onClick={() => onToggle(idx)} className="flex w-full items-center gap-4 px-5 py-5 text-left md:px-6">
-        <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl border border-white/[0.08] bg-black/30 transition-colors group-hover:border-neon/25" style={{ background: open ? "rgba(0,230,118,0.09)" : undefined }}><s.Icon className="h-5 w-5 text-neon" /></span>
-        <span className="min-w-0 flex-1"><span className="block text-[1rem] font-semibold tracking-[-0.01em] text-white" style={{ fontFamily: "var(--font-display)" }}>{s.nome}</span>{s.destaque && <span className="mt-1 block text-[0.6rem] font-semibold uppercase tracking-[0.2em] text-neon/75">Destaque</span>}</span>
-        <span className="flex shrink-0 items-center gap-2 text-[0.62rem] font-semibold uppercase tracking-[0.12em] text-white/35 group-hover:text-neon/80">{open ? "Fechar" : "Detalhes"}<motion.span animate={{ rotate: open ? 180 : 0 }} transition={{ duration: 0.22 }}><ChevronDown className="h-4 w-4" /></motion.span></span>
-      </button>
-      <AnimatePresence initial={false}>{open && (
-        <motion.div key="body" initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.28, ease: EASE }} className="overflow-hidden">
-          <div className="border-t border-white/[0.06] px-5 pb-6 pt-5 md:px-6">
-            {s.beforeAfter ? <BeforeAfter {...s.beforeAfter} /> : s.image ? <div className="mb-6 overflow-hidden rounded-2xl border border-white/[0.08] bg-black" style={{ aspectRatio: "16 / 9" }}><img src={s.image} alt={s.alt ?? `${s.nome} — Clínica do Carro Joinville`} loading="lazy" decoding="async" width={1280} height={720} className="h-full w-full object-cover" /></div> : null}
-            <p className="text-[0.9rem] leading-7 text-white/62">{s.descricao}</p>
-            <div className="mt-6 grid gap-5 sm:grid-cols-2">
-              <div><p className="text-[0.62rem] font-semibold uppercase tracking-[0.2em] text-white/35">Inclui</p><ul className="mt-3 space-y-2.5">{s.lista.map((item) => <li key={item} className="flex items-start gap-2.5 text-[0.82rem] leading-relaxed text-white/78"><span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-neon" />{item}</li>)}</ul></div>
-              <div><p className="text-[0.62rem] font-semibold uppercase tracking-[0.2em] text-white/35">Processo</p><ol className="mt-3 space-y-2.5">{s.processo.map((step, i) => <li key={step} className="flex items-start gap-2.5 text-[0.82rem] leading-relaxed text-white/68"><span className="grid h-5 w-5 shrink-0 place-items-center rounded-md border border-neon/20 bg-neon/[0.07] text-[0.58rem] font-bold text-neon">{i + 1}</span>{step}</li>)}</ol></div>
-            </div>
-            {addOns.length > 0 && <div className="mt-7 border-t border-white/[0.06] pt-6"><div className="mb-3 flex items-end justify-between gap-4"><div><p className="text-[0.62rem] font-semibold uppercase tracking-[0.2em] text-neon/80">Personalize</p><h4 className="mt-1 text-lg font-semibold text-white" style={{ fontFamily: "var(--font-display)" }}>Adicionais para este serviço</h4></div><span className="hidden text-[0.68rem] text-white/35 sm:block">Escolha no orçamento</span></div><div className="grid gap-3">{addOns.map((addOn) => <AddOnCard key={addOn.nome} addOn={addOn} slug={s.slug} />)}</div></div>}
-            {s.durabilidade && <p className="mt-6 inline-flex items-center gap-2 rounded-xl border border-white/[0.08] bg-white/[0.025] px-3.5 py-2.5 text-[0.78rem] text-white/65"><Clock className="h-4 w-4 text-neon" /><span><span className="text-white/38">Durabilidade: </span>{s.durabilidade}</span></p>}
-            {s.video && <VideoCard url={s.video} nome={s.nome} />}
-            <a href={waLink(s.whatsapp)} onClick={() => trackWhatsAppClick("home_service_card", s.slug)} target="_blank" rel="noopener noreferrer" aria-label={`Falar pelo WhatsApp sobre ${s.nome}`} className="btn-base btn-primary mt-4 w-full"><MessageCircle className="h-4 w-4" />Orçamento no WhatsApp</a>
-            <Link to="/$slug" params={{ slug: s.slug }} className="mt-3 flex w-full items-center justify-center gap-1.5 rounded-xl border border-white/[0.08] bg-white/[0.02] px-4 py-2.5 text-[0.78rem] font-medium text-white/58 transition-colors hover:border-neon/30 hover:text-neon">Ver página completa <ArrowRight className="h-3.5 w-3.5" /></Link>
-          </div>
-        </motion.div>
-      )}</AnimatePresence>
-    </motion.article>
-  );
-});
-
 export function Services() {
-  const [openIndex, setOpenIndex] = useState<number | null>(0);
-  const toggle = useCallback(
-    (idx: number) =>
-      setOpenIndex((cur) => {
-        if (cur === idx) return null;
-        const svc = services[idx];
-        if (svc) trackServiceView(serviceKeyFromSlug(svc.slug), "home_service_card");
-        return idx;
-      }),
-    []
-  );
-
   return (
     <section id="servicos" className="section-y">
       <div className="shell">
@@ -242,19 +161,29 @@ export function Services() {
           eyebrow="O que fazemos"
           title="Serviços"
           highlight="especializados"
-          description="Toque em um serviço para ver benefícios, processo, vídeo real e falar direto com a gente no WhatsApp."
+          description="Escolha o serviço e chame no WhatsApp. Respondemos rápido."
         />
-
-        <div className="mt-12 grid grid-cols-1 gap-4 md:mt-16 md:grid-cols-2 lg:grid-cols-3">
-          {services.map((s, idx) => (
-            <ServiceCard
-              key={s.nome}
-              s={s}
-              idx={idx}
-              open={openIndex === idx}
-              onToggle={toggle}
-            />
-          ))}
+        <div className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 md:mt-16 lg:grid-cols-3">
+          {services.map((s) => {
+            const img = primaryImage(s);
+            return (
+              <article key={s.slug} className="flex flex-col overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.025] transition-colors hover:border-neon/30">
+                <Link to="/$slug" params={{ slug: s.slug }} className="relative block overflow-hidden bg-black" style={{ aspectRatio: "16 / 10" }} tabIndex={-1} aria-hidden>
+                  {img && <img src={img} alt={primaryAlt(s)} loading="lazy" decoding="async" width={800} height={500} className="h-full w-full object-cover transition-transform duration-500 hover:scale-105" />}
+                  <span className="absolute left-3 top-3 grid h-9 w-9 place-items-center rounded-lg border border-white/10 bg-black/60"><s.Icon className="h-4 w-4 text-neon" /></span>
+                  {s.destaque && <span className="absolute right-3 top-3 rounded-md bg-neon px-2 py-1 text-[0.6rem] font-bold uppercase tracking-[0.14em] text-[#06120b]">Destaque</span>}
+                </Link>
+                <div className="flex flex-1 flex-col p-5">
+                  <h3 className="text-lg text-white">{s.nome}</h3>
+                  <p className="mt-1.5 flex-1 text-[0.88rem] leading-relaxed text-white/60">{s.lista[0]}</p>
+                  <div className="mt-5 grid grid-cols-2 gap-2">
+                    <a href={waLink(s.whatsapp)} onClick={() => trackWhatsAppClick("home_service_card", s.slug)} target="_blank" rel="noopener noreferrer" aria-label={`Chamar no WhatsApp sobre ${s.nome}`} className="btn-base btn-primary !px-3 !py-3 !text-[0.8rem]"><MessageCircle className="h-4 w-4" />WhatsApp</a>
+                    <Link to="/$slug" params={{ slug: s.slug }} onClick={() => trackServiceView(serviceKeyFromSlug(s.slug), "home_service_card")} className="btn-base btn-outline !px-3 !py-3 !text-[0.8rem]">Ver detalhes<ArrowRight className="h-4 w-4" /></Link>
+                  </div>
+                </div>
+              </article>
+            );
+          })}
         </div>
       </div>
     </section>

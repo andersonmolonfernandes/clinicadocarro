@@ -21,7 +21,21 @@ export const homeFaqs: Faq[] = [
   {
     pergunta: "Como faço um orçamento?",
     resposta:
-      "Basta enviar fotos do seu carro pelo WhatsApp (47) 99994-0973 informando o serviço desejado. Respondemos com o valor e os horários disponíveis.",
+      "Chame no WhatsApp (47) 99994-0973 com Modelo, Cor e Ano do carro e o serviço desejado. Respondemos com o orçamento e os horários disponíveis.",
+  },
+  {
+    pergunta: "Quanto custa?",
+    resposta:
+      "Depende do tamanho e do estado do carro. Envie Modelo, Cor e Ano pelo WhatsApp (47) 99994-0973 e respondemos rápido com o orçamento.",
+  },
+  {
+    pergunta: "Quais formas de pagamento?",
+    resposta: "Aceitamos PIX e cartão.",
+  },
+  {
+    pergunta: "Qual o horário de atendimento?",
+    resposta:
+      "Segunda a sexta, das 8h às 18h30, e sábado, das 8h às 12h, sempre com hora marcada.",
   },
   {
     pergunta: "Há quanto tempo vocês atuam em Joinville?",
