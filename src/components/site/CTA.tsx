@@ -1,5 +1,6 @@
 import { MessageCircle } from "lucide-react";
-import { WHATSAPP_DEFAULT, trackWhatsAppClick } from "./constants";
+import { WHATSAPP_DEFAULT, PHONE_TEL, PHONE_LABEL, trackWhatsAppClick } from "./constants";
+import { trackPhoneClick } from "@/lib/tracking";
 import { Reveal } from "./Section";
 
 export function CTA() {
@@ -26,8 +27,7 @@ export function CTA() {
             Agende agora pelo <span className="text-neon glow-neon">WhatsApp</span>
           </h2>
           <p className="mx-auto mt-4 max-w-lg text-base text-white/60">
-            Envie fotos do seu carro pelo WhatsApp e receba o orçamento e a
-            disponibilidade de horário no mesmo dia.
+            Mande Modelo, Cor e Ano. Respondemos rápido com orçamento e horário.
           </p>
           <div className="mt-9 flex justify-center">
             <a
@@ -38,9 +38,16 @@ export function CTA() {
               className="btn-base btn-primary !px-9 !py-[1.15rem] !text-base"
             >
               <MessageCircle className="h-5 w-5" />
-              Solicitar orçamento por foto
+              Chamar no WhatsApp
             </a>
           </div>
+          <a
+            href={PHONE_TEL}
+            onClick={() => trackPhoneClick("cta")}
+            className="mt-5 inline-block text-sm text-white/55 underline-offset-4 transition-colors hover:text-neon hover:underline"
+          >
+            Prefiro ligar: {PHONE_LABEL}
+          </a>
         </Reveal>
       </div>
     </section>

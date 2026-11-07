@@ -1,16 +1,18 @@
-import { WHATSAPP_DEFAULT, ADDRESS, trackWhatsAppClick } from "./constants";
+import { WHATSAPP_DEFAULT, ADDRESS, INSTAGRAM_URL, HOURS_LINES, trackWhatsAppClick } from "./constants";
+import { trackPhoneClick } from "@/lib/tracking";
 
 const links = [
-  { label: "Serviços", href: "#servicos" },
-  { label: "Sobre", href: "#sobre" },
-  { label: "Localização", href: "#localizacao" },
+  { label: "Serviços", href: "/#servicos" },
+  { label: "Sobre", href: "/#sobre" },
+  { label: "Localização", href: "/#localizacao" },
   { label: "WhatsApp", href: WHATSAPP_DEFAULT, ext: true },
+  { label: "Instagram", href: INSTAGRAM_URL, ext: true, ig: true },
 ];
 
 export function Footer() {
   return (
     <footer
-      className="border-t border-white/[0.07] pt-14 pb-24 md:pb-10"
+      className="border-t border-white/[0.07] pt-14 pb-32 md:pb-10"
       style={{ background: "#060606" }}
     >
       <div className="shell">
@@ -30,10 +32,14 @@ export function Footer() {
             </p>
             <a
               href="tel:+5547999940973"
+              onClick={() => trackPhoneClick("footer")}
               className="mt-3 inline-block text-[0.85rem] font-medium text-white/60 transition-colors hover:text-neon"
             >
               Tel / WhatsApp: (47) 99994-0973
             </a>
+            <ul className="mt-3 text-[0.8rem] leading-relaxed text-white/45">
+              {HOURS_LINES.map((h) => <li key={h}>{h}</li>)}
+            </ul>
           </div>
           <nav className="flex flex-wrap gap-x-7 gap-y-3 md:justify-end">
             {links.map((l) => (
@@ -42,7 +48,7 @@ export function Footer() {
                 href={l.href}
                 target={l.ext ? "_blank" : undefined}
                 rel={l.ext ? "noopener noreferrer" : undefined}
-                onClick={l.ext ? () => trackWhatsAppClick("footer") : undefined}
+                onClick={l.ext && !("ig" in l) ? () => trackWhatsAppClick("footer") : undefined}
                 className="text-sm font-medium text-white/50 transition-colors hover:text-neon"
               >
                 {l.label}

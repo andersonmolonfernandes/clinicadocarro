@@ -1,5 +1,17 @@
 import { CheckCircle2 } from "lucide-react";
 import { Reveal, SectionHeading } from "./Section";
+import polimentoImg from "@/assets/services/polimento-automotivo-joinville.jpg";
+import vitrificacaoImg from "@/assets/services/vitrificacao-ceramica-joinville.jpg";
+import higienizacaoImg from "@/assets/services/higienizacao-interna-automotiva-joinville.jpg";
+import couroImg from "@/assets/services/vitrificacao-de-couro-depois-joinville.jpg";
+
+/** Mosaico de fotos — troque os arquivos/textos para usar fotos do studio. */
+const mosaico = [
+  { src: polimentoImg, alt: "Polimento automotivo na Clínica do Carro em Joinville" },
+  { src: vitrificacaoImg, alt: "Vitrificação cerâmica aplicada na Clínica do Carro" },
+  { src: higienizacaoImg, alt: "Higienização interna automotiva em Joinville" },
+  { src: couroImg, alt: "Bancos de couro após vitrificação de couro" },
+];
 
 const diferenciais = [
   "Produtos de alto desempenho",
@@ -34,28 +46,12 @@ export function About() {
         </div>
 
         <Reveal delay={0.1}>
-          <div
-            className="surface-card relative flex items-center justify-center overflow-hidden"
-            style={{
-              minHeight: 340,
-              background:
-                "linear-gradient(140deg, rgba(0,230,118,0.06), rgba(0,0,0,0.5))",
-            }}
-          >
-            <img
-              src="/logo-mark.png"
-              alt=""
-              loading="lazy"
-              decoding="async"
-              className="w-3/5 max-w-[240px] opacity-30"
-            />
-            <span
-              aria-hidden
-              className="pointer-events-none absolute bottom-4 right-5 select-none font-semibold text-white/[0.05]"
-              style={{ fontFamily: "var(--font-display)", fontSize: "clamp(3.5rem,9vw,6rem)", lineHeight: 1 }}
-            >
-              2013
-            </span>
+          <div className="grid grid-cols-2 gap-3">
+            {mosaico.map((f, i) => (
+              <div key={f.src} className={`overflow-hidden rounded-2xl border border-white/[0.08] bg-black ${i % 3 === 0 ? "aspect-[4/5]" : "aspect-square"} ${i === 1 ? "mt-8" : ""} ${i === 2 ? "-mt-8" : ""}`}>
+                <img src={f.src} alt={f.alt} loading="lazy" decoding="async" width={600} height={700} className="h-full w-full object-cover" />
+              </div>
+            ))}
           </div>
         </Reveal>
       </div>

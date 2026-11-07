@@ -185,7 +185,7 @@ function ServicePage() {
                 className="btn-base btn-primary mt-7 w-full sm:w-auto"
               >
                 <MessageCircle className="h-4 w-4" />
-                Solicitar orçamento por foto no WhatsApp
+                Chamar no WhatsApp
               </a>
             </header>
 
