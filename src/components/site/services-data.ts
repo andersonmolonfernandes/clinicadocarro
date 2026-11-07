@@ -106,7 +106,7 @@ export const services: Service[] = [
       "Refino: recuperação do acabamento, uniformidade e brilho",
       "Proteção final: cera, selante ou vitrificação",
     ],
-    durabilidade: "Depende da proteção aplicada: cera (meses), selante (até cerca de 1 ano) ou vitrificação (3 a 5 anos)",
+    durabilidade: "Depende da proteção aplicada: cera (meses), selante (até cerca de 1 ano) ou vitrificação (até 3 anos, conforme o nível escolhido)",
     opcoes: {
       titulo: "Tipo de polimento",
       itens: [
@@ -124,7 +124,7 @@ export const services: Service[] = [
     },
     relacionados: ["vitrificacao", "lavacao-completa-premium", "revitalizacao-de-plasticos", "polimento-de-vidros"],
     video: "https://www.instagram.com/reel/DVMh1Wnjxsw/?igsh=anM0OHp0bm1qcXNx",
-    whatsapp: "Olá! Gostaria de saber mais sobre o Polimento Técnico.",
+    whatsapp: "Olá! Quero um orçamento de Polimento Técnico. Modelo: / Cor: / Ano: (vim pelo site)",
     seoTitle: "Polimento Automotivo em Joinville | Clínica do Carro",
     seoDescription:
       "Polimento técnico e comercial em Joinville: corte e refino recuperam acabamento, uniformidade e brilho da pintura. Orçamento pelo WhatsApp.",
@@ -138,7 +138,7 @@ export const services: Service[] = [
       {
         pergunta: "Quanto tempo dura um polimento automotivo?",
         resposta:
-          "Com uma proteção aplicada logo após o serviço, o resultado do polimento se mantém de 6 a 12 meses. Com vitrificação cerâmica, a proteção pode durar de 3 a 5 anos, conforme produto, uso e manutenção.",
+          "Com uma proteção aplicada logo após o serviço, o resultado do polimento se mantém de 6 a 12 meses. Com vitrificação cerâmica, a proteção dura até 3 anos, conforme o nível escolhido.",
       },
       {
         pergunta: "O polimento desgasta a pintura do carro?",
@@ -165,9 +165,9 @@ export const services: Service[] = [
     alt: "Aplicação de vitrificação cerâmica em carro na Clínica do Carro em Joinville",
     destaque: true,
     descricao:
-      "Camada cerâmica que repele água, ajuda a proteger contra UV e facilita a manutenção da pintura. Proteção de 3 a 5 anos.",
+      "Camada cerâmica que repele água, ajuda a proteger contra UV e facilita a manutenção da pintura. Proteção de até 3 anos, conforme o nível escolhido.",
     lista: [
-      "Proteção de 3 a 5 anos",
+      "Proteção de até 3 anos, conforme o nível escolhido",
       "Efeito hidrofóbico — a água escorre com facilidade",
       "Ajuda a proteger contra UV, chuva e resíduos",
       "Brilho profundo e lavagem mais fácil",
@@ -178,24 +178,24 @@ export const services: Service[] = [
       "Aplicação da camada cerâmica por painel",
       "Cura controlada e orientações de manutenção",
     ],
-    durabilidade: "3 a 5 anos, conforme produto, aplicação, uso e manutenção",
+    durabilidade: "Até 3 anos, conforme o nível escolhido (1, 2 ou 3 anos)",
     relacionados: ["polimento-tecnico", "vitrificacao-de-couro", "cristalizacao-de-vidros", "lavacao-completa-premium"],
     video: "https://www.instagram.com/reel/DWpOqxYD6Ta/?igsh=MWZlaDlxaWJpZ3JvYw==",
-    whatsapp: "Olá! Gostaria de saber mais sobre a Vitrificação.",
+    whatsapp: "Olá! Quero um orçamento de Vitrificação. Modelo: / Cor: / Ano: — Se preferir, posso levar o carro ao studio para avaliação. (vim pelo site)",
     seoTitle: "Vitrificação Automotiva em Joinville | Clínica do Carro",
     seoDescription:
-      "Vitrificação automotiva em Joinville: camada cerâmica com proteção de 3 a 5 anos, efeito hidrofóbico, brilho profundo e manutenção mais fácil.",
+      "Vitrificação automotiva em Joinville: camada cerâmica com proteção de até 3 anos conforme o nível escolhido, efeito hidrofóbico, brilho profundo e manutenção mais fácil.",
     h1: "Vitrificação Automotiva em Joinville",
     intro: [
       "A vitrificação cria uma camada cerâmica transparente com ancoragem química sobre o verniz. Ela repele água e sujeira, ajuda a proteger contra os raios UV que desbotam a pintura e deixa a lavagem do dia a dia bem mais simples.",
-      "Conforme o produto escolhido, a aplicação, o uso do veículo e a manutenção, a proteção dura de 3 a 5 anos mediante revisões periódicas — bem acima de ceras e selantes convencionais.",
+      "Trabalhamos com níveis de 1, 2 e 3 anos: a proteção dura até 3 anos, conforme o nível escolhido, o uso do veículo e a manutenção — bem acima de ceras e selantes convencionais.",
       "Em carros novos, é a forma mais prática de preservar a pintura de fábrica desde o início. Em carros usados, fazemos antes o polimento, porque a camada cerâmica sela a pintura e mantém o que estiver embaixo dela.",
     ],
     faqs: [
       {
         pergunta: "Quanto tempo dura a vitrificação?",
         resposta:
-          "De 3 a 5 anos, conforme o produto aplicado, o uso do veículo, a exposição ao sol e a manutenção. Lavagens corretas e revisões periódicas ajudam a preservar a camada por mais tempo.",
+          "Até 3 anos, conforme o nível escolhido (1, 2 ou 3 anos), o uso do veículo, a exposição ao sol e a manutenção. Lavagens corretas e revisões periódicas ajudam a preservar a camada por mais tempo.",
       },
       {
         pergunta: "Preciso polir o carro antes de vitrificar?",
@@ -237,7 +237,7 @@ export const services: Service[] = [
     durabilidade: "Recomendado a cada 6 a 12 meses",
     relacionados: ["vitrificacao-de-couro", "lavacao-completa-premium", "revitalizacao-de-plasticos", "limpeza-tecnica-do-motor"],
     video: "https://www.instagram.com/reel/DbMNNBhAsb9/?igsh=MTZ5Nmo2YXgwdWIxeg==",
-    whatsapp: "Olá! Gostaria de saber mais sobre a Higienização Interna.",
+    whatsapp: "Olá! Quero um orçamento de Higienização Interna. Modelo: / Cor: / Ano: (vim pelo site)",
     seoTitle: "Higienização Automotiva em Joinville | Clínica do Carro",
     seoDescription:
       "Higienização interna automotiva em Joinville com extratora: remove manchas, odores, ácaros e bactérias de bancos, tapetes, teto e forros.",
@@ -301,7 +301,7 @@ export const services: Service[] = [
       },
     ],
     video: "https://www.instagram.com/reel/DYIubqlANtF/?igsh=MTZqc3FrNHp2b3IzZw==",
-    whatsapp: "Olá! Gostaria de saber mais sobre a Restauração de Faróis.",
+    whatsapp: "Olá! Quero um orçamento de Restauração de Faróis. Vou enviar uma foto dos faróis. Modelo: / Ano: (vim pelo site)",
     seoTitle: "Restauração de Faróis em Joinville | Clínica do Carro",
     seoDescription:
       "Restauração de faróis amarelados em Joinville: lixamento, polimento e proteção que devolvem a transparência e aumentam a segurança à noite.",
@@ -361,7 +361,7 @@ export const services: Service[] = [
     ],
     relacionados: ["cristalizacao-de-vidros", "polimento-tecnico", "restauracao-de-farois", "lavacao-completa-premium"],
     video: "https://www.instagram.com/reel/DWcLd4HD4nA/?igsh=MWVsYXZ6emM3aWcwYw==",
-    whatsapp: "Olá! Gostaria de saber mais sobre o Polimento de Vidros.",
+    whatsapp: "Olá! Quero um orçamento de Polimento de Vidros. Modelo: / Cor: / Ano: (vim pelo site)",
     seoTitle: "Polimento de Vidros em Joinville | Clínica do Carro",
     seoDescription:
       "Polimento de vidros automotivos em Joinville: remove marcas de palhetas e riscos leves do para-brisa, devolvendo transparência e visibilidade segura.",
@@ -410,7 +410,7 @@ export const services: Service[] = [
     durabilidade: "Até 12 meses",
     relacionados: ["polimento-de-vidros", "vitrificacao", "restauracao-de-farois", "lavacao-completa-premium"],
     video: "https://www.instagram.com/reel/DYVkYAhAyIP/?igsh=YTE1ZmY0N3luOTJ1",
-    whatsapp: "Olá! Gostaria de saber mais sobre a Cristalização de Vidros.",
+    whatsapp: "Olá! Quero um orçamento de Cristalização de Vidros. Modelo: / Cor: / Ano: (vim pelo site)",
     seoTitle: "Cristalização de Vidros em Joinville | Clínica do Carro",
     seoDescription:
       "Cristalização de vidros em Joinville: película hidrofóbica que faz a água escorrer sozinha, melhora a visibilidade na chuva e aumenta a segurança.",
@@ -465,7 +465,7 @@ export const services: Service[] = [
     durabilidade: "Proteção da cera: cerca de 3 a 5 meses",
     relacionados: ["polimento-tecnico", "higienizacao-interna", "revitalizacao-de-plasticos", "limpeza-tecnica-do-motor"],
     video: "https://www.instagram.com/reel/DVeiGUXjwAV/?igsh=YjByZWdzMGptZWtj",
-    whatsapp: "Olá! Gostaria de saber mais sobre a Lavação Completa Premium.",
+    whatsapp: "Olá! Quero um orçamento de Lavação Completa Premium. Modelo: / Cor: / Ano: (vim pelo site)",
     seoTitle: "Lavação Completa Premium em Joinville | Clínica do Carro",
     seoDescription:
       "Lavação completa premium em Joinville com lavagem técnica, limpeza interna, acabamento detalhado e cera premium incluída.",
@@ -535,7 +535,7 @@ export const services: Service[] = [
         resposta: "As superfícies compatíveis podem receber proteção e acabamento adequados ao material, sempre respeitando as características de cada componente."
       }
     ],
-    whatsapp: "Olá! Quero fazer a Limpeza Técnica do Motor na Clínica do Carro."
+    whatsapp: "Olá! Quero um orçamento de Limpeza Técnica do Motor. Modelo: / Cor: / Ano: (vim pelo site)"
   },
   {
     slug: "martelinho-de-ouro",
@@ -564,7 +564,7 @@ export const services: Service[] = [
     ],
     durabilidade: "Reparo permanente",
     relacionados: ["polimento-tecnico", "vitrificacao", "lavacao-completa-premium", "restauracao-de-farois"],
-    whatsapp: "Olá! Gostaria de saber mais sobre o Martelinho de Ouro.",
+    whatsapp: "Olá! Quero um orçamento de Martelinho de Ouro. Vou enviar uma foto do amassado. Modelo: / Cor: / Ano: (vim pelo site)",
     seoTitle: "Martelinho de Ouro em Joinville | Clínica do Carro",
     seoDescription:
       "Martelinho de ouro em Joinville: remoção de amassados e marcas de granizo sem pintura, preservando 100% a pintura original de fábrica.",
@@ -624,7 +624,7 @@ export const services: Service[] = [
     ],
     durabilidade: "12 a 24 meses",
     relacionados: ["higienizacao-interna", "vitrificacao", "lavacao-completa-premium", "revitalizacao-de-plasticos"],
-    whatsapp: "Olá! Gostaria de saber mais sobre a Vitrificação de Couro.",
+    whatsapp: "Olá! Quero um orçamento de Vitrificação de Couro. Modelo: / Cor: / Ano: (vim pelo site)",
     seoTitle: "Vitrificação de Couro em Joinville | Clínica do Carro",
     seoDescription:
       "Vitrificação de couro em Joinville: limpeza profunda, hidratação e selagem cerâmica que protege bancos e volante contra manchas e raios UV.",
@@ -686,7 +686,7 @@ export const services: Service[] = [
     ],
     durabilidade: "4 a 8 meses",
     relacionados: ["lavacao-completa-premium", "polimento-tecnico", "higienizacao-interna", "restauracao-de-farois"],
-    whatsapp: "Olá! Gostaria de saber mais sobre a Revitalização de Plásticos.",
+    whatsapp: "Olá! Quero um orçamento de Revitalização de Plásticos. Modelo: / Cor: / Ano: (vim pelo site)",
     seoTitle: "Revitalização de Plásticos em Joinville | Clínica do Carro",
     seoDescription:
       "Revitalização de plásticos automotivos em Joinville: devolve o preto original de parachoques, frisos e retrovisores com proteção UV. Orçamento no WhatsApp.",
